@@ -1,0 +1,276 @@
+.block:after {
+    clear: both;
+    content: " ";
+    display: block;
+}
+.box_7 {
+background: none repeat scroll 0 0 #E6E6E6;
+border: 4px solid #E6E6E6;
+padding: 0;
+}
+.tab-nav-1 ul {
+margin-bottom: -1px;
+position: relative;
+}
+.tab-nav-1 li {
+float: left;
+margin-right: 5px;
+}
+.tab-nav-1 li a {
+background: none repeat scroll 0 0 #EFEFEF;
+border: 1px solid #CFCFCF;
+display: block;
+float: left;
+font-size: 14px;
+height: 30px;
+line-height: 30px;
+padding: 0 10px;
+}
+.tab-nav-1 a:link, .tab-nav-1 a:hover, .tab-nav-1 a:active, .tab-nav-1 a:visited {
+text-decoration: none;
+}
+.vc_old {
+padding: 0 10px;
+}
+.box_7 .main {
+background: none repeat scroll 0 0 #FFFFFF;
+border: 1px solid #CFCFCF;
+}
+.folder_div .id_left .main {
+height: 439px;
+}
+.vc_old li.list {
+float: left;
+width: 20%;
+text-align: center;
+border-bottom: 1px dotted #ccc;
+}
+li.list .cover_3 {
+padding-top: 10px;
+}
+.strong {
+font-weight: bold;
+}
+.cv_title li {
+height: 1.6em;
+line-height: 1.6em;
+overflow: hidden;
+}
+.id_right {
+float: right;
+width: 260px;
+}
+.sidebar_hot {
+height: 415px;
+overflow: hidden;
+}
+.side_hot_nav {
+float: right;
+width: 50px;
+}
+.side_hot_nav a {
+display: block;
+height: 31px;
+line-height: 31px;
+text-align: left;
+padding-left: 7px;
+color: #333;
+border-left: 1px solid #cfcfcf;
+border-bottom: 1px solid #cfcfcf;
+background: url(/public/images/index_sprites.gif) repeat-x 0 -50px #f5f5f5;
+}
+.side_hot_list {
+float: left;
+width: 200px;
+}
+.side_hot_list li {
+vertical-align: top;
+}
+.side_hot_list .list_ins {
+border-bottom: 1px dotted #ccc;
+}
+.side_hot_list .list_top {
+height: 27px;
+line-height: 27px;
+padding: 1px 0 2px;
+overflow: hidden;
+}
+.side_hot_list .li_view_num {
+float: right;
+width: 42px;
+text-align: right;
+color: #888;
+overflow: hidden;
+font-size: 11px;
+-webkit-text-size-adjust: none;
+}
+.side_hot_list .li_title {
+padding-right: 43px;
+}
+.side_hot_list .compositor {
+margin: 6px 6px 0 0;
+}
+.side_hot_list ul li .list_ins .li_title strong {
+line-height: 27px;
+}
+.side_hot_list .list_main {
+height: 72px;
+padding: 3px 0 5px;
+display: none;
+}
+.side_hot_list .li_img {
+float: left;
+width: 55px;
+}
+.entry_cover {
+display: inline-block;
+position: relative;
+font-size: 0;
+line-height: 0;
+}
+a .entry_cover {
+border: 1px solid #ccc;
+}
+.entry_cover .cover_img {
+vertical-align: middle;
+display: block;
+border: 1px solid #fff;
+}
+.id_left {
+float: left;
+width: 720px;
+}
+.folder_div .id_left {
+height: 441px;
+}
+.id_right {
+float: right;
+width: 260px;
+}
+.tab-nav-1 li.on a {
+background: none repeat scroll 0 0 #FFFFFF;
+border-bottom: 1px solid #FFFFFF;
+color: #CC0000;
+font-weight: bold;
+}
+.idr_out {
+border-top: 1px solid #cfcfcf;
+border-right: 1px solid #cfcfcf;
+border-bottom: 1px solid #cfcfcf;
+}
+.folder_div .idr_out {
+height: 489px;
+ovrflow: hidden;
+}
+.idr_in {
+padding: 0 14px 0;
+border-top: 1px solid #fff;
+border-left: 1px solid #fff;
+border-right: 1px solid #fff;
+background: url(/base/images/index/mvr_bg.png?v=4fa0fe3a) repeat-x 0 0 #fff;
+}
+.folder_div .idr_in {
+height: 488px;
+ovrflow: hidden;
+}
+.red_title {
+margin: 10px 0;
+border-left: 5px solid #c00;
+height: 20px;
+line-height: 20px;
+padding-left: 5px;
+overflow: hidden;
+}
+.folder_div .idr_in .red_title {
+margin: 10px 0 5px;
+}
+.red_title h3 {
+margin: 0;
+font-size: 14px;
+font-weight: bold;
+}
+div.side_list_2 ul li {
+height: 20px;
+line-height: 20px;
+overflow: hidden;
+}
+div.side_list_2 ul li {
+line-height: 20px;
+}
+.more_t {
+margin-right: 14px;
+height: 40px;
+line-height: 40px;
+text-align: right;
+font-size: 14px;
+}
+
+.idr_out {
+border-top: 1px solid #cfcfcf;
+border-right: 1px solid #cfcfcf;
+border-bottom: 1px solid #cfcfcf;
+}
+.folder_div .idr_out {
+height: 489px;
+ovrflow: hidden;
+}
+.idr_in {
+padding: 0 14px 0;
+border-top: 1px solid #fff;
+border-left: 1px solid #fff;
+border-right: 1px solid #fff;
+background: url(/public/images/mvr_bg.png) repeat-x 0 0 #fff;
+}
+.folder_div .idr_in {
+height: 488px;
+ovrflow: hidden;
+}
+.red_title {
+margin: 10px 0;
+border-left: 5px solid #c00;
+height: 20px;
+line-height: 20px;
+padding-left: 5px;
+overflow: hidden;
+}
+.folder_div .idr_in .red_title {
+margin: 10px 0 5px;
+}
+.red_title h3 {
+margin: 0;
+font-size: 14px;
+font-weight: bold;
+}
+div.side_list_2 ul li {
+height: 20px;
+line-height: 20px;
+overflow: hidden;
+}
+div.side_list_2 ul li {
+line-height: 20px;
+}
+.more_t {
+margin-right: 14px;
+height: 40px;
+line-height: 40px;
+text-align: right;
+font-size: 14px;
+}
+.folder_div .id_moreleft {
+height: 501px;
+}
+.folder_div .id_left .moremain {
+height: 489px;
+}
+.side_hot_nav .on a {
+display: block;
+height: 31px;
+line-height: 31px;
+text-align: left;
+padding-left: 6px;
+color: #c00;
+border-left: 1px solid #fff;
+font-weight: bold;
+background: #fff;
+}
+

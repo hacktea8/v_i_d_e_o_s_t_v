@@ -1,0 +1,72 @@
+.leftDiv {
+width: 720px;
+float: left;
+}
+.box_7 {
+border: 4px solid #e6e6e6;
+padding: 0;
+background: #e6e6e6;
+}
+.titleDiv {
+height: 42px;
+padding: 6px 0 0 8px;
+}
+.titleDiv h1 {
+font-size: 16px!important;
+margin: 0;
+padding: 0;
+line-height: 20px!important;
+color: #333!important;
+text-align: left;
+font-weight: bold!important;
+}
+.box_7 .main {
+border: 1px solid #cfcfcf;
+background: #fff;
+}
+.red {
+color: #c00!important;
+font-weight: normal;
+}
+#myform {
+padding-left: 78px;
+}
+#myform td {
+padding: 3px;
+}
+.rightDiv {
+width: 260px;
+overflow: hidden;
+float: right;
+}
+#postNote {
+position: absolute;
+right: 0;
+top: 113px;
+width: 280px;
+}
+#postNote h4 {
+background: url(/public/images/redbg.jpg) repeat-x;
+padding: 4px 0 4px 14px;
+color: #FFF;
+margin: 0;
+margin-top: 12px;
+font: 13px bold;
+}
+#postNote p {
+margin: 0;
+padding: 2px 10px;
+background: #efefef;
+}
+input.button {
+background: none repeat scroll 0 0 #c00000;
+white-space: nowrap;
+border-color: #d66666 #BB0000 #b00 #D66666;
+border-width: 1px;
+color: #fff;
+font-size: 12px;
+height: 22px;
+padding: 0 4px;
+text-align: center;
+}
+

@@ -43,6 +43,7 @@ class CI_Loader {
 	 * @access protected
 	 */
 	protected $_ci_view_paths		= array();
+	public $_ci_view_path		= '';
 	/**
 	 * List of paths to load libraries from
 	 *
@@ -416,7 +417,7 @@ class CI_Loader {
 	 */
 	public function view($view, $vars = array(), $return = FALSE)
 	{
-		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+		return $this->_ci_load(array('_ci_view' => $this->_ci_view_path.$view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
 	}
 
 	// --------------------------------------------------------------------

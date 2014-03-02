@@ -142,7 +142,7 @@ class CI_Pagination {
 		// Determine the current page number.
 		$CI =& get_instance();
 
-		if ($CI->config->item('enable_query_strings') === TRUE OR $this->page_query_string === TRUE)
+		if (!$this->cur_page && ($CI->config->item('enable_query_strings') === TRUE OR $this->page_query_string === TRUE))
 		{
 			if ($CI->input->get($this->query_string_segment) != $base_page)
 			{
@@ -154,7 +154,7 @@ class CI_Pagination {
 		}
 		else
 		{
-			if ($CI->uri->segment($this->uri_segment) != $base_page)
+			if ( !$this->cur_page && $CI->uri->segment($this->uri_segment) != $base_page)
 			{
 				$this->cur_page = $CI->uri->segment($this->uri_segment);
 

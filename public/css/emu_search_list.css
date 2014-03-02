@@ -1,0 +1,353 @@
+@charset "utf-8";
+.list-other{
+    padding: 4px 0 4px 8px;
+    overflow: hidden;
+    zoom:1;
+}
+.list-other li{
+    float: left;
+    width: 19%;
+    margin-right: 0.5%;
+}
+.list-title{
+    height: 32px;
+    line-height: 32px;
+    background: #eefedc;
+    position: relative;
+    padding: 0 10px;
+}
+.list-ord{
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+.list-ord li{
+    float: left;
+    margin-left: 45px;
+    display: inline;
+}
+.list-ord i{
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url(../images/xzb_main.png) no-repeat;
+}
+.list-ord .up{
+    background-position: -80px -20px;
+}
+.list-ord .down{
+    background-position: -100px -20px;
+}
+.list-ord a{
+    position: relative;
+    padding-right: 20px;
+}
+
+.list-type{
+    position: absolute;
+    left: 340px;
+    top: 5px;
+    height: 20px;
+    border:1px solid #e7e7e7;
+    border-right: 0;
+}
+.list-type a{
+    float: left;
+    width: 22px;
+    height: 20px;
+    background: #fdfdfd;
+    border-right: 1px solid #e7e7e7;
+}
+.list-type i{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(../images/xzb_main.png) no-repeat;
+    margin-left: 1px;
+}
+.list-type .img{
+    background-position: -120px 0;
+}
+.list-type .txt{
+    background-position: -80px 0;
+}
+.list-type .current .img{
+    background-position: -140px 0;
+}
+.list-type .current .txt{
+    background-position: -100px 0;
+}
+
+.list-soft li{
+    overflow: hidden;
+    zoom: 1;
+    border-bottom: 1px dashed #eee;
+}
+.list-soft .hover{
+    background: #f6feed;
+}
+.li-title{
+    height: 45px;
+    line-height: 45px;
+    position: relative;
+}
+.li-title .title{
+    overflow: hidden;
+    width: 420px;
+    display: block;
+    height: 45px;
+}
+.li-title .soft-ext{
+    position: absolute;
+    right: 5px;
+    top: 0;
+}
+.li-title .soft-ext span{
+    float: left;
+    margin-left: 30px;
+    display: inline;
+    width: 80px;
+}
+.li-title .soft-ext .date{
+    width: 75px;
+}
+.li-title .soft-ext .size{
+    font-size: 14px;
+}
+.li-contnet{
+    min-height: 120px;
+    _height:120px;
+    position: relative;
+    padding-left: 175px;
+    padding-bottom: 15px;
+}
+.li-contnet .pic{
+    width: 160px;
+    height: 120px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden; 
+}
+.soft-info{
+    height: 31px;
+    line-height: 31px;
+    position: relative;
+}
+.soft-info .item{
+    float: left;
+    width: 135px;
+}
+.soft-info .til{
+    font-weight: bold;
+    color: #333;
+}
+.soft-info .star-bar{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+.soft-info .star-bar span{
+    float: left;
+}
+.soft-info .star-bar .star,
+.row-letter .let-star .star{
+    width: 90px;
+    height: 16px;
+    background: url(../images/xzb_main.png) no-repeat 0 -80px;
+    margin-top: 6px;
+}
+.soft-info .star-bar .star i,
+.row-letter .let-star .star i{
+    display: block;
+    height: 16px;
+    background: url(../images/xzb_main.png) no-repeat 0 -60px;
+}
+.li-contnet .desc{
+    text-indent: 2em;
+    line-height: 24px;
+}
+
+.list-soft-title{
+    padding-top: 8px;
+}
+.list-soft-title li{
+    border-bottom: none;
+}
+.list-soft-title .li-contnet{
+    display: none;
+}
+.list-soft-title .li-title{
+    height: 32px;
+    line-height: 32px;
+}
+.list-soft-title .li-title .title{
+    height: 32px;
+    font-weight: normal;
+}
+.list-soft-title .li-title .imp{
+    color: #999;
+    font-size: 12px;
+}
+.list-soft-title .li-title .title{
+    padding-left: 5px;
+}
+
+
+
+.idx-title{
+    height: 30px;
+    background: #f9f9f9;
+    line-height: 30px;
+    padding: 0 10px;
+    position: relative;
+}
+.idx-title .sub-mark{
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+/* 侧边栏 */
+.sub-tab-box{
+    background: #fbfbfb;
+    overflow: hidden;
+    zoom:1;
+    padding-bottom: 3px;
+}
+
+.xzb-app{
+    height: 110px;
+    width: 240px;
+    margin: 10px auto 0;
+}
+.xzb-app img{
+    display: block;
+    width: 240px;
+}
+
+.sub-title{
+    height: 29px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    color: #666;
+}
+.sub-title .title{
+    display: block;
+    line-height: 29px;
+    padding-left: 10px;
+}
+.sub-title .mod-tab li{
+    background: #f5f5f5;
+}
+.sub-title .mod-tab{
+    position: absolute;
+    right: 5px;
+    top: 0;
+}
+.sub-title .mod-tab .current{
+    background: #fbfbfb;
+    color: #00bb00;
+}
+.sub-tab-box .soft-top-list{
+    padding: 4px 10px 3px;
+} 
+
+.sub-title1{
+    height: 29px;
+    color: #666;
+    padding: 0 10px;
+}
+.s-til-line{
+    border-bottom: 1px solid #eee;
+}
+
+.img-220{
+    width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.img-220 img{
+    width: 220px;
+    display: block;
+}
+
+.cats-list {
+    margin: 0 6px;
+    padding: 6px 0 0;
+    overflow: hidden;
+}
+.cats-list li{
+    float: left;
+    width: 33%;
+    height: 26px;
+    overflow: hidden;
+}
+.cats-list a{
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 4px;
+    white-space: nowrap;
+}
+.cats-list .current{
+    background: #0b0;
+    color: #fff;
+}
+
+/* 字母列表 */
+.row-letter .name{
+    float: left;
+    overflow: hidden;
+    width: 420px;
+}
+.row-letter .let-lang{
+    float: left;
+    width: 110px;
+    margin-left: 20px;
+    height: 32px;
+    overflow: hidden;
+}
+.row-letter .let-star{
+    float: left;
+    width: 100px;
+    height: 32px;
+    overflow: hidden;
+}
+.row-letter .let-star .star{
+    display: block;
+}
+.letter-nav{
+    padding: 10px 0;
+}
+.letter-nav li{
+    float: left;
+    margin-right: 4px;
+}
+.letter-nav .current a, 
+.letter-nav .current a:hover {
+    background: #0b0;
+    color: white;
+    font-weight: bold;
+    border-radius: 2px;
+}
+.letter-nav li a {
+    display: block;
+    width: 23px;
+    height: 23px;
+    padding: 5px;
+    text-align: center;
+    line-height: 23px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.logo {
+width: 218px;
+height: 100px;
+background: url(/public/images/emulogo.jpg) no-repeat;
+margin-top: 20px;
+}
