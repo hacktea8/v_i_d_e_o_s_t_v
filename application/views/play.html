@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{pipicms:strip}<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>正在播放 {playpage:name}{playpage:part} - {pipicms:sitename}</title>
+<meta name="keywords" content="自行定义关键词" />
+<meta name="description" content="自行定义描述" />
+<script>var sitePath=''</script>
+<link href="images/../css/Common.css" rel="stylesheet" type="text/css" />
+<link href="images/../css/channel.css" rel="stylesheet" type="text/css" />
+<link href="images/../css/content.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/function.js"></script>
+<script type="text/javascript" src="/js/play.js"></script>
+<script type="text/javascript" src="images/../js/language.js"></script>
+<script src="images/../js/Common.js"></script>
+</head>
+<body>
+{pipicms:top}
+<div class="PlayBody">
+	<div class="play">
+		<div class="pl fa-left">
+			<div class="player" id="player">
+				{playpage:playurlinfo}{playpage:player}
+			</div>
+		</div>
+		<!--div class="pr fa-right">
+			<div class="300x250 mb5" id="ad_300_01"></div>
+			<div class="300x250" id="ad_300_02"></div>
+		</div-->
+	</div>
+</div>
+<div class="wrap w960">
+	<div class="maxBox">
+		{playpage:playlist}
+        <div class="box Video-list" id="PlayList_1">
+			<div class="play-list b mb">
+				<div class="title">
+					<h3><span class="{if:"[playlist:from]"="百度影音"}p_baidu{elseif:"[playlist:from]"="优酷"}p_youku{else}p_tudou{end if}"></span>[playlist:from]<span class="tips">( [playlist:intro] )</span></h3>
+					<span class="pa order hascoll">排序：<a id="desc_[playlist:i]" class="desc" href="javascript:void(0);" onclick="desc(1,[playlist:i],this)">降序</a> <em>|</em> <a id="asc_[playlist:i]" href="javascript:void(0);" class="asc asc_on" onclick="desc(0,[playlist:i],this)">升序</a></span></div>
+				<div id="play_[playlist:i]">
+					<ul>
+						[playlist:link]
+					</ul>
+				</div>
+			</div>
+		</div>
+        {/playpage:playlist}
+		<script>PlayHistoryObj.addPlayHistory('{playpage:name}{playpage:part}',location.href)</script>
+		<script type="text/javascript" src="/include/ajax.php?action=hit&id={playpage:id}"></script>
+	</div>
+	<div class="maxBox mb10">
+		<div class="box BigBox">
+			<div class="title">
+				<h3>《{playpage:name}》评论：</h3>
+			</div>
+			<div class="pl">
+				<!-- UY BEGIN -->
+				<div id="uyan_frame"></div>
+				<script type="text/javascript">
+				var uyan_config = {'du':'{pipicms:siteurl}','su':'{playpage:id}'};
+				</script>
+				<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1723358" async=""></script>
+				<!-- UY END -->
+			</div>
+		</div>
+	</div>
+</div>
+{pipicms:foot}
+</html>{/pipicms:strip}

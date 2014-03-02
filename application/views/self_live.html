@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{pipicms:strip}<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>电视直播 - {pipicms:sitename}</title>
+<meta name="keywords" content="自行定义关键词" />
+<meta name="description" content="自行定义描述" />
+<link href="images/../css/Common.css" rel="stylesheet" type="text/css" />
+<link href="images/../css/channel.css" rel="stylesheet" type="text/css" />
+<link href="images/../css/content.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="images/../js/language.js"></script>
+<script src="images/../js/Common.js"></script>
+<script type="text/jscript">
+	var w = '956'; //宽度
+	var h = '560'; //高度
+	var s = 'yes'; //是否显示滚动条，yes显示，no不显示
+</script>
+</head>
+<body>
+{pipicms:load head_live.html}
+<div class="wrap w960">
+	<div class="maxBox mt10 mb10">
+		<div class="box">
+			<div class="tips">当前位置：<a href='/' >首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/live.html">电视直播</a></div>
+		</div>
+	</div>
+	<div class="maxBox">
+        <div class="box Video-list" id="PlayList_1">
+			<div class="play-list b mb">
+				<script type="text/jscript" src="images/../js/live.js"></script>
+			</div>
+		</div>
+	</div>
+	<div class="IndexLink">
+		<div class="mod_cooperation">
+			<h2 class="mod_tit">友情链接</h2>
+			<div class="mod_cont">
+				<ul>
+					{pipicms:linklist style=font}
+					<li><a href="[linklist:link]">[linklist:name]</a></li>
+					{/pipicms:linklist}
+					<li><a href="http://www.dyzplay.com">大眼仔高清</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{pipicms:foot}
+</html>{/pipicms:strip}

@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{pipicms:strip}<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>最好看的电影排行榜_大片电影排行榜_好莱坞电影排行榜-{pipicms:sitename}</title>
+<meta name="keywords" content="自行定义关键词" />
+<meta name="description" content="自行定义描述" />
+<link href="images/../css/Common.css" rel="stylesheet" type="text/css" />
+<link href="images/../css/channel.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="images/../js/jquery.min.js"></script>
+<script type="text/javascript" src="images/../js/language.js"></script>
+</head>
+<body>
+{pipicms:top}
+<div class="wrap w960">
+	<div class="maxBox lb mb10 mt10">
+		<div class="filter_select_con">
+			<div class="filter_select_con_th"><a href="/search.php?searchtype=5" class="resetBtn">重置条件</a> <span class="sNum">
+				<h1></h1>
+				</span><span class="sMark">影片索引</span><span class="filter_select_con_hot"></span>
+			</div>
+			<div class="filter_select_con_tb clearfix">
+				<dl class="p2">
+					<dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">按分类</b>|</dt>
+					<dd>{pipicms:menulist type=3,4,5,6,7,8,9,10,11,12,13,14,15,16,28}<a href="[menulist:link]">[menulist:typename]</a>{/pipicms:menulist}</dd>
+				</dl>
+				<dl class="p1">
+					<dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">按地区</b>|</dt>
+					<dd>{pipicms:areacaslist}<a href="[areacaslist:link]">[areacaslist:value]</a>{/pipicms:areacaslist}</dd>
+				</dl>
+				<dl class="p3">
+					<dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">按年份</b>|</dt>
+					<dd>{pipicms:yearcaslist}<a href="[yearcaslist:link]">[yearcaslist:value]</a>{/pipicms:yearcaslist}</dd>
+				</dl>
+				<dl class="p4">
+					<dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">按语言</b>|</dt>
+					<dd>{pipicms:langcaslist}<a href="[langcaslist:link]">[langcaslist:value]</a>{/pipicms:langcaslist}</dd>
+				</dl>
+				<dl class="p8">
+					<dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">按字母</b>|</dt>
+					<dd>{pipicms:lettercaslist}<a href="[lettercaslist:link]">[lettercaslist:value]</a>{/pipicms:lettercaslist}</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=5}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=5 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=6}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=6 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=7}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=7 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=8}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=8 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=9}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=9 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=10}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=10 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=11}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=11 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=12}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=12 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=13}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=13 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=14}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=14 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=15}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=15 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=16}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=16 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=28}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=28 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=3}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=3 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=4}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=4 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="maxBox mb10" id="hot-focus">
+		<div class="box hotTop">
+			<div class="title">
+				{pipicms:menulist type=29}
+				<h3>[menulist:typename]</h3>
+				<a href="[menulist:link]" class="more">更多&gt;&gt;</a>{/pipicms:menulist}</div>
+			<div class="hotVideo">
+				<ul class="txt-list">
+					{pipicms:videolist type=29 num=20 order=hit}
+					<li><span>[videolist:n].</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+					{/pipicms:videolist}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--网站底部-->
+{pipicms:foot}
+</body>
+</html>{/pipicms:strip}

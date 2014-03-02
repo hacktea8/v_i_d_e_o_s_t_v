@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{pipicms:strip}<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{pipicms:searchword} - {pipicms:sitename}</title>
+<meta name="keywords" content="自行定义关键词" />
+<meta name="description" content="自行定义描述" />
+<link href="images/../css/Common.css" rel="stylesheet" type="text/css" />
+<link href="images/../css/channel.css" rel="stylesheet" type="text/css" />
+<link href="images/../css/channel-list.css" rel="stylesheet" type="text/css" />
+<link href="images/../css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="images/../js/jquery.min.js"></script>
+<script type="text/javascript" src="images/../js/language.js"></script>
+</head>
+<body>
+{pipicms:top}
+<div class="wrap w960">
+	<div class="maxBox mt10">
+		<div class="box">
+			<div class="tips">当前位置：当前位置：<a href='/' >首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;影片搜索</div>
+		</div>
+	</div>
+	<div class="ad960 mt10 mb10">954*80 顶部广告位</div>
+	<div class="maxBox lb mt10">
+		<div class="cntBox">
+			<div class="conBox">
+				<div class="box">
+					<div class="caption bigCaption channel-title fa-clear">
+						<h2 class="hide-self fa-left">搜索关键字“{pipicms:searchword}”共有 {pipicms:searchnum} 个符合条件的影片</h2>
+						<div class="fenye fa-right" {if:"{pipicms:searchnum}"<"10"}style="display:none;"{end if} >
+							{searchlist:page} / {searchlist:pagecount} {if:"{searchlist:page}"="1"}<a href="{searchlist:nextlink}" class="xyy">下一页</a>{elseif:{searchlist:page}={searchlist:pagecount}}<a href="{searchlist:backlink}" class="syy">上一页</a>{else}<a href="{searchlist:backlink}" class="syy">上一页</a><a href="{searchlist:nextlink}" class="xyy">下一页</a>{end if}
+						</div>
+					</div>
+					<div class="channel-content">
+						<ul>
+							{pipicms:searchlist size=10 order=time}
+							<li onmousemove="this.className='cbg'" onmouseout="this.className=''" class=""><a href="[searchlist:link]" title="[searchlist:name]" class="ah"><img src="[searchlist:pic]" alt="[searchlist:name]"></a>
+								<h2><a href="[searchlist:link]">[searchlist:name]</a></h2>
+								<p><b>主演：</b>{if:"[searchlist:nolinkactor]"==""}未知{else}[searchlist:nolinkactor]{end if}</p>
+								<p><b>导演：</b>{if:"[searchlist:director]"=""}未知{else}[searchlist:director]{end if}</p>
+								<p><b>地区：</b>[searchlist:publisharea]<em>年份：[searchlist:publishtime]</em></p>
+								<p><b>语言：</b>{if:"[searchlist:lang]"=""}未知{else}[searchlist:lang]{end if}<em>备注：[searchlist:note]</em></p>
+								<p><b>时间：</b>[searchlist:time style=yyyy-mm-dd]</p>
+								<p class="xb"><a href="[searchlist:link]" target="_blank" class="xq bg"></a><a href="[searchlist:playlink]" target="_blank" class="bf bg"></a></p>
+							</li>
+							{/pipicms:searchlist}
+						</ul>
+					</div>
+					<div class="page">[searchlist:pagenumber len=5]</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ad960 mt10">954*80 底部广告位</div>
+</div>
+<!--网站底部-->
+{pipicms:foot}
+</body>
+</html>{/pipicms:strip}
