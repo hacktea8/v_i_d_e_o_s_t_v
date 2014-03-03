@@ -11,6 +11,7 @@ class Usrbase extends Webbase {
     parent::__construct();
     
     $this->load->helper('rewrite');
+/*
     $this->load->model('emulemodel');
     $hotTopic = $this->mem->get('emu-hotTopic');
 //var_dump($hotTopic);exit;
@@ -32,6 +33,7 @@ class Usrbase extends Webbase {
     ,'editeUrl' => '/edite/index/emuleTopicAdd'
     ));
     $this->_get_postion();
+*/
 //var_dump($this->viewData);exit;
   }
   protected function _get_postion($postion = array()){

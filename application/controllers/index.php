@@ -13,15 +13,6 @@ class Index extends Usrbase {
   }
   public function index()
   {
-    $c = $this->input->get('c');
-    if('topic' == $c){
-      $aid = $this->input->get('aid');
-      $this->topic($aid);return true;
-    }
-    if('list' == $c){
-      $cid = $this->input->get('cid');
-      $this->lists($cid);return true;
-    }
     $view = BASEPATH.'../';
     if(!is_writeable($view)){
        die($view.' is not write!');
@@ -35,9 +26,9 @@ class Index extends Usrbase {
         $this->view('index_index');
         $output = $this->output->get_output();
         file_put_contents($lock, '');
-        file_put_contents($view, $output);
+//        file_put_contents($view, $output);
         @unlink($lock);
-        @chmod($view, 0777);
+//        @chmod($view, 0777);
         echo $output;
         return true;
       }
