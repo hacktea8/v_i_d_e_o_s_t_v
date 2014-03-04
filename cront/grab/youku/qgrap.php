@@ -1,8 +1,9 @@
 <?php
 
-$APPPATH=dirname(__FILE__).'/';
-$psize=10;
+$APPPATH = dirname(__FILE__).'/';
+$psize = 10;
 include_once($APPPATH.'../function.php');
+include_once($APPPATH.'../model.php');
 include_once($APPPATH.'config.php');
 
 /*
