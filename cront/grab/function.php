@@ -38,6 +38,11 @@ function getTagpair(&$str,&$string,$head,$end,$same){
   }
 }
 
+function getYoukuDetail($url){
+  $html = getHtml($url);
+  
+}
+
 function getlastgrabinfo($mode=1,$config=array()){
   global $lastgrab,$cateid,$pageno;
   if($mode){

@@ -17,7 +17,7 @@ for($page = 1; ; $page++){
   $html = getHtml($url);
   preg_match_all('#<div class="p-link">\s+<a href="http://www\.youku\.com/show_page/([^"]+)\.html" target="_blank" title="([^"]+)"></a>\s+</div>#Uis', $html, $match);
 //var_dump($match);exit;
-  if( empty$match[1])){
+  if( empty($match[1])){
     break;
   }
   foreach($match[2] as $k => $title){
@@ -29,6 +29,7 @@ for($page = 1; ; $page++){
     $data_head['ourl'] = trim($match[1][$k]);
     $data_head['rtime'] = strtotime(date('Y-m-d'));
     $url = sprintf('%s/show_page/%s.html', $domain, $data_head['ourl']);
+echo $url;exit;
     $info = getYoukuDetail($url);
     $data_head['cover'] = '0';
     $data_head['thum'] = $info['thum'];
@@ -38,7 +39,7 @@ for($page = 1; ; $page++){
 //集数
     $data_head['setnum'] = $info['setnum'];
 //更新到集数
-    $data_head['rnum'] = $info['rnum'];
+    $data_head['renew'] = $info['renew'];
 //播放源
     $data_body['playtype'] = '';
     $data_body['intro'] = $info['intro'];
