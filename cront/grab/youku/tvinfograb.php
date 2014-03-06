@@ -33,9 +33,11 @@ echo $url;exit;
     $info = getYoukuDetail($url);
     $data_head['cover'] = '0';
     $data_head['thum'] = $info['thum'];
+    $data_head['alias'] = $info['alias'];
     $data_head['actor'] = $info['actor'];
     $data_head['area'] = $info['area'];
     $data_head['type'] = $info['type'];
+    $data_head['cate'] = $info['cate'];
 //集数
     $data_head['setnum'] = $info['setnum'];
 //更新到集数
