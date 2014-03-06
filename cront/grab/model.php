@@ -23,15 +23,17 @@ class Model{
      return $res;
   }
 
+    
+
   function addVideoByData($data_head,$data_body){
-    $sql = $this->db->insert_string('',$data_head);
+    $sql = $this->db->insert_string($this->db->getTable('video_head'),$data_head);
     $this->db->query($sql);
     $vid = $this->db->insert_id();
     if( !$vid){
        return false;
     }
     $data_body['id'] = $vid;
-    $sql = $this->db->insert_string('',$data_body);
+    $sql = $this->db->insert_string($this->db->getTable('video_body'),$data_body);
     $this->db->query($sql);
     return $vid;
   }

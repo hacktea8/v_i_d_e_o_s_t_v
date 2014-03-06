@@ -44,7 +44,7 @@ function getYoukuDetail($url){
   preg_match('#<li class="thumb"><img src=\'([^\']+)\' alt=\'[^\']+\'></li>#Uis', $html, $match);
   $info['thum'] = trim($match[1]);
   preg_match('#<label>别名:</label>\s+(.+)\s+</li>#Uis', $html, $match);
-  $info['alias'] = trim($match[1]);
+  $info['alias'] = trimwhitechar($match[1]);
   preg_match('#<span class="type"><a href="[^"]+" charset="[^"]+" target="_blank">(.+)</a>:</span>#Uis', $html, $match);
   $info['cate'] = trim($match[1]);
   preg_match('#<label>类型:</label>\s+(.+)\s+</span>\s+</li>#Uis', $html, $match);
@@ -56,11 +56,27 @@ function getYoukuDetail($url){
   preg_match('#<div class="basenotice">\s+更新至\d+\s+/共(\d+)集\s+<span class="break">|</span>#Uis', $html, $match);
   $info['setnum'] = trim($match[1]);
   preg_match('#<div class="detail">\s+<span class="short" id="show_info_short" style="display: inline;">\s+(.+)\s+</span>\s+</div>#Uis', $html, $match);
-  $info['intro'] = trim($match[1]);
-  preg_match('#<li class="username">\s+<a target="_blank" title="[^"]+" charset="[^"]+" href="[^"]+">(.+)</a>\s+</li>\s+<li class="portray" title="导演">导演</li>#Uis', $html, $match);
+  $info['intro'] = getTvInfo($match[1]);
+  preg_match('#<ul .+<li class="username">\s+<a target="_blank" title="[^"]+" charset="[^"]+" href="[^"]+">([^<]+)</a>\s+</li>\s+<li class="portray" title="导演">导演</li>#Uis', $html, $match);
   $info['director'] = trim($match[1]);
   
   return $info;
+}
+
+function trimwhitechar($str){
+  $pool = array("\t");
+  foreach($pool as $val){
+    $str = str_replace($val,'',$str);
+  }
+  return trim($str);
+}
+
+function getTvInfo($info){
+  $info = preg_replace('#<span>.+</span>#Uis','',$info);
+  $info = str_replace(' style="display:none"','',$info);
+  $info = str_replace('<a class="more" onclick="y.toggle.point(this)">查看详情>></a>','',$info);
+  $info = preg_replace('#\s+#','',$info);
+  return trim($info);
 }
 
 function getPlayDramInfo($url){
@@ -81,6 +97,9 @@ function parseTags($str,$replace = array(array('from'=>'#<.+>#Uis','to'=>'')),$s
   }
   $str = explode($seporator,$str);
   foreach($str as $val){
+    if(stripos($val,'优酷') !== false){
+      continue;
+    }
     $return[] = trim($val);
   }
   return $return;
@@ -279,6 +298,29 @@ function loginbbs($formhash = ''){
   }
   echo "登录失败!\n";
   return false;
+}
+
+function uploadPic(&$data){
+  $curl = curl_init();
+  $url = $data['url'];
+  unset($data['url']);
+  curl_setopt($curl, CURLOPT_URL, $url);
+  curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.3 (Windows; U; Windows NT 5.3; zh-TW; rv:1.9.3.25) Gecko/20110419 Firefox/3.7.12');
+  // curl_setopt($curl, CURLOPT_PROXY ,"http://189.89.170.182:8080");
+  curl_setopt($curl, CURLOPT_POST, count($data));
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+  curl_setopt($curl, CURLOPT_FOLLOWLOCATION,true);
+  curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
+  curl_setopt($curl, CURLOPT_HEADER, 0);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  $tmpInfo = curl_exec($curl);
+  if(curl_errno($curl)){
+    echo 'error',curl_error($curl),"\r\n";
+    return false;
+  }
+  curl_close($curl);
+  $data['url'] = $url;
+  return $tmpInfo;
 }
 
 function getHtml($url){

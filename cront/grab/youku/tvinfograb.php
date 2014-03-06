@@ -29,8 +29,9 @@ for($page = 1; ; $page++){
     $data_head['ourl'] = trim($match[1][$k]);
     $data_head['rtime'] = strtotime(date('Y-m-d'));
     $url = sprintf('%s/show_page/%s.html', $domain, $data_head['ourl']);
-echo $url;exit;
+//echo $url;exit;
     $info = getYoukuDetail($url);
+var_dump($info);exit;
     $data_head['cover'] = '0';
     $data_head['thum'] = $info['thum'];
     $data_head['alias'] = $info['alias'];
