@@ -3,8 +3,11 @@
 $APPPATH = dirname(__FILE__).'/';
 $psize = 10;
 include_once($APPPATH.'../function.php');
+include_once($APPPATH.'function.php');
 include_once($APPPATH.'../model.php');
 include_once($APPPATH.'config.php');
+
+$model = new Model();
 
 /*============ Get Cate article =================*/
 $data_head = array('site'=>1);
@@ -22,7 +25,7 @@ for($page = 1; ; $page++){
   }
   foreach($match[2] as $k => $title){
     $data_head['title'] = trim($title);
-    $flag = $model->checkVideoByTitle($data_head['title']);
+    $flag = $model->checkVideoByTitleSid($data_head['title'],$data_head['site']);
     if($flag){
       echo "\n== title: $title already exists! ==\n";continue;
     }
