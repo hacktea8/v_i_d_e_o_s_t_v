@@ -10,7 +10,7 @@ include_once($APPPATH.'config.php');
 $model = new Model();
 
 /*============ Get Cate article =================*/
-$data_head = array('site'=>1);
+$data_head = array('site'=>1,'cid'=>'电视剧');
 $data_body = array();
 $lastgrab = basename(__FILE__);
 $path = $APPPATH.'config/';
@@ -35,10 +35,12 @@ for($page = 1; ; $page++){
 //echo $url;exit;
     $info = getYoukuDetail($url);
 var_dump($info);exit;
-    $data_head['cover'] = '0';
     $data_head['thum'] = $info['thum'];
+    $up_data['imgurl'] = $info['thum'];
+    $data_head['cover'] = substr(uploadPic($up_data),3);
     $data_head['alias'] = $info['alias'];
     $data_head['actor'] = $info['actor'];
+    $data_head['director'] = $info['director'];
     $data_head['area'] = $info['area'];
     $data_head['type'] = $info['type'];
     $data_head['cate'] = $info['cate'];
@@ -51,7 +53,7 @@ var_dump($info);exit;
     $data_body['intro'] = $info['intro'];
 
     $vid = $model->addVideoByData($data_head,$data_body);
-  
+    echo "\n== add vid $vid success! ==\n";
     sleep(3);
   }
 }

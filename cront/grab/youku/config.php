@@ -21,6 +21,7 @@ $movie_list_url = '/v_olist/c_96_g__a__sg__mt__lg__q__s_6_r__u_0_pt_1_av_0_ag_0_
 $variety_list_url = '/v_olist/c_85_g__a__sg__mt__lg__q__s_6_r__u_0_pt_1_av_0_ag_0_sg__pr__h__d_1_p_%d.html';
 //动漫
 $anime_list_url = '/v_olist/c_100_g__a__sg__mt__lg__q__s_6_r__u_0_pt_1_av_0_ag_0_sg__pr__h__d_1_p_%d.html';
-
+$sid = 1;
+$up_data['referer'] = $domain;
 
 ?>

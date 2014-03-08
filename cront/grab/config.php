@@ -11,3 +11,6 @@ array('domain'=>''),
 array('domain'=>'')
 );
 
+//上次更新时间
+$lastRtime = time() - 12*3600;
+$up_data = array('url' => 'http://img.hacktea8.com/imgapi/uploadurl?seq=', 'imgurl'=>'','referer'=>'');

@@ -23,8 +23,8 @@ class Model{
      return $res;
   }
 
-  function getNoneRenewList($limit = 100){
-     $sql = sprintf("");
+  function getNoneRenewList($sid,$rtime,$limit = 100){
+     $sql = sprintf("SELECT `vid`, `sid`, `ourl` FROM `play_type` WHERE `sid`=%d AND  `rtime`<=%d AND `flag`=0 LIMIT %d",$sid,$rtime,$limit);
      $lists = $this->db->result_array($sql);
      return $lists;
   }
@@ -34,6 +34,17 @@ class Model{
     return $this->db->query($sql);
   }
 
+  function addData($table,$data){
+    $sql = sprintf("SELECT `id` FROM %s WHERE `title`='%s' LIMIT 1",$this->db->getTable($table),$this->db->escape($data['title']));
+    $row = $this->db->row_array($sql);
+    if(isset($row['id'])){
+      return $row['id'];
+    }
+    $sql = $this->db->insert_string($this->db->getTable($table),$data);
+    $this->db->query($sql);
+    return $this->db->insert_id();
+  }
+
   function addVideoByData($data_head,$data_body){
     $data_play = array('vid'=>$vid,'sid'=>$data_head['site'],'ourl'=>$data_head['ourl']);
     unset($data_head['site']);
@@ -41,12 +52,29 @@ class Model{
     $check = $this->checkVideoByTitle($title);
     $vid = $check;
     if( !$check){
+      //增加导演
+      $actor_table = 'actor';
+      $did = $this->addData($actor_table,$data = array('title'=>$data_head['director']));
+      $data_head['director'] = $did;
+      //增加地区
+      $aid = $this->addData('area',$data = array('title'=>$data_head['area']));
+      $data_head['area'] = $aid;
+      //增加导航
+      $did = $this->addData('channel',$data = array('title'=>$data_head['cid']));
+      $data_head['cid'] = $cid;
+      $actor = $data_head['actor'];
+      unset($data_head['actor']);
+      $type = $data_head['type'];
+      unset($data_head['type']);
       $sql = $this->db->insert_string($this->db->getTable('video_head'),$data_head);
       $this->db->query($sql);
       $vid = $this->db->insert_id();
       if( !$vid){
         return false;
       }
+      //增加演员
+
+      //增加类型
       $data_play['vid'] = $data_body['id'] = $vid;
       $sql = $this->db->insert_string($this->db->getTable('video_body'),$data_body);
       $this->db->query($sql);
