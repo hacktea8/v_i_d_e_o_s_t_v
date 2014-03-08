@@ -34,6 +34,55 @@ class Model{
     return $this->db->query($sql);
   }
 
+  function addActorDataAndBind($data,$vid){
+    $sql = sprintf("SELECT `id` FROM `actor` WHERE `title`='%s' LIMIT 1",$this->db->escape($data['title']));
+    $row = $this->db->row_array($sql);
+    if(isset($row['id'])){
+      $aid = $row['id'];
+      $sql = sprintf("SELECT `aid` FROM `video_actor` WHERE `aid`=%d AND `vid`=%d LIMIT 1",$aid,$vid);
+      $row = $this->db->row_array($sql);
+      if(isset($row['aid'])){
+        return $row['aid'];
+      }
+      $data = array('vid'=>$vid,'aid'=>$aid);
+      $sql = $this->db->insert_string($this->db->getTable('video_actor'),$data);
+      $this->db->query($sql);
+      return $aid;
+    }
+    $sql = $this->db->insert_string($this->db->getTable('actor'),$data);
+    $this->db->query($sql);
+    $aid = $this->db->insert_id();
+    $data = array('vid'=>$vid,'aid'=>$aid);
+    $sql = $this->db->insert_string($this->db->getTable('video_actor'),$data);
+    $this->db->query($sql);
+    return $aid;
+  }
+
+  function addTypeDataAndBind($data,$vid){
+    $sql = sprintf("SELECT `id` FROM `cate` WHERE `title`='%s' LIMIT 1",$this->db->escape($data['title']));
+    $row = $this->db->row_array($sql);
+    if(isset($row['id'])){
+      $cid = $row['id'];
+      $sql = sprintf("SELECT `aid` FROM `video_cate` WHERE `cid`=%d AND `vid`=%d LIMIT 1",$cid,$vid);
+      $row = $this->db->row_array($sql);
+      if(isset($row['cid'])){
+        return $row['cid'];
+      }
+      $data = array('vid'=>$vid,'cid'=>$cid);
+      $sql = $this->db->insert_string($this->db->getTable('video_cate'),$data);
+      $this->db->query($sql);
+      return $aid;
+    }
+    $sql = $this->db->insert_string($this->db->getTable('cate'),$data);
+    $this->db->query($sql);
+    $cid = $this->db->insert_id();
+    $data = array('vid'=>$vid,'cid'=>$cid);
+    $sql = $this->db->insert_string($this->db->getTable('video_cate'),$data);
+    $this->db->query($sql);
+    return $aid;
+  }
+
+
   function addData($table,$data){
     $sql = sprintf("SELECT `id` FROM %s WHERE `title`='%s' LIMIT 1",$this->db->getTable($table),$this->db->escape($data['title']));
     $row = $this->db->row_array($sql);
@@ -73,8 +122,13 @@ class Model{
         return false;
       }
       //增加演员
-
+      foreach($actor as $val){
+        $this->addActorDataAndBind(array('title'=>$val),$vid);
+      }
       //增加类型
+      foreach($type as $val){
+        $this->addTypeDataAndBind(array('title'=>$val),$vid);
+      }
       $data_play['vid'] = $data_body['id'] = $vid;
       $sql = $this->db->insert_string($this->db->getTable('video_body'),$data_body);
       $this->db->query($sql);
