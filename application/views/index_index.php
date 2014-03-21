@@ -1,17 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-{pipicms:strip}<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>{pipicms:sitename}</title>
-<meta name="keywords" content="自行定义关键词" />
-<meta name="description" content="自行定义描述" />
-<link href="images/../css/Common.css" rel="stylesheet" type="text/css" />
-<link href="images/../css/index.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="images/../js/jquery.min.js"></script>
-<script type="text/javascript" src="images/../js/language.js"></script>
-</head>
-<body>
-{pipicms:top}
 <div class="wrap w960">
 	<div class="ad960 mt10 mb10">954*80 顶部广告位</div>
 	<div class="maxBox mb10 mt5" id="latest-focus">

@@ -29,7 +29,7 @@ class Index extends Usrbase {
 //        file_put_contents($view, $output);
         @unlink($lock);
 //        @chmod($view, 0777);
-        echo $output;
+//        echo $output;
         return true;
       }
     }
@@ -93,9 +93,9 @@ class Index extends Usrbase {
     ,'page_string'=>$page_string,'subcatelist'=>$data['subcatelist'],'cid'=>$cid));
     $this->view('index_lists');
   }
-  public function topic($aid){
+  public function content($id){
     $aid = intval($aid);
-    $data = $this->emulemodel->getEmuleTopicByAid($aid,$this->userInfo['uid'], $this->userInfo['isadmin']);
+    //$data = $this->emulemodel->getEmuleTopicByAid($aid,$this->userInfo['uid'], $this->userInfo['isadmin']);
     $data['info']['ptime']=date('Y:m:d', $data['info']['ptime']);
     $data['info']['utime'] = date('Y/m/d', $data['info']['utime']);
     $this->_rewrite_list_url($data['postion']);
@@ -103,8 +103,6 @@ class Index extends Usrbase {
     $data['info'] = $data['info'][0];
     $data['info']['relatdata'] = is_array($data['info']['relatdata']) ? $data['info']['relatdata'] : array();
     $data['info']['fav'] = 0;
-    $cid = $data['info']['cid'] ? $data['info']['cid'] : 0;
-    $cpid = isset($data['postion'][0]['id'])?$data['postion'][0]['id']:0;
 // seo setting
     $kw = '';
     foreach($data['postion'] as $row){
@@ -112,27 +110,20 @@ class Index extends Usrbase {
     }
     $keywords = $data['info']['name'].','.$kw.$this->seo_keywords;
     $title = $data['info']['name'];
-    $data['info']['intro'] = str_replace('www.ed2kers.com',$this->viewData['domain'],$data['info']['intro']);
     // not VIP Admin check verify
-    $emu_aid = isset($_COOKIE['hk8_verify_topic_dw'])?strcode($_COOKIE['hk8_verify_topic_dw'],false):'';
-    $emu_aid = explode("\t",$emu_aid);
-    $emu_aid = $emu_aid[0];
-    $verifycode = '';
-    if( !($emu_aid == $data['info']['id'] || $this->userInfo['isvip'] || $this->userInfo['isadmin'])){
-       $data['info']['downurl'] = '';
-       $data['info']['vipdwurl'] = '';
-       $this->load->library('verify');
-       $verifycode = $this->verify->show();
-    }
     
     $this->assign(array('verifycode'=>$verifycode,'seo_title'=>$title,'seo_keywords'=>$keywords,'cid'=>$cid,'cpid'=>$cpid,'info'=>$data['info'],'postion'=>$data['postion'],'aid'=>$aid)); 
     $ip = $this->input->ip_address();
-    $key = sprintf('emuhitslog:%s:%d',$ip,$aid);
+    $key = sprintf('videohitslog:%s:%d',$ip,$id);
 //var_dump($this->redis->exists($key));exit;
     if(!$this->redis->exists($key)){
        $this->redis->set($key, 1, $this->expirettl['6h']);
     }
-    $this->view('index_topic');
+    $this->view('index_content');
+  }
+  public function channel($id, $type = ''){
+    $type = in_array($type, array('','_tv','_movie')) ? $type : '';
+    $this->view('index_channel'.$type);
   }
   public function tpl(){
     $this->load->view('index_tpl',$this->viewData);
