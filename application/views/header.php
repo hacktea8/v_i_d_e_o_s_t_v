@@ -9,17 +9,21 @@
 <link href="<?php echo $css_url,$_a;?>.css" rel="stylesheet" type="text/css" />
 <?php if(in_array($_a,array('content','play'))){ ?>
 <link href="<?php echo $css_url;?>channel.css" rel="stylesheet" type="text/css" />
-<script src="<?php echo $js_url;?>common.js"></script>
 <script src="<?php echo $js_url;?>function.js"></script>
-<script src="<?php echo $js_url;?>Commons.js"></script>
 <?php } ?>
 <?php if('play' === $_a){ ?>
 <script type="text/javascript" src="<?php echo $js_url;?>play.js"></script>
+<?php }elseif('channel_tv' === $_a){ ?>
+<link href="<?php echo $css_url;?>index.css" rel="stylesheet" type="text/css" />
+<?php }elseif('channel' === $_a){ ?>
+<link href="<?php echo $css_url;?>channel-list.css" rel="stylesheet" type="text/css" />
 <?php } ?>
 <link rel="favicon icon" href="<?php echo $img_url;?>favicon.ico">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo $js_url;?>language.js"></script>
 <script type="text/javascript">var sitePath='';</script>
+<script src="<?php echo $js_url;?>Commons.js"></script>
+<script src="<?php echo $js_url;?>common.js"></script>
 </head>
 <body>
 <div class="header">

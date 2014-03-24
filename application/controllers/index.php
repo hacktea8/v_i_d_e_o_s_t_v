@@ -123,6 +123,7 @@ class Index extends Usrbase {
   }
   public function channel($id, $type = ''){
     $type = in_array($type, array('','_tv','_movie')) ? $type : '';
+    $this->assign(array('_a'=>'channel'.$type));
     $this->view('index_channel'.$type);
   }
   public function tpl(){

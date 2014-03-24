@@ -1,29 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-{pipicms:strip}<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>{channelpage:typename} - {pipicms:sitename}</title>
-<meta name="keywords" content="自行定义关键词" />
-<meta name="description" content="自行定义描述" />
-<link href="images/../css/Common.css" rel="stylesheet" type="text/css" />
-<link href="images/../css/channel.css" rel="stylesheet" type="text/css" />
-<link href="images/../css/index.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="images/../js/jquery.min.js"></script>
-<script type="text/javascript" src="images/../js/Common.js"></script>
-<script type="text/javascript" src="images/../js/language.js"></script>
-</head>
-<body>
-{pipicms:top}
 <div class="latest-focus">
 	<div class="focusTop">
 		<div id="focus">
 			<ul>
-				<li><a href="/search.php?searchword=战旗"><img src="images/focus/1.jpg" alt="王雷演绎战地英豪，那段战火纷飞的年代（每晚3集)" _alt="战旗" /></a></li>
-				<li><a href="/search.php?searchword=消失的子弹"><img src="images/focus/2.jpg" alt="锋云对决上演民国第一奇案,结局难料迷雾重重" _alt="消失的子弹" /></a></li>
-				<li><a href="/search.php?searchword=麻辣女兵"><img src="images/focus/3.jpg" alt="叛逆少女打造热血青春，女版士兵突击（每晚3集）" _alt="麻辣女兵" /></a></li>
-				<li><a href="/search.php?searchword=姐姐立正向前走"><img src="images/focus/4.jpg" alt="林心如，汪东城演绎荧幕姐弟恋" _alt="姐姐立正向前走" /></a></li>
-				<li><a href="/search.php?searchword=大太监"><img src="images/focus/5.jpg" alt="双料视帝演绎忠仆李莲英成长记，大尺度重口味" _alt="大太监" /></a></li>
-				<li><a href="/search.php?searchword="><img src="images/focus/6.jpg" alt="殷桃张译演绎改革开放的温州变化（大结局）" _alt="温州一家人" /></a></li>
+				<li><a href="/search.php?searchword=战旗"><img src="<?php echo $img_url;?>focus/1.jpg" alt="王雷演绎战地英豪，那段战火纷飞的年代（每晚3集)" _alt="战旗" /></a></li>
+				<li><a href="/search.php?searchword=消失的子弹"><img src="<?php echo $img_url;?>focus/2.jpg" alt="锋云对决上演民国第一奇案,结局难料迷雾重重" _alt="消失的子弹" /></a></li>
+				<li><a href="/search.php?searchword=麻辣女兵"><img src="<?php echo $img_url;?>focus/3.jpg" alt="叛逆少女打造热血青春，女版士兵突击（每晚3集）" _alt="麻辣女兵" /></a></li>
+				<li><a href="/search.php?searchword=姐姐立正向前走"><img src="<?php echo $img_url;?>focus/4.jpg" alt="林心如，汪东城演绎荧幕姐弟恋" _alt="姐姐立正向前走" /></a></li>
+				<li><a href="/search.php?searchword=大太监"><img src="<?php echo $img_url;?>focus/5.jpg" alt="双料视帝演绎忠仆李莲英成长记，大尺度重口味" _alt="大太监" /></a></li>
+				<li><a href="/search.php?searchword="><img src="<?php echo $img_url;?>focus/6.jpg" alt="殷桃张译演绎改革开放的温州变化（大结局）" _alt="温州一家人" /></a></li>
 			</ul>
 		</div>
 		<div class="focus-ft">
@@ -63,7 +47,6 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="images/../js/focus.js"></script>
 </div>
 <div class="wrap w960">
 	<div class="maxBox mb10">
@@ -311,4 +294,5 @@
 	</div>
 	<div class="ad960 mt10">954*80 底部广告位</div>
 </div>
+<script type="text/javascript" src="<?php echo $js_url;?>focus.js"></script>
 <!--网站底部-->
