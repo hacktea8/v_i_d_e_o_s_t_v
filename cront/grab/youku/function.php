@@ -5,6 +5,9 @@
 function getYoukuDetail($url){
   $html = getHtml($url);
   $info = array();
+  preg_match('#<body[^>]*>(.+)</body>#Uis', $html, $match);
+  $html = $match[1];
+  $html = strip_rubbish($html);
   preg_match('#<li class="thumb"><img src=\'([^\']+)\' alt=\'[^\']+\'></li>#Uis', $html, $match);
   $info['thum'] = trim($match[1]);
   preg_match('#<label>别名:</label>\s+(.+)\s+</li>#Uis', $html, $match);
@@ -19,12 +22,30 @@ function getYoukuDetail($url){
   $info['actor'] = parseTags($info['actor']);
   preg_match('#<div class="basenotice">\s+更新至\d+\s+/共(\d+)集\s+<span class="break">|</span>#Uis', $html, $match);
   $info['setnum'] = trim($match[1]);
+  $info['setnum'] = $info['setnum'] ? $info['setnum'] : 0;
   preg_match('#<div class="detail">\s+<span class="short" id="show_info_short" style="display: inline;">\s+(.+)\s+</span>\s+</div>#Uis', $html, $match);
   $info['intro'] = getTvInfo($match[1]);
   preg_match('#<ul .+<li class="username">\s+<a target="_blank" title="[^"]+" charset="[^"]+" href="[^"]+">([^<]+)</a>\s+</li>\s+<li class="portray" title="导演">导演</li>#Uis', $html, $match);
   $info['director'] = trim($match[1]);
   
   return $info;
+}
+
+function strip_rubbish($str){
+  $str_replace = array(
+  array('from'=>'','to'=>'')
+  );
+  $preg_replace = array(
+  array('from'=>'#<script[^>]*>.*</script>#is','to'=>'')
+  ,array('from'=>'#\s\s+#is','to'=>'')
+  );
+  foreach($str_replace as $v){
+    $str = str_replace($v['from'],$v['to'],$str);
+  }
+  foreach($preg_replace as $v){
+    $str = preg_replace($v['from'],$v['to'],$str);
+  }
+  return $str;
 }
 
 function trimwhitechar($str){

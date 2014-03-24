@@ -73,15 +73,15 @@
   <div class="menu w960 fa-clear">
     <ul class="menulistA">
      <li class="current"><a href="/">首页</a></li>
-     {pipicms:menulist type=1,2,3,4}
-     <li onMouseOver="smenuTab([menulist:i]);"><a href="[menulist:link]">[menulist:typename]</a></li>
-     {/pipicms:menulist}
+     <?php foreach($menuList['menuListA'] as $k => $row){ ?>
+     <li onMouseOver="smenuTab(<?php echo $k;?>);"><a href="<?php echo $row['url'];?>"><?php echo $row['name'];?></a></li>
+     <?php } ?>
    </ul>
    <b class="split"></b>
    <ul class="menulistB">
-   {pipicms:menulist type=5,6,7,8,9,10,11,12,29}
-    <li><a href="[menulist:link]">[menulist:typename]</a></li>
-   {/pipicms:menulist}
+   <?php foreach($menuList['menuListB'] as $k => $row){ ?>
+    <li><a href="<?php echo $row['url'];?>"><?php echo $row['name'];?></a></li>
+   <?php } ?>
    </ul>
   </div>
 <!-- // Menu End -->

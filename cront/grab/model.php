@@ -63,7 +63,7 @@ class Model{
     $row = $this->db->row_array($sql);
     if(isset($row['id'])){
       $cid = $row['id'];
-      $sql = sprintf("SELECT `aid` FROM `video_cate` WHERE `cid`=%d AND `vid`=%d LIMIT 1",$cid,$vid);
+      $sql = sprintf("SELECT `cid` FROM `video_cate` WHERE `cid`=%d AND `vid`=%d LIMIT 1",$cid,$vid);
       $row = $this->db->row_array($sql);
       if(isset($row['cid'])){
         return $row['cid'];
@@ -95,7 +95,7 @@ class Model{
   }
 
   function addVideoByData($data_head,$data_body){
-    $data_play = array('vid'=>$vid,'sid'=>$data_head['site'],'ourl'=>$data_head['ourl']);
+    $data_play = array('vid'=>$vid,'sid'=>$data_head['site'],'rtime'=>time(),'ourl'=>$data_head['ourl']);
     unset($data_head['site']);
     unset($data_head['ourl']);
     $check = $this->checkVideoByTitle($title);
@@ -109,12 +109,14 @@ class Model{
       $aid = $this->addData('area',$data = array('title'=>$data_head['area']));
       $data_head['area'] = $aid;
       //增加导航
-      $did = $this->addData('channel',$data = array('title'=>$data_head['cid']));
+      $cid = $this->addData('channel',$data = array('title'=>$data_head['cid']));
       $data_head['cid'] = $cid;
       $actor = $data_head['actor'];
       unset($data_head['actor']);
       $type = $data_head['type'];
       unset($data_head['type']);
+      unset($data_head['cate']);
+      $data_head['atime'] = time();
       $sql = $this->db->insert_string($this->db->getTable('video_head'),$data_head);
       $this->db->query($sql);
       $vid = $this->db->insert_id();

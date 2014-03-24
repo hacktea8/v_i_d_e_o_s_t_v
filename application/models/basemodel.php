@@ -8,8 +8,9 @@ class baseModel extends CI_Model{
      
   }
   
-  public function Insertdata($name){
-     return $this->db->insert('test',array('name'=>$name));
+  public function getMenuListById($idstr = ''){
+     $sql = sprintf('SELECT * FROM `cate` WHERE `id` IN (%s)', $idstr);
+     return $this->db->query($sql)->result_array();
   }
 
   public function getdata(){

@@ -5,6 +5,7 @@ $psize = 10;
 include_once($APPPATH.'../function.php');
 include_once($APPPATH.'function.php');
 include_once($APPPATH.'../model.php');
+include_once($APPPATH.'../db.class.php');
 include_once($APPPATH.'config.php');
 
 $model = new Model();
@@ -34,7 +35,7 @@ for($page = 1; ; $page++){
     $url = sprintf('%s/show_page/%s.html', $domain, $data_head['ourl']);
 //echo $url;exit;
     $info = getYoukuDetail($url);
-var_dump($info);exit;
+//var_dump($info);exit;
     $data_head['thum'] = $info['thum'];
     $up_data['imgurl'] = $info['thum'];
     $data_head['cover'] = substr(uploadPic($up_data),3);
@@ -47,13 +48,12 @@ var_dump($info);exit;
 //集数
     $data_head['setnum'] = $info['setnum'];
 //更新到集数
-    $data_head['renew'] = $info['renew'];
-//播放源
-    $data_body['playtype'] = '';
+    $data_head['renew'] = $info['renew'] = 0;
     $data_body['intro'] = $info['intro'];
 
     $vid = $model->addVideoByData($data_head,$data_body);
     echo "\n== add vid $vid success! ==\n";
+exit;
     sleep(3);
   }
 }
