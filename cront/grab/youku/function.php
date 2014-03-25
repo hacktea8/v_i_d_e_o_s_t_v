@@ -14,18 +14,18 @@ function getYoukuDetail($url){
   $info['alias'] = trimwhitechar($match[1]);
   preg_match('#<span class="type"><a href="[^"]+" charset="[^"]+" target="_blank">(.+)</a>:</span>#Uis', $html, $match);
   $info['cate'] = trim($match[1]);
-  preg_match('#<label>类型:</label>\s+(.+)\s+</span>\s+</li>#Uis', $html, $match);
+  preg_match('#<label>类型:</label>\s+(.+)\s+</span>.+<label>主演:</label>#Uis', $html, $match);
   $info['type'] = trim($match[1]);
   $info['type'] = parseTags($info['type']);
   preg_match('#<label>主演:</label>\s+(.+)\s+</span>\s+</li>#Uis', $html, $match);
   $info['actor'] = trim($match[1]);
   $info['actor'] = parseTags($info['actor']);
-  preg_match('#<div class="basenotice">\s+更新至\d+\s+/共(\d+)集\s+<span class="break">|</span>#Uis', $html, $match);
+  preg_match('#<div class="basenotice">[^<]*共(\d+)集#Uis', $html, $match);
   $info['setnum'] = trim($match[1]);
   $info['setnum'] = $info['setnum'] ? $info['setnum'] : 0;
-  preg_match('#<div class="detail">\s+<span class="short" id="show_info_short" style="display: inline;">\s+(.+)\s+</span>\s+</div>#Uis', $html, $match);
+  preg_match('#<div class="detail">\s*<span class="short" id="show_info_short" style="display: inline;">(.+)</span>\s*</div>#Uis', $html, $match);
   $info['intro'] = getTvInfo($match[1]);
-  preg_match('#<ul .+<li class="username">\s+<a target="_blank" title="[^"]+" charset="[^"]+" href="[^"]+">([^<]+)</a>\s+</li>\s+<li class="portray" title="导演">导演</li>#Uis', $html, $match);
+  preg_match('#<li class="username">\s+<a target="_blank" title="[^"]+" charset="[^"]+" href="[^"]+">([^<]+)</a>\s+</li>\s+<li class="portray" title="导演">导演</li>#Uis', $html, $match);
   $info['director'] = trim($match[1]);
   
   return $info;
@@ -33,11 +33,11 @@ function getYoukuDetail($url){
 
 function strip_rubbish($str){
   $str_replace = array(
-  array('from'=>'','to'=>'')
+  //array('from'=>'','to'=>'')
   );
   $preg_replace = array(
-  array('from'=>'#<script[^>]*>.*</script>#is','to'=>'')
-  ,array('from'=>'#\s\s+#is','to'=>'')
+  array('from'=>'#<script[^>]*>.*</script>#Uis','to'=>'')
+  ,array('from'=>'#\s\s+#Uis','to'=>'')
   );
   foreach($str_replace as $v){
     $str = str_replace($v['from'],$v['to'],$str);
@@ -57,10 +57,11 @@ function trimwhitechar($str){
 }
 
 function getTvInfo($info){
-  $info = preg_replace('#<span>.+</span>#Uis','',$info);
+  $info = preg_replace('#<span>[^<]+</span>#Uis','',$info);
   $info = str_replace(' style="display:none"','',$info);
   $info = str_replace('<a class="more" onclick="y.toggle.point(this)">查看详情>></a>','',$info);
-  $info = preg_replace('#\s+#','',$info);
+  $info = preg_replace('#\s\s+#Uis','',$info);
+  $info = strip_tags($info);
   return trim($info);
 }
 
