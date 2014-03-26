@@ -210,6 +210,9 @@ function query($query_string, $type= '') {
   }
 
   function escape($string){
+    if(!is_string($string)){
+       return $string;
+    }
     return mysql_real_escape_string($string);
   }
 

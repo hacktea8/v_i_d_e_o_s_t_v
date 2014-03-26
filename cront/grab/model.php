@@ -35,6 +35,9 @@ class Model{
   }
 
   function addActorDataAndBind($data,$vid){
+    if( !$data['title']){
+       return false;
+    }
     $sql = sprintf("SELECT `id` FROM `actor` WHERE `title`='%s' LIMIT 1",$this->db->escape($data['title']));
     $row = $this->db->row_array($sql);
     if(isset($row['id'])){
@@ -59,6 +62,9 @@ class Model{
   }
 
   function addTypeDataAndBind($data,$vid){
+    if( !$data['title']){
+       return false;
+    }
     $sql = sprintf("SELECT `id` FROM `cate` WHERE `title`='%s' LIMIT 1",$this->db->escape($data['title']));
     $row = $this->db->row_array($sql);
     if(isset($row['id'])){
@@ -84,6 +90,9 @@ class Model{
 
 
   function addData($table,$data){
+    if( !$data['title']){
+       return 0;
+    }
     $sql = sprintf("SELECT `id` FROM %s WHERE `title`='%s' LIMIT 1",$this->db->getTable($table),$this->db->escape($data['title']));
     $row = $this->db->row_array($sql);
     if(isset($row['id'])){
@@ -103,9 +112,11 @@ class Model{
     if( !$check){
       //增加导演
       $actor_table = 'actor';
+      $data_head['director'] = is_array($data_head['director'])?array_shift($data_head['director']):$data_head['director'];
       $did = $this->addData($actor_table,$data = array('title'=>$data_head['director']));
       $data_head['director'] = $did;
       //增加地区
+      $data_head['area'] = is_array($data_head['area'])?array_shift($data_head['area']):$data_head['area'];
       $aid = $this->addData('area',$data = array('title'=>$data_head['area']));
       $data_head['area'] = $aid;
       //增加导航
@@ -137,10 +148,18 @@ class Model{
     }
     $data_play['vid'] = $vid;
     //增加播放源
-    $sql = $this->db->insert_string($this->db->getTable('play_type'),$data_play);
-    $this->db->query($sql);
-    
+    $check = $this->checkVideoPlayType($data_play);
+    if( !$check){
+      $sql = $this->db->insert_string($this->db->getTable('play_type'),$data_play);
+      $this->db->query($sql);
+    }
     return $vid;
+  }
+
+  function checkVideoPlayType($data_play){
+    $sql = sprintf("SELECT `vid` FROM %s WHERE `vid`=%d AND `sid`=%d LIMIT 1", $this->db->getTable('play_type'), $data_play['vid'], $data_play['sid']);
+    $row = $this->db->row_array($sql);
+    return isset($row['vid']) ? $row['vid'] : 0;
   }
 
   function checkVideoByTitleSid($title,$sid){
@@ -153,6 +172,26 @@ class Model{
     $sql = sprintf("SELECT `id` FROM %s WHERE `title`='%s' LIMIT 1",$this->db->getTable('video_head'),mysql_real_escape_string($title));
     $row = $this->db->row_array($sql);
     return isset($row['id']) ? $row['id'] : 0;
+  }
+
+  function truncate($table = ''){
+    if( !$table){
+      return false;
+    }
+    $sql = sprintf("truncate `%s`", $table);
+    $this->db->query($sql);
+    return true;
+  }
+
+  function updateDataByTable($table,$data_head, $where){
+    $sql = $this->db->update_string($table, $data_head, $where);
+    return $this->db->query($sql);
+  }
+
+  function getNoCoverList($limit = 100){
+    $sql = sprintf("SELECT `id`,`thum` FROM %s WHERE `cover`=0 LIMIT %d", $this->db->getTable('video_head'), $limit);
+    $lists = $this->db->result_array($sql);
+    return $lists;
   }
 
 }
