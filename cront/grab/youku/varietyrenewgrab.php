@@ -12,7 +12,7 @@ include_once($APPPATH.'config.php');
 $model = new Model();
 
 /*============ Get Cate article =================*/
-$channelid = 1;
+$channelid = 4;
 $data = array();
 $lastgrab = basename(__FILE__);
 $path = $APPPATH.'config/';

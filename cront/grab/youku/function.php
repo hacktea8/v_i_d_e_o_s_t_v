@@ -2,6 +2,70 @@
 
 
 
+
+
+function getYoukuAnimeDetail($url){
+  $html = getHtml($url);
+  $info = array();
+  preg_match('#<body[^>]*>(.+)</body>#Uis', $html, $match);
+  $html = $match[1];
+  $html = strip_rubbish($html);
+  preg_match('#<li class="thumb"><img src=\'([^\']+)\' alt=\'[^\']+\'></li>#Uis', $html, $match);
+  $info['thum'] = trim($match[1]);
+  preg_match('#<label>别名:</label>(.+)</li>#Uis', $html, $match);
+  $info['alias'] = trimwhitechar($match[1]);
+  preg_match('#<span class="type"><a href="[^"]+" charset="[^"]+" target="_blank">(.+)</a>:</span>#Uis', $html, $match);
+  $info['cate'] = trim($match[1]);
+  preg_match('#<label>类型:</label>(.+)</span>#Uis', $html, $match);
+  $info['type'] = trim($match[1]);
+  $info['type'] = parseTags($info['type']);
+  preg_match('#<label>主演:</label>(.+)</span>\s*</li>#Uis', $html, $match);
+  $info['actor'] = trim($match[1]);
+  $info['actor'] = parseTags($info['actor']);
+  preg_match('#<div class="basenotice">[^<]*共(\d+)集#Uis', $html, $match);
+  $info['setnum'] = trim($match[1]);
+  $info['setnum'] = $info['setnum'] ? $info['setnum'] : 0;
+  preg_match('#<div class="detail">\s*<span class="short" id="show_info_short" style="display: inline;">(.+)</span>\s*</div>#Uis', $html, $match);
+  $info['intro'] = getTvInfo($match[1]);
+  preg_match('#<li class="username">\s+<a target="_blank" title="[^"]+" charset="[^"]+" href="[^"]+">([^<]+)</a>\s+</li>\s+<li class="portray" title="导演">导演</li>#Uis', $html, $match);
+  $info['director'] = trim($match[1]);
+  preg_match('#<li class="row2">\s*<span class="area">\s*<label>地区:</label>(.+)</span>#Uis',$html, $match);
+  $info['area'] = parseTags($match[1]);
+  
+  return $info;
+}
+
+function getYoukuVarietyDetail($url){
+  $html = getHtml($url);
+  $info = array();
+  preg_match('#<body[^>]*>(.+)</body>#Uis', $html, $match);
+  $html = $match[1];
+  $html = strip_rubbish($html);
+  preg_match('#<li class="thumb"><img src=\'([^\']+)\' alt=\'[^\']+\'></li>#Uis', $html, $match);
+  $info['thum'] = trim($match[1]);
+  preg_match('#<label>别名:</label>(.+)</li>#Uis', $html, $match);
+  $info['alias'] = trimwhitechar($match[1]);
+  preg_match('#<span class="type"><a href="[^"]+" charset="[^"]+" target="_blank">(.+)</a>:</span>#Uis', $html, $match);
+  $info['cate'] = trim($match[1]);
+  preg_match('#<label>类型:</label>(.+)</span>#Uis', $html, $match);
+  $info['type'] = trim($match[1]);
+  $info['type'] = parseTags($info['type']);
+  preg_match('#<span class="host">\s*<label>主持人:</label>(.+)</span>#Uis', $html, $match);
+//  $info['actor'] = trim($match[1]);
+  $info['actor'] = parseTags($match[1]);
+  preg_match('#<div class="basenotice">[^<]*共(\d+)集#Uis', $html, $match);
+  $info['setnum'] = trim($match[1]);
+  $info['setnum'] = $info['setnum'] ? $info['setnum'] : 0;
+  preg_match('#<div class="detail">\s*<span class="short" id="show_info_short" style="display: inline;">(.+)</span>\s*</div>#Uis', $html, $match);
+  $info['intro'] = getTvInfo($match[1]);
+  preg_match('#<span class="broadcast">\s*<label>播出:</label>(.+)</span>#Uis', $html, $match);
+  $info['director'] = parseTags($match[1]);
+  preg_match('#<span class="area">\s*<label>地区:</label>(.+)</span>#Uis',$html, $match);
+  $info['area'] = parseTags($match[1]);
+  
+  return $info;
+}
+
 function getYoukuDetail($url){
   $html = getHtml($url);
   $info = array();
@@ -14,7 +78,7 @@ function getYoukuDetail($url){
   $info['alias'] = trimwhitechar($match[1]);
   preg_match('#<span class="type"><a href="[^"]+" charset="[^"]+" target="_blank">(.+)</a>:</span>#Uis', $html, $match);
   $info['cate'] = trim($match[1]);
-  preg_match('#<label>类型:</label>(.+)</span>.+<label>主演:</label>#Uis', $html, $match);
+  preg_match('#<label>类型:</label>(.+)</span>#Uis', $html, $match);
   $info['type'] = trim($match[1]);
   $info['type'] = parseTags($info['type']);
   preg_match('#<label>主演:</label>(.+)</span>\s*</li>#Uis', $html, $match);
@@ -45,7 +109,7 @@ function getYoukuMovieDetail($url){
   $info['alias'] = trimwhitechar($match[1]);
   preg_match('#<span class="type"><a href="[^"]+" charset="[^"]+" target="_blank">(.+)</a>:</span>#Uis', $html, $match);
   $info['cate'] = trim($match[1]);
-  preg_match('#<label>类型:</label>\s+(.+)\s+</span>.+<label>主演:</label>#Uis', $html, $match);
+  preg_match('#<label>类型:</label>(.+)</span>#Uis', $html, $match);
   $info['type'] = trim($match[1]);
   $info['type'] = parseTags($info['type']);
   preg_match('#<ul class="baseinfo">(.+)</ul>#Uis',$html,$match);
@@ -69,7 +133,7 @@ function strip_rubbish($str){
   );
   $preg_replace = array(
   array('from'=>'#<script[^>]*>.*</script>#Uis','to'=>'')
-  ,array('from'=>'#\s\s+#Uis','to'=>'')
+  ,array('from'=>'#\s\s+#Uis','to'=>' ')
   );
   foreach($str_replace as $v){
     $str = str_replace($v['from'],$v['to'],$str);

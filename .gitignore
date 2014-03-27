@@ -2,4 +2,7 @@
 */logs/log-*.php
 */logs/!index.html
 */cache/*
+*.swp
+*.swo
+*.bak
 */cache/!index.html

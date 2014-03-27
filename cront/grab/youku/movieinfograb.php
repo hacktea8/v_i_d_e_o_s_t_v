@@ -11,7 +11,7 @@ include_once($APPPATH.'config.php');
 $model = new Model();
 
 /*============ Get Cate article =================*/
-$data_head = array('site'=>2,'cid'=>'电影');
+$data_head = array('site'=>$sid,'cid'=>'电影');
 $data_body = array();
 $lastgrab = basename(__FILE__);
 $path = $APPPATH.'config/';
@@ -19,7 +19,7 @@ $path = $APPPATH.'config/';
 for($page = 1; ; $page++){
   $url = sprintf($movie_list_url, $domain, $page);
   $html = getHtml($url);
-  preg_match_all('#<div class="p-link">\s+<a href="http://www\.youku\.com/show_page/([^"]+)\.html" target="_blank" title="([^"]+)"></a>\s+</div>#Uis', $html, $match);
+  preg_match_all('#<div class="p-link">\s+<a href="http://[\S]+/show_page/id_([^"]+)\.html" target="_blank" title="([^"]+)"></a>\s+</div>#Uis', $html, $match);
 //var_dump($match);exit;
   if( empty($match[1])){
     break;
@@ -32,14 +32,12 @@ for($page = 1; ; $page++){
     }
     $data_head['ourl'] = trim($match[1][$k]);
     $data_head['rtime'] = strtotime(date('Y-m-d'));
-    $url = sprintf('%s/show_page/%s.html', $domain, $data_head['ourl']);
-    $url = 'http://www.youku.com/show_page/id_zb583d13e243011e38b3f.html';
+    $url = sprintf('%s/show_page/id_%s.html', $domain, $data_head['ourl']);
+//    $url = 'http://www.youku.com/show_page/id_zb583d13e243011e38b3f.html';
 //echo $url;exit;
     $info = getYoukuMovieDetail($url);
-var_dump($info);exit;
+//var_dump($info);exit;
     $data_head['thum'] = $info['thum'];
-    $up_data['imgurl'] = $info['thum'];
-    $data_head['cover'] = substr(uploadPic($up_data),3);
     $data_head['alias'] = $info['alias'];
     $data_head['actor'] = $info['actor'];
     $data_head['director'] = $info['director'];

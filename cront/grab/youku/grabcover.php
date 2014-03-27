@@ -17,6 +17,10 @@ $path = $APPPATH.'config/';
 $lists = $model->getNoCoverList(100);
 //var_dump($lists);exit;
 foreach($lists as $row){
+  if($row['thum']=='http://r4.ykimg.com/05100000500613156714C004DD0EF2D5'){
+    $fname = $path.'Nocover.txt'
+    file_put_contents($fname,"ID:$row[id]");
+  }
     $up_data['imgurl'] = $row['thum'].'.jpg';
     $data_head['cover'] = substr(uploadPic($up_data),3);
 //var_dump($data_head['cover']);exit;

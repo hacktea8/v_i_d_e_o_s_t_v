@@ -23,8 +23,8 @@ class Model{
      return $res;
   }
 
-  function getNoneRenewList($sid,$rtime,$limit = 100){
-     $sql = sprintf("SELECT `vid`, `sid`, `ourl` FROM `play_type` WHERE `sid`=%d AND  `rtime`<=%d AND `flag`=0 LIMIT %d",$sid,$rtime,$limit);
+  function getNoneRenewList($channelid,$sid,$rtime,$limit = 100){
+     $sql = sprintf("SELECT pt.`vid`, pt.`sid`, pt.`ourl` FROM `play_type` as pt LEFT JOIN `video_head` as vh ON (pt.vid=vh.id) WHERE pt.`sid`=%d AND  pt.`rtime`<=%d AND pt.`flag`=0 AND vh.`cid`=%d LIMIT %d",$sid,$rtime,$channelid,$limit);
      $lists = $this->db->result_array($sql);
      return $lists;
   }
@@ -88,6 +88,21 @@ class Model{
     return $aid;
   }
 
+  function addVideoDramData($data){
+    if( !isset($data['param'])){
+       return 0;
+    }
+    $table = 'video_drama'.($data['vid']%10);
+    $table = $this->db->getTable($table);
+    $sql = sprintf("SELECT `id` FROM `%s` WHERE `playnum`=%d AND `vid`=%d LIMIT 1",$table,$data['playnum'],$data['vid']);
+    $row = $this->db->row_array($sql);
+    if( isset($row['id'])){
+      return $row['id'];
+    }
+    $sql = $this->db->insert_string($table,$data);
+    $this->db->query($sql);
+    return $this->db->insert_id();
+  }
 
   function addData($table,$data){
     if( !$data['title']){
