@@ -24,7 +24,7 @@ class Model{
   }
 
   function getNoneRenewList($channelid,$sid,$rtime,$limit = 100){
-     $sql = sprintf("SELECT pt.`vid`, pt.`sid`, pt.`ourl` FROM `play_type` as pt LEFT JOIN `video_head` as vh ON (pt.vid=vh.id) WHERE pt.`sid`=%d AND  pt.`rtime`<=%d AND pt.`flag`=0 AND vh.`cid`=%d LIMIT %d",$sid,$rtime,$channelid,$limit);
+     $sql = sprintf("SELECT vh.`title`,pt.`vid`, pt.`sid`, pt.`ourl` FROM `play_type` as pt LEFT JOIN `video_head` as vh ON (pt.vid=vh.id) WHERE pt.`sid`=%d AND  pt.`rtime`<=%d AND pt.`flag`=0 AND vh.`cid`=%d LIMIT %d",$sid,$rtime,$channelid,$limit);
      $lists = $this->db->result_array($sql);
      return $lists;
   }

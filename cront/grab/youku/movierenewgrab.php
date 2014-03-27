@@ -30,15 +30,15 @@ for($page = 1; ; $page++){
     $url = sprintf('%s/show_page/id_%s.html', $domain, $row['ourl']);;
     $html = getHtml($url);
     preg_match_all('#<a class="btnShow btnplayposi"  charset="[^"]+" href="http://[\S+]+/v_show/id_([\S]+)\.html" target="_blank"><em>播放正片</em></a>#Uis', $html, $match);
+    $model->updateTableData($table = 'play_type',$data = array('flag'=>$status,'rtime'=>time()),$where = array('vid'=>$val['id'],'sid'=>$sid));
+    if( empty($match[1])){
+      continue;
+    }
     //var_dump($match);exit;
     $playUrl = $match[1];
     //更新影片状态
     $model->updateTableData($table = 'video_head',$data = array('renew'=>1,'rtime'=>time()),$where = array('id'=>$val['id']));
     $status = 1;
-    $model->updateTableData($table = 'play_type',$data = array('flag'=>$status,'rtime'=>time()),$where = array('vid'=>$val['id'],'sid'=>$sid));
-    if( empty($match[1])){
-      break;
-    }
     $param = array('url'=>$playUrl);
     $param = serialize($param);
     $data = array('vid'=>$row['vid'],'playnum'=>1,'param'=>$param,'atime'=>time());

@@ -36,7 +36,7 @@ for($page = 1; ; $page++){
 //echo $url;exit;
     //http://www.youku.com/show_page/id_z5b3cddd898e411e2b2ac.html
     $info = getYoukuVarietyDetail($url);
-var_dump($info);exit;
+//var_dump($info);exit;
     $data_head['thum'] = $info['thum'];
     $data_head['cover'] = 0;
     $data_head['alias'] = $info['alias'];

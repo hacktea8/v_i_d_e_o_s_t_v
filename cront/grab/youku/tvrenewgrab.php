@@ -19,7 +19,7 @@ $path = $APPPATH.'config/';
 $lastRtime = time() ;$limit = 100;
 $taskList = $model->getNoneRenewList($channelid,$sid,$lastRtime,$limit);
 if(empty($taskList)){
-  sleep(600);
+  echo "\n== tv renew task list empty! ==\n";sleep(600);
   exit(1);
 }
 //var_dump($taskList);exit;
@@ -28,8 +28,9 @@ foreach($taskList as $val){
     $html = getHtml($url);
     preg_match_all('#<li><a href="http://[\S]+/v_show/id_([\d\S]+)\.html" title="[^"]+" charset="[^"]+" target="_blank">([^<]+)</a></li>#Uis', $html, $match);
     var_dump($match);exit;
+    $model->updateTableData($table = 'play_type',$data = array('rtime'=>time()),$where = array('vid'=>$val['id'],'sid'=>$sid));
     if( empty($match[1])){
-      echo "\n== Get play Error! ==\n";break;
+      echo "\n== Get play Error! ==\n";continue;
     }
     foreach($match[1] as $k => $v){
       $key = intval($match[2][$k]);
@@ -40,7 +41,6 @@ foreach($taskList as $val){
     }
     //更新影片状态
     $model->updateTableData($table = 'video_head',$data = array('rtime'=>time()),$where = array('id'=>$val['id']));
-    $model->updateTableData($table = 'play_type',$data = array('rtime'=>time()),$where = array('vid'=>$val['id'],'sid'=>$sid));
     foreach($data as $k => $vid){
       $param = array('vid'=>$vid);
       $param = serialize($param);
