@@ -22,7 +22,7 @@ for($page = 1; ; $page++){
   preg_match_all('#<div class="p-link">\s+<a href="http://[\S]+/show_page/id_([^"]+)\.html" target="_blank" title="([^"]+)"></a>\s+</div>#Uis', $html, $match);
 //var_dump($match);exit;
   if( empty($match[1])){
-    echo "\n== Get List Empty! ===\n";sleep(600);break;
+    echo "\n== Get List Empty! ===\n";sleep(60);break;
   }
   foreach($match[2] as $k => $title){
     $data_head['title'] = trim($title);
@@ -36,7 +36,7 @@ for($page = 1; ; $page++){
 //echo $url;exit;
     //http://www.youku.com/show_page/id_za0becbf4b49111e3a705.html
     $info = getYoukuAnimeDetail($url);
-var_dump($info);exit;
+//var_dump($info);exit;
     $data_head['thum'] = $info['thum'];
     $data_head['cover'] = 0;
     $data_head['alias'] = $info['alias'];

@@ -19,7 +19,7 @@ function getYoukuAnimeDetail($url){
   preg_match('#<label>类型:</label>(.+)</span>#Uis', $html, $match);
   $info['type'] = trim($match[1]);
   $info['type'] = parseTags($info['type']);
-  preg_match('#<label>主演:</label>(.+)</span>\s*</li>#Uis', $html, $match);
+  preg_match('#<span class="type">\s*<label>配音:</label>(.+)</span>#Uis', $html, $match);
   $info['actor'] = trim($match[1]);
   $info['actor'] = parseTags($info['actor']);
   preg_match('#<div class="basenotice">[^<]*共(\d+)集#Uis', $html, $match);

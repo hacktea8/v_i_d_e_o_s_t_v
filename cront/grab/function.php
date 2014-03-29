@@ -262,6 +262,7 @@ function getHtml($url){
   curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
   curl_setopt($curl, CURLOPT_HEADER, 0);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($curl, CURLOPT_TIMEOUT, 30);
   $tmpInfo = curl_exec($curl);
   if(curl_errno($curl)){
     echo 'error',curl_error($curl),"\r\n";

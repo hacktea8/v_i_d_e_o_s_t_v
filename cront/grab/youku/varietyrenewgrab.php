@@ -10,7 +10,7 @@ include_once($APPPATH.'../config.php');
 include_once($APPPATH.'config.php');
 
 $model = new Model();
-
+echo "debug va";exit;
 /*============ Get Cate article =================*/
 $channelid = 3;
 $data = $data_body = array();
@@ -24,20 +24,22 @@ if(empty($taskList)){
 }
 //var_dump($taskList);exit;
 foreach($taskList as $val){
-  preg_match('#\s+([\d]+)#',$val['title'],$match);
-  $addYear = trim($match[1]);
-  if($addYear){
-    for($i=1;$i<13;$i++){
-      $ayear = $addYear.sprintf('%02d',$i);
+  $url = $url = sprintf('%s/show_page/id_%s.html',$domain, $val['ourl']);;
+  $html = getHtml($url);
+  preg_match_all('#<li data="(reload_\d+)" #Uis',$html, $match);
+  $reload_year = $match[1];
+//var_dump($reload_year);exit;
+  if(!empty($reload_year)){
+    foreach($reload_year as $ayear){
       $url = sprintf('%s/show_episode/id_%s.html?dt=json&divid=reload_%d&__rt=1&__ro=reload_%d', $domain, $val['ourl'],$ayear,$ayear);
       $html = getHtml($url);
-      preg_match_all('#<li class="ititle_w"><label>[^<]+</label>\s*<a charset="[^"]+" title="[^"]+" href="http://[\S]+/v_show/id_([^"]+)\.html" target="_blank">[^<]+(\d+)</a></li>#Uis', $html, $match);
+      preg_match_all('#<li class="[^"]+"><label>[^<]+</label>\s*<a charset="[^"]+" title="[^"]+" href="http://[\S]+/v_show/id_([^"]+)\.html" target="_blank">[^<]+(\d+)</a></li>#Uis', $html, $match);
       if(empty($match[1])){
-        break;
+        continue;
       }
-    var_dump($match);exit;
+    //var_dump($match);exit;
       foreach($match[1] as $kk => $vv){
-        $data_body[] = array('title'=>$match[2][$kk],'vid'=>$vv,'playnum'=>$kk+1);
+        $data_body[] = array('title'=>$match[2][$kk],'vid'=>$vv);
       }
     }
   }
@@ -45,22 +47,27 @@ foreach($taskList as $val){
     $url = sprintf('%s/show_episode/id_%s.html?dt=json&divid=reload_1&__rt=1&__ro=reload_1', $domain, $val['ourl']);
     $html = getHtml($url);
     preg_match_all('#<label>(\d+)</label>\s*<a charset="[^"]+" title="[^"]+" href="http://[\S]+/v_show/id_([^"]+)\.html" target="_blank">([^<]+)</a>#Uis', $html, $match);
-    var_dump($match);exit;
+$fname = $path.'varealerrormatch.txt';
+file_put_contents($fname,"$val[ourl]");
+    //var_dump($match);exit;
   }
-  $model->updateTableData($table = 'play_type',$data = array('rtime'=>time()),$where = array('vid'=>$val['id'],'sid'=>$sid));
+//var_dump($data_body);exit;
+  $status = 0;
+  $model->updateTableData($table = 'play_type',$data = array('flag'=>$status,'rtime'=>time()),$where = array('vid'=>$val['vid'],'sid'=>$sid));
   if( empty($data_body)){
     echo "\n== Get play Error! ==\n";break;
   }
     //更新影片状态
-    $model->updateTableData($table = 'video_head',$data = array('rtime'=>time()),$where = array('id'=>$val['id']));
-    foreach($data as $k => $vid){
-      $param = array('vid'=>$vid);
+    $model->updateTableData($table = 'video_head',$data = array('rtime'=>time()),$where = array('id'=>$val['vid']));
+    foreach($data_body as $k => $v){
+      $param = array('vid'=>$v['vid']);
       $param = serialize($param);
-      $info = array('vid'=>$val['id'], 'playnum'=>$k, 'param'=>$param, 'atime'=>time());
+      $info = array('vid'=>$val['vid'],'title'=>$v['title'], 'playnum'=>$k+1, 'param'=>$param, 'atime'=>time());
       $model->addVideoDramData($info);
     }
     sleep(3);
-  
+ echo "\nrenew Vid $val[vid] OK!\n"; 
+exit;
 }
 
 

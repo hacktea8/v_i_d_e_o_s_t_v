@@ -24,7 +24,7 @@ class Model{
   }
 
   function getNoneRenewList($channelid,$sid,$rtime,$limit = 100){
-     $sql = sprintf("SELECT vh.`title`,pt.`vid`, pt.`sid`, pt.`ourl` FROM `play_type` as pt LEFT JOIN `video_head` as vh ON (pt.vid=vh.id) WHERE pt.`sid`=%d AND  pt.`rtime`<=%d AND pt.`flag`=0 AND vh.`cid`=%d LIMIT %d",$sid,$rtime,$channelid,$limit);
+     $sql = sprintf("SELECT vh.`setnum`,vh.`title`,pt.`vid`, pt.`sid`, pt.`ourl`,pt.`rtime` FROM `play_type` as pt LEFT JOIN `video_head` as vh ON (pt.vid=vh.id) WHERE pt.`sid`=%d AND  pt.`rtime`<=%d AND pt.`flag`=0 AND vh.`cid`=%d LIMIT %d",$sid,$rtime,$channelid,$limit);
      $lists = $this->db->result_array($sql);
      return $lists;
   }
@@ -89,7 +89,7 @@ class Model{
   }
 
   function addVideoDramData($data){
-    if( !isset($data['param'])){
+    if( !isset($data['param']) || !$data['vid']){
        return 0;
     }
     $table = 'video_drama'.($data['vid']%10);
