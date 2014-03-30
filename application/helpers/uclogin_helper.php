@@ -4,6 +4,23 @@ defined('P_W') || define('P_W', '1');
 require_once BASEPATH.'../config_ucenter.php';
 require_once BASEPATH.'../uc_client/client.php';
 
+if( !function_exists('check_is_spider')){
+ function check_is_spider(){
+  $return = 0;
+  $spider_agent = array('Baiduspider','Googlebot','Sosospider','360Spider','MSNBot','YoudaoBot','Sogou inst spider','Sogou spider2','Sogou blog','Sogou News Spider','Sogou Orion spider','JikeSpider');
+  if($_SERVER['REMOTE_ADDR'] === '127.0.0.1'){
+   return 1;
+  }
+  foreach($spider_agent as $agent){
+   if(false !== stripos($_SERVER['HTTP_USER_AGENT'])){
+    $return = 1;
+    break;
+   }
+  }
+  return $return;
+ }
+}
+
 if ( ! function_exists('strcode'))
 {
  function strcode($string, $encode = true, $apikey = '') {

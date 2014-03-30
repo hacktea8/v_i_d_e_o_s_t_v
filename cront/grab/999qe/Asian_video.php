@@ -39,8 +39,8 @@ for($page = 1;;$page ++){
   $post_data['title'] = $title;
   $post_data['m'] = $info['m'];
   $post_data['playurl'] = $info['playurl'];
-  $m->addVideoByData($post_data);
-  echo "\n++ Add video $title OK! \n";sleep(3);
+  $vid = $m->addVideoByData($post_data);
+  echo "\n++ Add video $title Vid:$vid OK! \n";sleep(3);
  }
 }
 ?>

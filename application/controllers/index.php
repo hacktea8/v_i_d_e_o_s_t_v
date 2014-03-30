@@ -121,9 +121,13 @@ class Index extends Usrbase {
     }
     $this->view('index_content');
   }
-  public function channel($id, $type = ''){
+  public function channel($cid,$order=0,$page=1, $type = ''){
+    $cid = intval($cid);
+    $order = intval($order);
+    $page = intval($page);
     $type = in_array($type, array('','_tv','_movie')) ? $type : '';
-    $this->assign(array('_a'=>'channel'.$type));
+    $channelList = $tvmodel->getVideoListByCid($cid,$order,$page,15);
+    $this->assign(array('_a'=>'channel'.$type,'channelList'=>$channelList));
     $this->view('index_channel'.$type);
   }
   public function tpl(){

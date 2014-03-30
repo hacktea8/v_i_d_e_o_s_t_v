@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require_once 'webbase.php';
-class Usrbase extends Webbase {
+class Avbase extends Webbase {
    
   public $seo_info = array('title' => '首页',
                    'keywords' => '',
@@ -12,12 +12,12 @@ class Usrbase extends Webbase {
     parent::__construct();
     
     $this->load->helper('rewrite');
-    $this->load->model('tvmodel');
+    $this->load->model('avmodel');
     $menuList = $this->mem->get('tv-menuList');
     if( !empty($menuList)){
-      $menuListA = $this->tvmodel->getMenuListById($idstr);
+      $menuListA = $this->avmodel->getMenuListById($idstr);
       $this->_rewrite_list_url($menuListA);
-      $menuListB = $this->tvmodel->getMenuListById($idstr);
+      $menuListB = $this->avmodel->getMenuListById($idstr);
       $this->_rewrite_list_url($menuListB);
       $menuList = array('menuListA'=>$menuListA,'menuListB'=>$menuListB);
       $this->mem->set('emu-rootCate',$menuList,$this->expirettl['1d']);
