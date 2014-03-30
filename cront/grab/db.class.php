@@ -248,7 +248,31 @@ function query($query_string, $type= '') {
 
   }
 
-
+  function select_string($table=null,$fields=null,$where=array(),$order='',$limit=''){
+    if(!$table){
+     return false;
+    }
+    $whereStr = $orderStr = $limitStr = '';
+    if(!empty($where)){
+      $tmp = array();
+      foreach($where as $k => $v){
+       $v = $this->escape($v);
+       $tmp[] = "$k'$v'";
+      }
+      $where = implode(' AND ',$tmp);
+      if($where){
+        $whereStr = ' WHERE '.$where;
+      }
+    }
+    if($order){
+      $orderStr = sprintf(' ORDER BY %s',$order);
+    }
+    if($limit){
+      $limitStr = sprintf(' LIMIT %s',$limit);
+    }
+    $sql = sprintf('SELECT %s FROM %s %s %s %s',$fields,$table,$whereStr,$orderStr, $limitStr);
+    return trim($sql);
+  }
   function insert_string($table = null,$fields = null){
     if(!$table || !$fields)
         return false;
