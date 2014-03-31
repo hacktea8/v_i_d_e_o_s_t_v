@@ -49,11 +49,11 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'emuweb';
+$db['default']['username'] = 'videoweb';
 $db['default']['password'] = 'ilovehk8';
-$db['default']['database'] = 'emuweb';
+$db['default']['database'] = 'videoweb';
 $db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = 'pw_';
+$db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;

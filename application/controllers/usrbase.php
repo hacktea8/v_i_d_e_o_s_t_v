@@ -14,7 +14,7 @@ class Usrbase extends Webbase {
     $this->load->helper('rewrite');
     $this->load->model('tvmodel');
     $menuList = $this->mem->get('tv-menuList');
-    if( !empty($menuList)){
+    if( empty($menuList)){
       $menuListA = $this->tvmodel->getMenuListById($idstr);
       $this->_rewrite_list_url($menuListA);
       $menuListB = $this->tvmodel->getMenuListById($idstr);

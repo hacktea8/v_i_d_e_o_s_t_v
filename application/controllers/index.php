@@ -126,8 +126,22 @@ class Index extends Usrbase {
     $order = intval($order);
     $page = intval($page);
     $type = in_array($type, array('','_tv','_movie')) ? $type : '';
-    $channelList = $tvmodel->getVideoListByCid($cid,$order,$page,15);
-    $this->assign(array('_a'=>'channel'.$type,'channelList'=>$channelList));
+    $key = 'month_rank'.$cid;
+    $month_rank = $this->mem->get($key);
+    if( !$month_rank){
+      $month_rank = $this->tvmodel->getVideoListByCid($cid,$order,1,15);
+      $this->mem->set($key,$month_rank,$this->expirettl['1d']);
+    }
+    $key = 'recommend_cid'.$cid;
+    $recommend_rank = $this->mem->get($key);
+    if( !$recommend_rank){
+      $recommend_rank = $this->tvmodel->getVideoListByCid($cid,$order,1,15);
+      $this->mem->set($key,$recommend_rank,$this->expirettl['1d']);
+    }
+    $channelList = $this->tvmodel->getVideoListByCid($cid,$order,$page,15);
+    $this->assign(array('_a'=>'channel'.$type,'channelList'=>$channelList
+    ,'month_rank'=>$month_rank,'recommend_rank'=>$recommend_rank
+    ));
     $this->view('index_channel'.$type);
   }
   public function tpl(){
