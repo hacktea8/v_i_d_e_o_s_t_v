@@ -21,6 +21,17 @@ class tvModel extends baseModel{
     }
     return $list;
   }
+  public function getVideoInfoByVid($vid,$sid,$page=1,$limit=20){
+    $sql = sprintf("SELECT vh.*,vb.'info' FROM `video_head` as vh LEFT JOIN `video_body` as vb ON(vh.vid=vb.vid) WHERE vh.vid=%d LIMIT 1",$vid);
+    $info = $this->db->query($sql)->row_array();
+    $info['vlist'] = $this->getVideoDramList($vid,$sid,$page,$limit);
+    
+    return $info;
+  }
+  public function getVideoDramList($vid,$sid,$page=1,$limit=20){
+    $sql = sprintf("");
+    return $list;
+  }
   public function getVideoRecommendList($cid='',$order=0,$page=1,$limit=25){
     $list = $this->getVideoListByCid($cid,$order,$page,$limit);
     foreach($list as &$v){

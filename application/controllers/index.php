@@ -144,8 +144,14 @@ class Index extends Usrbase {
     ));
     $this->view('index_channel'.$type);
   }
-  public function tpl(){
-    $this->load->view('index_tpl',$this->viewData);
+  public function detail($vid,$sid){
+    $vid = intval($vid);
+    $sid = intval($sid);
+    $info = $this->tvmodel->getVideoInfoByVid($vid,$sid);
+    $this->assign(array('info'=>$info
+    ,'hotlist'=>$hot_rank
+    ));
+    $this->view('index_detail');
   }
   public function search($q='',$type = 0,$order = 0,$page = 1){
     $q = $q ? $q:$this->input->get('q');

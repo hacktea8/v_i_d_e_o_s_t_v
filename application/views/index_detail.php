@@ -11,7 +11,7 @@
     <div class="vod-img"><a href="{playpage:link}"><img src="{playpage:pic}" alt="{playpage:name}"></a></div>
    <div class="vod-c">
     <div class="vod_t">
-     <h3 class="title">{playpage:name}</h3>
+     <h3 class="title"><?php echo $info['title'];?></h3>
      <div class="more">
       <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more">分享到：</span> <a class="bds_tsina"></a> <a class="bds_tqq"></a> <a class="bds_qzone"></a> <a class="bds_baidu"></a> <a class="bds_renren"></a> <a class="bds_kaixin001"></a> <a class="bds_tqf"></a> <a class="bds_hi"></a> <a class="bds_qq"></a> <a class="bds_taobao"></a> </div>
 <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=5004441" ></script>
@@ -78,20 +78,20 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
  </div>
 </div>
 <div class="maxBox">
-{playpage:playlist}
+<?php foreach($info['vlist'] as $row){?>
 <div class="box Video-list mt10">
  <div class="play-list b mb">
   <div class="title">
    <h3><span class="{if:"[playlist:from]"="百度影音"}p_baidu{elseif:"[playlist:from]"="优酷"}p_youku{else}p_tudou{end if}"></span>[playlist:from]<span class="tips">( [playlist:intro] )</span></h3>
-   <span class="pa order hascoll">排序：<a id="desc_[playlist:i]" class="desc" href="javascript:void(0);" onclick="desc(1,[playlist:i],this)">降序</a><em>|</em><a id="asc_[playlist:i]" href="javascript:void(0);" class="asc asc_on" onclick="desc(0,[playlist:i],this)">升序</a></span></div>
-<div id="play_[playlist:i]">
+   <span class="pa order hascoll">排序：<a id="desc_<?php echo $row['id'];?>" class="desc" href="javascript:void(0);" onclick="desc(1,<?php echo $row['id'];?>,this)">降序</a><em>|</em><a id="asc_<?php echo $row['id'];?>" href="javascript:void(0);" class="asc asc_on" onclick="desc(0,<?php echo $row['id'];?>,this)">升序</a></span></div>
+<div id="play_<?php echo $row['id'];?>">
  <ul>
-[playlist:link]
+<li><a href="<?php echo $row['url'];?>"><?php echo $row['title'];?></a></li>
  </ul>
 </div>
 </div>
 </div>
-{/playpage:playlist}
+<?php }?>
 </div>
 <div class="maxBox mb10 mt5">
  <div class="box BigBox">
@@ -100,15 +100,15 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   </div>
   <div class="hotVideo">
    <ul class="pic-list">
-	{pipicms:videolist type=current num=7 order=hit}
-    <li><a class="play-pic" href="[videolist:link]" title="{playpage:name}"><img src="[videolist:pic]" style="display: block;"><span class="play-icon">&nbsp;</span>
+<?php foreach($hotlist as $row){?>
+    <li><a class="play-pic" href="<?php $row['url'];?>" title="<?php echo $row['title'];?>"><img src="<?php echo $row['pic'];?>" style="display: block;"><span class="play-icon">&nbsp;</span>
      <label class="bg">&nbsp;</label>
-     <label class="time">[videolist:note]</label>
+     <label class="time"><?php echo $row['note'];?></label>
      </a>
-     <p><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a></p>
-     <p class="txt">[videolist:nolinkactor]</p>
+     <p><a href="<?php $row['url'];?>" title="<?php echo $row['title'];?>"><?php echo $row['title'];?></a></p>
+     <p class="txt"><?php echo $row['nolinkactor'];?></p>
     </li>
-  {/pipicms:videolist}
+<?php }?>
    </ul>
   </div>
  </div>
@@ -121,20 +121,20 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   </div>
   <div class="js">
    <p>{playpage:des}</p>
-   <p>温馨提示：您正在观看的“《{playpage:name}》在线观看”的剧情介绍来自于[<font style="text-transform:uppercase;">{pipicms:siteurl}</font>-{pipicms:sitename}]，如果您喜欢本站，请推荐给您的朋友，谢谢您的支持! 最后更新：<font color="red">{playpage:addtime}</font></p>
+   <p>温馨提示：您正在观看的“<?php echo $info['title'];?>》在线观看”的剧情介绍来自于[<font style="text-transform:uppercase;"><?php echo $siteurl;?></font>-<?php echo $sitename;?>，如果您喜欢本站，请推荐给您的朋友，谢谢您的支持! 最后更新：<font color="red"><?php $info['atime'];?></font></p>
   </div>
   </div>
 </div>
 <div class="maxBox mb10">
 <div class="box BigBox">
 <div class="title">
- <h3>《{playpage:name}》评论：</h3>
+ <h3>《<?php echo $info['title'];?>》评论：</h3>
 </div>
 <div class="pl">
 	<!-- UY BEGIN -->
  <div id="uyan_frame"></div>
   <script type="text/javascript">
-  var uyan_config = {'du':'{pipicms:siteurl}','su':'{playpage:id}'};
+  var uyan_config = {'du':'<?php echo $siteurl;?>','su':'<?php $info['vid'];?>'};
   </script>
   <script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1723358" async=""></script>
 <!-- UY END -->
