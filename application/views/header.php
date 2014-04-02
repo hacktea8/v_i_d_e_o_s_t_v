@@ -74,13 +74,13 @@
     <ul class="menulistA">
      <li class="current"><a href="/">首页</a></li>
      <?php foreach($menuList['menuListA'] as $k => $row){ ?>
-     <li onMouseOver="smenuTab(<?php echo $k;?>);"><a href="<?php echo $row['url'];?>"><?php echo $row['name'];?></a></li>
+     <li onMouseOver="smenuTab(<?php echo $k+1;?>);"><a href="<?php echo $row['url'];?>"><?php echo $row['title'];?></a></li>
      <?php } ?>
    </ul>
    <b class="split"></b>
    <ul class="menulistB">
    <?php foreach($menuList['menuListB'] as $k => $row){ ?>
-    <li><a href="<?php echo $row['url'];?>"><?php echo $row['name'];?></a></li>
+    <li><a href="<?php echo $row['url'];?>"><?php echo $row['title'];?></a></li>
    <?php } ?>
    </ul>
   </div>
@@ -126,7 +126,7 @@
 function smenuTab(index) {
 $("#showList .index-tags").stop(true,false).hide().eq(index-1).stop(true,false).show();
 }
-smenuTab(0);
+//smenuTab(0);
 </SCRIPT>
 </div>
 </div>

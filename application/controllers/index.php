@@ -138,8 +138,9 @@ class Index extends Usrbase {
       $recommend_rank = $this->tvmodel->getVideoListByCid($cid,$order,1,15);
       $this->mem->set($key,$recommend_rank,$this->expirettl['1d']);
     }
+    $arealist = $this->tvmodel->getVideoAreaList();
     $channelList = $this->tvmodel->getVideoListByCid($cid,$order,$page,15);
-    $this->assign(array('_a'=>'channel'.$type,'channelList'=>$channelList
+    $this->assign(array('_a'=>'channel'.$type,'arealist'=>$arealist,'channelList'=>$channelList
     ,'month_rank'=>$month_rank,'recommend_rank'=>$recommend_rank
     ));
     $this->view('index_channel'.$type);

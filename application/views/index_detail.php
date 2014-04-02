@@ -36,7 +36,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
       <dt>导演：</dt>
       <dd><?php echo $info['director']?"<a href=\"".$info['director']['url']."\">".$info['director']['title']."</a>":'';?></dd>
       </dl>
-<?php if(0){
+<?php if(0){?>
      <dl class="Lang">
      <dt>语言：</dt>
      <dd>{playpage:lang}</dd>
@@ -50,7 +50,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
      <dt>类型：</dt>
      <dd><?php foreach($info['type'] as $v){
      echo "<a href=\"$v[url]\">$v[title]</a> | ";
-     ?></dd>
+     } ?></dd>
      </dl>
      <dl class="Time">
      <dt>时间：</dt>
@@ -125,7 +125,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <div class="maxBox mb10">
  <div class="box BigBox">
   <div class="title">
-   <h3>《<?php echo $info['title']?>》剧情介绍：</h3>
+   <h3>《<?php echo $info['title'];?>》剧情介绍：</h3>
   </div>
   <div class="js">
    <p><?php echo $info['intro'];?></p>

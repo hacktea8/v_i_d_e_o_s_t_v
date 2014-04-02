@@ -12,7 +12,10 @@
    </dl-->
    <dl class="p3">
     <dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">按地区</b>|</dt>
-    <dd>{pipicms:areacaslist}<a href='[areacaslist:link]&tid={pipicms:currenttypeid}'>[areacaslist:value]</a><em>|</em>{/pipicms:areacaslist}</dd>
+    <dd><?php foreach($arealist as $v){?>
+<a href='<?php echo $v['url'];?>'><?php echo $v['title'];?></a><em>|</em>
+<?php }?>
+</dd>
   </dl>
 <?php if(0){?>
   <dl class="p4">
