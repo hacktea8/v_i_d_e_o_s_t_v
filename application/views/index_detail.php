@@ -28,12 +28,15 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
       <div class="score_avg"><font>{playpage:scorenum}</font></div>
       <dl class="Actor">
       <dt>主演：</dt>
-      <dd>{playpage:actor}</dd>
+      <dd><?php foreach($info['actor'] as $v){
+      echo "<a href=\"$v[url]\">$v[title]</a> | ";
+      }?></dd>
       </dl>
       <dl class="status">
       <dt>导演：</dt>
-      <dd>{if:"{playpage:director}"=""}未知{else}{playpage:director}{end if}</dd>
+      <dd><?php echo $info['director']?"<a href=\"".$info['director']['url']."\">".$info['director']['title']."</a>":'';?></dd>
       </dl>
+<?php if(0){
      <dl class="Lang">
      <dt>语言：</dt>
      <dd>{playpage:lang}</dd>
@@ -42,28 +45,33 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
      <dt>年份：</dt>
      <dd>{playpage:publishtime}</dd>
      </dl>
+<?php } ?>
      <dl class="Type">
      <dt>类型：</dt>
-     <dd><a href="{playpage:typelink}">{playpage:typename}</a></dd>
+     <dd><?php foreach($info['type'] as $v){
+     echo "<a href=\"$v[url]\">$v[title]</a> | ";
+     ?></dd>
      </dl>
      <dl class="Time">
      <dt>时间：</dt>
-     <dd>{playpage:addtime}</dd>
+     <dd><?php echo $info['atime'];?></dd>
      </dl>
      <dl class="gather">
      <dt>人气：</dt>
-     <dd>{playpage:hit}</dd>
+     <dd><?php echo $info['hits'];?></dd>
      </dl>
      <dl class="Intr">
      <dt>剧情：</dt>
-     <dd><span>{playpage:des len=50}</span><a href="#Introduce">详细剧情</a></dd>
+     <dd><span><?php echo $info['intro'];?></span></dd>
      </dl>
+<?php if(0){?>
      <dl class="Grade">
      <dt>评分：</dt>
      <dd>
      {playpage:mark len=9 style=star}
      </dd>
      </dl>
+<?php }?>
     </div>
    </div>
    <div class="vod_r">300*250 广告位</div>
@@ -96,7 +104,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <div class="maxBox mb10 mt5">
  <div class="box BigBox">
   <div class="title">
-   <h3>热门{playpage:typename}：</h3>
+   <h3>热门<?php echo $channel[$info['cid']]['title'];?>：</h3>
   </div>
   <div class="hotVideo">
    <ul class="pic-list">
@@ -117,10 +125,10 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <div class="maxBox mb10">
  <div class="box BigBox">
   <div class="title">
-   <h3>《{playpage:name}》剧情介绍：</h3>
+   <h3>《<?php echo $info['title']?>》剧情介绍：</h3>
   </div>
   <div class="js">
-   <p>{playpage:des}</p>
+   <p><?php echo $info['intro'];?></p>
    <p>温馨提示：您正在观看的“<?php echo $info['title'];?>》在线观看”的剧情介绍来自于[<font style="text-transform:uppercase;"><?php echo $siteurl;?></font>-<?php echo $sitename;?>，如果您喜欢本站，请推荐给您的朋友，谢谢您的支持! 最后更新：<font color="red"><?php $info['atime'];?></font></p>
   </div>
   </div>

@@ -21,15 +21,59 @@ class tvModel extends baseModel{
     }
     return $list;
   }
+  public function getActorList($vid,$limit = 5){
+    $sql = sprintf("SELECT a.* FROM `actor` as a LEFT JOIN `video_actor` as va ON(a.id=va.id) WHERE va.vid=%d LIMIT %d",$vid,$limit);
+    $list = $this->db->query($sql)->result_array();
+    foreach($list as &$v){
+     $v['url'] = $this->getUrl($type = 'actor', $v['title']);
+    }
+    return $list;
+  }
+  public function getTypeList($vid,$limit = 5){
+    $sql = sprintf("SELECT c.* FROM `cate` as c LEFT JOIN `video_cate` as vc ON(c.cid=vc.cid) WHERE vc.vid=%d LIMIT %d",$vid,$limit);
+    $list = $this->db->query($sql)->result_array();
+    foreach($list as &$v){
+     $v['url'] = $this->getUrl($type = 'cate', $v['cid']);
+    }
+    return $list;
+  }
+  public function getDirectorInfo($did){
+    $sql = sprintf("SELECT * FROM `actor` WHERE did=%d LIMIT 1",$did);
+    $info = $this->db->query($sql)->row_array();
+    $info['url'] = $this->getUrl($type = 'actor', $v['title']);
+    return $info;
+  }
   public function getVideoInfoByVid($vid,$sid,$page=1,$limit=20){
     $sql = sprintf("SELECT vh.*,vb.'info' FROM `video_head` as vh LEFT JOIN `video_body` as vb ON(vh.vid=vb.vid) WHERE vh.vid=%d LIMIT 1",$vid);
     $info = $this->db->query($sql)->row_array();
     $info['vlist'] = $this->getVideoDramList($vid,$sid,$page,$limit);
-    
+    $info['actor'] = $this->getActorList($info['vid'],$limit = 2);
+    $info['type'] = $this->getTypeList($info['vid'],$limit = 3);
+    $info['director'] = $this->getDirectorInfo($info['did']);
+    return $info;
+  }
+  public function getVideoPlaytypeList($vid){
+    if( !$vid){
+       return 0;
+    }
+    $sql = sprintf("SELECT * FROM `play_type` WHERE `vid`=%d ",$vid);
+    $list = $this->db->query($sql)->result_array();
+    return $list;
+  }
+  public function getVideoPlayChannel($vid){
+    if( !$vid){
+       return 0;
+    }
+    $sql = sprintf("SELECT vh.*,vb.`intro` FROM `video_head` as vh LEFT JOIN `video_body` as vb ON(vh.vid=vb.vid) WHERE vh.`vid` =%d LIMIT 1");
+    $info = $this->db->query($sql)->row_array();
+    $info['plist'] = $this->getVideoPlaytypeList($vid);
     return $info;
   }
   public function getVideoDramList($vid,$sid,$page=1,$limit=20){
-    $sql = sprintf("");
+    $page = intval($page) <1?1:$page;
+    $start = ($page - 1)*$limit;
+    $sql = sprintf("SELECT * FROM `%s` WHERE sid=%d AND vid=%d LIMIT %d,%d",$start,$limit);
+    $list = $this->db->query($sql)->result_array();
     return $list;
   }
   public function getVideoRecommendList($cid='',$order=0,$page=1,$limit=25){
