@@ -80,10 +80,19 @@ class tvModel extends baseModel{
     }
     return $return;
   }
-  public function getVideoDramList($vid,$sid,$page=1,$limit=20){
-    $page = intval($page) <1?1:$page;
-    $start = ($page - 1)*$limit;
+  public function getVideoDramSid($vid){
     $table = sprintf('video_drama%d',$vid%10);
+    $sql = sprintf("SELECT `sid` FROM `%s` WHERE `vid`=%d LIMIT 1",$table,$vid);
+    $info = $this->db->query($sql)->row_array();
+    return isset($info['sid']) ? $info['sid'] : 0;
+  }
+  public function getVideoDramList($vid,$sid,$page = 1,$limit = 20){
+    if(!$vid){
+      return false;
+    }
+    $page = intval($page) < 1 ? 1 : $page;
+    $start = ($page - 1) * $limit;
+    $table = sprintf('video_drama%d', $vid%10);
     $sql = sprintf("SELECT * FROM `%s` WHERE sid=%d AND id=%d LIMIT %d,%d",$table,$sid,$vid,$start,$limit);
     $list = $this->db->query($sql)->result_array();
     return $list;

@@ -150,7 +150,7 @@ class Index extends Usrbase {
     $sid = intval($sid);
     $info = $this->tvmodel->getVideoInfoByVid($vid,$sid);
     $this->assign(array('info'=>$info
-    ,'hotlist'=>$hot_rank
+    ,'hotlist'=>$hot_rank,'_a'=>'content'
     ));
     $this->view('index_detail');
   }
