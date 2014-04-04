@@ -8,10 +8,10 @@
  <div class="maxBox mb10 mt10">
   <div class="box">
    <div class="introduce" id="introduce">
-    <div class="vod-img"><a href="{playpage:link}"><img src="{playpage:pic}" alt="{playpage:name}"></a></div>
+    <div class="vod-img"><a href="<?php echo $info['playurl'];?>"><img src="<?php echo $info['pic'];?>" alt="<?php echo $info['title'];?>"></a></div>
    <div class="vod-c">
     <div class="vod_t">
-     <h3 class="title">{playpage:name}</h3>
+     <h3 class="title"><?php echo $info['title'];?></h3>
      <div class="more">
       <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more">分享到：</span> <a class="bds_tsina"></a> <a class="bds_tqq"></a> <a class="bds_qzone"></a> <a class="bds_baidu"></a> <a class="bds_renren"></a> <a class="bds_kaixin001"></a> <a class="bds_tqf"></a> <a class="bds_hi"></a> <a class="bds_qq"></a> <a class="bds_taobao"></a> </div>
 <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=5004441" ></script>
@@ -25,15 +25,16 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
    <div class="vod_bigc">
     <div class="vod_l">
      <div class="info">
-      <div class="score_avg"><font>{playpage:scorenum}</font></div>
+      <?php if(0){?><div class="score_avg"><font>{playpage:scorenum}</font></div><?php }?>
       <dl class="Actor">
       <dt>主演：</dt>
-      <dd>{playpage:actor}</dd>
+      <dd><?php echo $info['actor'];?></dd>
       </dl>
       <dl class="status">
       <dt>导演：</dt>
-      <dd>{if:"{playpage:director}"=""}未知{else}{playpage:director}{end if}</dd>
+      <dd><?php echo $info['director']?$info['director']:'未知';?></dd>
       </dl>
+<?php if(0){?>
      <dl class="Lang">
      <dt>语言：</dt>
      <dd>{playpage:lang}</dd>
@@ -46,24 +47,27 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
      <dt>类型：</dt>
      <dd><a href="{playpage:typelink}">{playpage:typename}</a></dd>
      </dl>
+<?php }?>
      <dl class="Time">
      <dt>时间：</dt>
-     <dd>{playpage:addtime}</dd>
+     <dd><?php echo $info['atime'];?></dd>
      </dl>
      <dl class="gather">
      <dt>人气：</dt>
-     <dd>{playpage:hit}</dd>
+     <dd><?php echo $info['hits'];?></dd>
      </dl>
      <dl class="Intr">
      <dt>剧情：</dt>
-     <dd><span>{playpage:des len=50}</span><a href="#Introduce">详细剧情</a></dd>
+     <dd><span><?php echo mb_substr($info['intro'],0,50);?></span><a href="#Introduce">详细剧情</a></dd>
      </dl>
+<?php if(0){?>
      <dl class="Grade">
      <dt>评分：</dt>
      <dd>
      {playpage:mark len=9 style=star}
      </dd>
      </dl>
+<?php }?>
     </div>
    </div>
    <div class="vod_r">300*250 广告位</div>
@@ -78,20 +82,18 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
  </div>
 </div>
 <div class="maxBox">
-{playpage:playlist}
+<?php foreach($info['vlist'] as $k => $v){?>
 <div class="box Video-list mt10">
  <div class="play-list b mb">
   <div class="title">
-   <h3><span class="{if:"[playlist:from]"="百度影音"}p_baidu{elseif:"[playlist:from]"="优酷"}p_youku{else}p_tudou{end if}"></span>[playlist:from]<span class="tips">( [playlist:intro] )</span></h3>
-   <span class="pa order hascoll">排序：<a id="desc_[playlist:i]" class="desc" href="javascript:void(0);" onclick="desc(1,[playlist:i],this)">降序</a><em>|</em><a id="asc_[playlist:i]" href="javascript:void(0);" class="asc asc_on" onclick="desc(0,[playlist:i],this)">升序</a></span></div>
-<div id="play_[playlist:i]">
+   <h3><span class="p_baidu"></span><?php echo $v['from'];?><span class="tips">(  )</span></h3>
+<div id="play_<?php echo $k;?>">
  <ul>
-[playlist:link]
  </ul>
 </div>
 </div>
 </div>
-{/playpage:playlist}
+<?php }?>
 </div>
 <div class="maxBox mb10 mt5">
  <div class="box BigBox">

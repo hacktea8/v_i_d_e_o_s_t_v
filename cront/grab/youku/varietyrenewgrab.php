@@ -62,7 +62,7 @@ file_put_contents($fname,"$val[ourl]");
     foreach($data_body as $k => $v){
       $param = array('vid'=>$v['vid']);
       $param = serialize($param);
-      $info = array('vid'=>$val['vid'],'title'=>$v['title'], 'playnum'=>$k+1, 'param'=>$param, 'atime'=>time());
+      $info = array('sid'=>$sid,'vid'=>$val['vid'],'title'=>$v['title'], 'playnum'=>$k+1, 'param'=>$param, 'atime'=>time());
       $model->addVideoDramData($info);
     }
     sleep(3);

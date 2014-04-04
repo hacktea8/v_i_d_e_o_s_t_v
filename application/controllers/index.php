@@ -93,28 +93,14 @@ class Index extends Usrbase {
     ,'page_string'=>$page_string,'subcatelist'=>$data['subcatelist'],'cid'=>$cid));
     $this->view('index_lists');
   }
-  public function content($id){
-    $aid = intval($aid);
-    //$data = $this->emulemodel->getEmuleTopicByAid($aid,$this->userInfo['uid'], $this->userInfo['isadmin']);
-    $data['info']['ptime']=date('Y:m:d', $data['info']['ptime']);
-    $data['info']['utime'] = date('Y/m/d', $data['info']['utime']);
-    $this->_rewrite_list_url($data['postion']);
-    $this->_rewrite_article_url($data['info']);
-    $data['info'] = $data['info'][0];
-    $data['info']['relatdata'] = is_array($data['info']['relatdata']) ? $data['info']['relatdata'] : array();
-    $data['info']['fav'] = 0;
-// seo setting
-    $kw = '';
-    foreach($data['postion'] as $row){
-       $kw .= $row['name'].',';
-    }
-    $keywords = $data['info']['name'].','.$kw.$this->seo_keywords;
-    $title = $data['info']['name'];
-    // not VIP Admin check verify
-    
-    $this->assign(array('verifycode'=>$verifycode,'seo_title'=>$title,'seo_keywords'=>$keywords,'cid'=>$cid,'cpid'=>$cpid,'info'=>$data['info'],'postion'=>$data['postion'],'aid'=>$aid)); 
+  public function content($vid){
+    $vid = intval($vid);
+    $info = $this->tvmodel->getVideoInfoByVid($vid,$mod = 'content');
+    $this->assign(array('info'=>$info
+    ,'hotlist'=>$hot_rank
+    ));
     $ip = $this->input->ip_address();
-    $key = sprintf('videohitslog:%s:%d',$ip,$id);
+    $key = sprintf('videohitslog:%s:%d',$ip,$vid);
 //var_dump($this->redis->exists($key));exit;
     if(!$this->redis->exists($key)){
        $this->redis->set($key, 1, $this->expirettl['6h']);

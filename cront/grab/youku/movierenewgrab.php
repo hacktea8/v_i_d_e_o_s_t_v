@@ -42,7 +42,7 @@ for($page = 1; ; $page++){
     $status = 1;
     $param = array('url'=>$playUrl);
     $param = serialize($param);
-    $data = array('vid'=>$row['vid'],'playnum'=>1,'param'=>$param,'atime'=>time());
+    $data = array('sid'=>$sid,'vid'=>$row['vid'],'playnum'=>1,'param'=>$param,'atime'=>time());
     $model->addVideoDramData($data);
     sleep(3);
     echo "\n+++++ renew Vid:$row[vid] OK!+++++\n";

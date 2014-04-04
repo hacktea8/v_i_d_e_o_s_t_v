@@ -45,13 +45,31 @@ class tvModel extends baseModel{
     $info['url'] = $this->getUrl($type = 'actor', $v['title']);
     return $info;
   }
-  public function getVideoInfoByVid($vid,$sid,$page=1,$limit=20){
+  public function getVideoContentByVid($vid){
+    $info = $this->getVideoInfoByVid($vid);
+    if(!$info){
+      $info['vlist'] = $this->getVideoPlaytypeList($vid);
+    }
+    return $info;
+  }
+  public function getVideoDetailByVid($vid,$sid,$page=1,$limit=20){
+    $info = $this->getVideoInfoByVid($vid);
+    if(!$info){
+      $info['vlist'] = $this->getVideoDramList($vid,$sid,$page,$limit);
+    }
+    return $info;
+  }
+  public function getVideoInfoByVid($vid){
+    if(!$vid){
+      return false;
+    }
     $sql = sprintf("SELECT vh.*,vb.`intro` FROM `video_head` as vh LEFT JOIN `video_body` as vb ON(vh.id=vb.id) WHERE vh.id=%d LIMIT 1",$vid);
     $info = $this->db->query($sql)->row_array();
-    $info['vlist'] = $this->getVideoDramList($vid,$sid,$page,$limit);
     $info['actor'] = $this->getActorList($info['vid'],$limit = 2);
     $info['type'] = $this->getTypeList($info['vid'],$limit = 3);
     $info['director'] = $this->getDirectorInfo($info['director']);
+    $info['atime'] = date('Y-m-d H:i:s',$info['atime']);
+    $info['rtime'] = date('Y-m-d H:i:s',$info['rtime']);
     return $info;
   }
   public function getVideoPlaytypeList($vid){
