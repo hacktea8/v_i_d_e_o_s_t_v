@@ -8,7 +8,7 @@ require_once ROOTPATH.'../db.class.php';
 require_once ROOTPATH.'../avmodel.php';
 
 $m = new avmodel();
-$post_data = array('cate'=>'亚洲BT','playmode'=>2);
+$post_data = array('cate'=>'亚洲BT','playmode'=>2,'flag'=>3);
 $listUrl = 'xzavs1';
 for($page = 1;;$page ++){
  $next = $page == 1 ? '':sprintf('index_%d.html',$page);
@@ -30,13 +30,18 @@ for($page = 1;;$page ++){
   }
   $url = sprintf('%s%s',$_domain,$urlPool[$key]);
   $html = getHtml($url);
-  $info = getAsianVideoInfo($html);
+  $info = getAsianBTVideoInfo($html);
   var_dump($info);exit;
   if(empty($info['playurl'])){
    write_log($url);
    sleep(600);exit;
   }
-  $post_data['title'] = $title;
+  $check = $m->checkVideoByTitle($info['title']);
+  if($check){
+   echo "\n Title: $title already exist!\n";continue;
+  }
+  $post_data['title'] = $info['title'];
+  $post_data['keyname'] = $title;
   $post_data['m'] = $info['m'];
   $post_data['playurl'] = $info['playurl'];
   $vid = $m->addVideoByData($post_data);

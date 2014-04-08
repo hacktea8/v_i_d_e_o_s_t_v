@@ -1,10 +1,13 @@
 <?php
 function getAsianVideoInfo($html){
  preg_match('#\[影片尺度\]：<span[^>]*>([^<]+)</span>#Uis',$html,$match);
- $info['ma'] = $match[1] === '无码'?0:1;
+ $info['mosaic'] = $match[1] === '无码'?0:1;
  preg_match('#<embed [^>]* src=\'([^\']+)\'></object>#Uis',$html,$match);
  $info['playurl'] = $match[1];
  return $info;
+}
+function getAsianBTVideoInfo($html){
+ 
 }
 function striptags($html){
  preg_match('#<body(.+)</body>#Uis',$html,$match);

@@ -7,9 +7,11 @@ class Warning extends Avbase {
 //var_dump($this->viewData);exit;
   }
   public function index(){
+   $this->viewData['referer'] = $this->_r;
    $this->load->view('waring_check',$this->viewData);
   }
   public function check(){
-   echo "寫入身份!";exit;
+   setcookie('isadult','1',time()+24*3600,'/');
+   exit('1');
   }
 }

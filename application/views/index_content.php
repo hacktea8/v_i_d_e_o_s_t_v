@@ -28,11 +28,13 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
       <?php if(0){?><div class="score_avg"><font>{playpage:scorenum}</font></div><?php }?>
       <dl class="Actor">
       <dt>主演：</dt>
-      <dd><?php echo $info['actor'];?></dd>
+      <dd><?php foreach($info['actor'] as $v){
+      echo "<a href=\"$v[url]\">$v[title]</a>";}
+      ?></dd>
       </dl>
       <dl class="status">
       <dt>导演：</dt>
-      <dd><?php echo $info['director']?$info['director']:'未知';?></dd>
+      <dd><?php echo $info['director']?$info['director']['title']:'未知';?></dd>
       </dl>
 <?php if(0){?>
      <dl class="Lang">
@@ -98,19 +100,19 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <div class="maxBox mb10 mt5">
  <div class="box BigBox">
   <div class="title">
-   <h3>热门{playpage:typename}：</h3>
+   <h3>热门<?php echo $channel[$info['cid']];?>：</h3>
   </div>
   <div class="hotVideo">
    <ul class="pic-list">
-	{pipicms:videolist type=current num=7 order=hit}
-    <li><a class="play-pic" href="[videolist:link]" title="{playpage:name}"><img src="[videolist:pic]" style="display: block;"><span class="play-icon">&nbsp;</span>
+	<?php foreach($videolist as $v){?>
+    <li><a class="play-pic" href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><img src="<?php echo $v['pic'];?>" style="display: block;"><span class="play-icon">&nbsp;</span>
      <label class="bg">&nbsp;</label>
-     <label class="time">[videolist:note]</label>
+     <label class="time"><?php echo $v['note'];?></label>
      </a>
-     <p><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a></p>
-     <p class="txt">[videolist:nolinkactor]</p>
+     <p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo $v['title'];?></a></p>
+     <p class="txt"><?php echo $v['nolinkactor'];?></p>
     </li>
-  {/pipicms:videolist}
+  <?php }?>
    </ul>
   </div>
  </div>
@@ -119,24 +121,24 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <div class="maxBox mb10">
  <div class="box BigBox">
   <div class="title">
-   <h3>《{playpage:name}》剧情介绍：</h3>
+   <h3>《<?php echo $info['title'];?>》剧情介绍：</h3>
   </div>
   <div class="js">
-   <p>{playpage:des}</p>
-   <p>温馨提示：您正在观看的“《{playpage:name}》在线观看”的剧情介绍来自于[<font style="text-transform:uppercase;">{pipicms:siteurl}</font>-{pipicms:sitename}]，如果您喜欢本站，请推荐给您的朋友，谢谢您的支持! 最后更新：<font color="red">{playpage:addtime}</font></p>
+   <p><?php echo $info['intro'];?></p>
+   <p>温馨提示：您正在观看的“《<?php echo $info['title'];?>》在线观看”的剧情介绍来自于[<font style="text-transform:uppercase;"><?php echo $siteurl;?></font>-<?php echo $web_title;?>]，如果您喜欢本站，请推荐给您的朋友，谢谢您的支持! 最后更新：<font color="red"><?php echo $info['rtime'];?></font></p>
   </div>
   </div>
 </div>
 <div class="maxBox mb10">
 <div class="box BigBox">
 <div class="title">
- <h3>《{playpage:name}》评论：</h3>
+ <h3>《<?php echo $info['title'];?>》评论：</h3>
 </div>
 <div class="pl">
 	<!-- UY BEGIN -->
  <div id="uyan_frame"></div>
   <script type="text/javascript">
-  var uyan_config = {'du':'{pipicms:siteurl}','su':'{playpage:id}'};
+  var uyan_config = {'du':'<?php echo $siteurl;?>','su':'<?php echo $info['id'];?>'};
   </script>
   <script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1723358" async=""></script>
 <!-- UY END -->

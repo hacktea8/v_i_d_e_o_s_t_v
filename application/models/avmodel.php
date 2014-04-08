@@ -1,6 +1,6 @@
 <?php
-require_once 'basemodel.php';
-class avModel extends baseModel{
+require_once 'avbasemodel.php';
+class avModel extends avbaseModel{
   protected $_dataStruct = '';
   protected $_datatopicStruct = '';
 
@@ -8,8 +8,5 @@ class avModel extends baseModel{
      parent::__construct();
   }
 
-  public function getVideoListByCid($cid='',$order=0,$page=1,$limit=25){
-
-  }
 }
 ?>

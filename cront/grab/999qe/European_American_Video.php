@@ -8,7 +8,8 @@ require_once ROOTPATH.'../db.class.php';
 require_once ROOTPATH.'../avmodel.php';
 
 $m = new avmodel();
-$post_data = array('cate'=>'欧美视频','playmode'=>2);
+$post_data = array('cate'=>'欧美视频','playmode'=>2,'flag'=>3);
+
 $listUrl = 'splist2';
 for($page = 1;;$page ++){
  $next = $page == 1 ? '':sprintf('index_%d.html',$page);
@@ -37,8 +38,7 @@ for($page = 1;;$page ++){
    sleep(600);exit;
   }
   $post_data['title'] = $title;
-  $post_data['m'] = $info['m'];
-  $post_data['playurl'] = $info['playurl'];
+  $post_data['vlist'] = array(array('playurl'=>$info['playurl'],'playnum'=>1,'mosaic'=>$info['mosaic']));
   $vid = $m->addVideoByData($post_data);
   echo "\n++ Add video $title Vid:$vid OK! \n";sleep(3);
  }

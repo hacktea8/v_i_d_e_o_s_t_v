@@ -12,6 +12,7 @@ class Avbase extends Webbase {
     parent::__construct();
     
     $this->load->helper('rewrite');
+/*
     $this->load->model('avmodel');
     $menuList = $this->mem->get('tv-menuList');
     if( !empty($menuList)){
@@ -22,7 +23,6 @@ class Avbase extends Webbase {
       $menuList = array('menuListA'=>$menuListA,'menuListB'=>$menuListB);
       $this->mem->set('emu-rootCate',$menuList,$this->expirettl['1d']);
     } 
-/*
     $hotTopic = $this->mem->get('emu-hotTopic');
 //var_dump($hotTopic);exit;
     if(empty($hotTopic)){
@@ -39,6 +39,7 @@ class Avbase extends Webbase {
     $this->_get_postion();
 */
 //var_dump($this->viewData);exit;
+    $this->load->_ci_view_path = 'av/';
   }
   protected function _get_postion($postion = array()){
     $this->assign(array('postion'=>$postion));

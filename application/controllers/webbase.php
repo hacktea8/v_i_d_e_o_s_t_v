@@ -10,7 +10,8 @@ class Webbase extends CI_Controller {
   public $adminList = array(1);
   protected $_c = 'index'; 
   protected $_a = 'index'; 
-  
+  protected $_r = '/';
+ 
   public function __construct(){
     parent::__construct();
     $this->load->library('memcache');
@@ -36,9 +37,11 @@ class Webbase extends CI_Controller {
     }else{
       $this->userInfo = $session_uinfo;
     }
-    //var_dump($this->userInfo);exit;
+//    var_dump($this->userInfo);exit;
+//var_dump($_SERVER);exit;
     $this->_c = $this->uri->segment(1,'index');
     $this->_a = $this->uri->segment(2,'index');
+    $this->_r = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'/';
     $c = isset($_GET['c'])?$_GET['c']:'';
     if($c){
        $this->_a = 'list' == $c ? 'lists' : 'topic';
@@ -67,17 +70,26 @@ class Webbase extends CI_Controller {
     if(in_array($this->userInfo['groupid'],$this->adminList)){
       return true;
     }
+/*
     foreach($this->userInfo['groups'] as $gid){
       if(in_array($gid,$this->adminList)){
         return true;
       }
     }
+*/
       return false;
   }
   protected function assign($data){
     foreach($data as $key => $val){
       $this->viewData[$key] = $val;
     }
+  }
+  protected function logout(){
+    $this->session->unset_userdata('user_logindata');
+    setcookie('hk8_auth','',time()-3600,'/');
+    $url = $_SERVER['HTTP_REFERER'];
+//echo $url;exit;
+    redirect($url);
   }
   protected function view($view_file){
     $this->load->view('header', $this->viewData);

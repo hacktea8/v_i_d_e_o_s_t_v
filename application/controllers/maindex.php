@@ -12,12 +12,25 @@ class Maindex extends Avbase {
 //var_dump($this->viewData);exit;
   }
   public function index(){
-
+    $this->assign(array());
+    $this->view('index_index');
   }
   public function lists($cid,$order=0,$page=1){
    $cid = intval($cid);
    $order = intval($order);
    $page = intval($page);
-   
+   $this->assign(array());
+   $this->view('index_lists');
+  }
+  public function detail($vid){
+   $this->assign(array());
+   $this->view('index_detail');
+  }
+  public function play($vid){
+   $this->assign(array());
+   $this->view('index_play');
+  }
+  public function loginout(){
+   $this->logout();
   }
 }

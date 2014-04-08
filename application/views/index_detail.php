@@ -25,7 +25,9 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
    <div class="vod_bigc">
     <div class="vod_l">
      <div class="info">
+<?php if(0){?>
       <div class="score_avg"><font>{playpage:scorenum}</font></div>
+<?php }?>
       <dl class="Actor">
       <dt>主演：</dt>
       <dd><?php foreach($info['actor'] as $v){
@@ -62,7 +64,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
      </dl>
      <dl class="Intr">
      <dt>剧情：</dt>
-     <dd><span><?php echo $info['intro'];?></span></dd>
+     <dd><span><?php echo mb_substr($info['intro'],0,50);?></span><a href="#Introduce">详细剧情</a></dd>
      </dl>
 <?php if(0){?>
      <dl class="Grade">
@@ -104,7 +106,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <div class="maxBox mb10 mt5">
  <div class="box BigBox">
   <div class="title">
-   <h3>热门<?php echo $channel[$info['cid']]['title'];?>：</h3>
+   <h3>推荐<?php echo $channel[$info['cid']]['title'];?>：</h3>
   </div>
   <div class="hotVideo">
    <ul class="pic-list">

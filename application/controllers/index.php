@@ -199,11 +199,7 @@ class Index extends Usrbase {
     redirect($url);
   }
   public function loginout(){
-    $this->session->unset_userdata('user_logindata');
-    setcookie('hk8_auth','',time()-3600,'/');
-    $url = $_SERVER['HTTP_REFERER'];
-//echo $url;exit;
-    redirect($url);
+    $this->logout();
   }
 }
 

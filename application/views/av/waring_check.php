@@ -40,11 +40,13 @@ function MM_swapImage() { //v3.0
 }
 
 function gocheck(){
-	if($('#over18:checked').val()){
-		location.href='/warning/check';
-	}else{
-		alert('請先同意上述規範:親親！');
-	}
+ if($('#over18:checked').val()){
+   $.get('/warning/check',function(){
+   location.href='<?php echo $referer;?>';
+   });
+ }else{
+   alert('請先同意上述規範:親親！');
+ }
 }
 
 //-->
