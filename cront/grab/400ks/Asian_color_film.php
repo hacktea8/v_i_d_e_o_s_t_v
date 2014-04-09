@@ -23,6 +23,8 @@ for($page = 1;;$page ++){
  }
  $titlePool = $match[3];
  $coverPool = $match[2];
+ preg_match_all('#<DD>主演：([^<]*)</DD>#Uis',$html,$match);
+ $actorPool = $match[1];
  //var_dump($match);exit;
  foreach($titlePool as $key =>$title){
   $title = trim($title);
