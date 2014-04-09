@@ -37,11 +37,17 @@ for($page = 1;;$page ++){
   $html = iconv('GBK','UTF-8',$html);
   $info = getAsianVideoInfo($html);
   var_dump($info);exit;
-  if(empty($info['playurl'])){
+  if(count($info) >1){
    write_log($url);
    sleep(600);exit;
   }
-  
+  $post_data['title'] = $title;
+  $post_data['keyword'] = $actorPool[$key];
+  $post_data['ourl'] = $urlPool[$key];
+  $post_data['thum'] = $coverPool[$key];
+  $post_data['vlist'] = $info;
+  $vid = $m->addVideoByData($post_data);
+  echo "\n++ Add video $title Vid:$vid OK! \n";sleep(3);
  }
 }
 

@@ -24,7 +24,7 @@ class avmodel{
   $sql = $this->db->insert_string('`av_video_head`',$data_head);
   $this->db->query($sql);
   $vid = $this->db->insert_id();
-  $data_body = $this->copy_array($data,array('intro','playmode','ourl'));
+  $data_body = $this->copy_array($data,array('intro','playmode','ourl','keyword'));
   $data_body['vid'] = $vid;
   $sql = $this->db->insert_string('`av_video_body`',$data_body);
   $this->db->query($sql);
