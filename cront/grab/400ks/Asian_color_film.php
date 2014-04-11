@@ -8,7 +8,7 @@ require_once ROOTPATH.'../db.class.php';
 require_once ROOTPATH.'../avmodel.php';
 
 $m = new avmodel();
-$post_data = array('cate'=>'亚洲色片','playmode'=>3,'flag'=>3);
+$post_data = array('cate'=>'亚洲色片','playmode'=>5,'flag'=>3);
 $_list = 'avlist';
 
 for($page = 1;;$page ++){

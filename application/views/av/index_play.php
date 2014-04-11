@@ -46,16 +46,8 @@ pluginspage="http://www.macromedia.com/go/getflashplayer" width="450" height="32
  <div class="maxBox mb10">
   <div class="box BigBox">
    <div class="title">
-    <h3>《<?php echo $info['title'];?>》评论：</h3>
    </div>
    <div class="pl">
-<!-- UY BEGIN -->
-   <div id="uyan_frame"></div>
-<script type="text/javascript">
-  var uyan_config = {'du':'<?php echo $siteurl;?>','su':'<?php echo $info['id'];?>'};
-</script>
-<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1723358" async=""></script>
-<!-- UY END -->
   </div>
  </div>
 </div>

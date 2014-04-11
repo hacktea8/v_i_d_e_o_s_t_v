@@ -8,7 +8,7 @@
  <div class="maxBox mb10 mt10">
   <div class="box">
    <div class="introduce" id="introduce">
-    <div class="vod-img"><a href="{playpage:link}"><img src="{playpage:pic}" alt="{playpage:name}"></a></div>
+    <div class="vod-img"><a href="<?php $info['url'];?>"><img src="<?php echo $info['pic'];?>" alt="<?php echo $info['title'];?>"></a></div>
    <div class="vod-c">
     <div class="vod_t">
      <h3 class="title"><?php echo $info['title'];?></h3>
@@ -25,6 +25,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
    <div class="vod_bigc">
     <div class="vod_l">
      <div class="info">
+<?php if(0){?>
       <div class="score_avg"><font>{playpage:scorenum}</font></div>
       <dl class="Actor">
       <dt>主演：</dt>
@@ -36,7 +37,6 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
       <dt>导演：</dt>
       <dd><?php echo $info['director']?"<a href=\"".$info['director']['url']."\">".$info['director']['title']."</a>":'';?></dd>
       </dl>
-<?php if(0){?>
      <dl class="Lang">
      <dt>语言：</dt>
      <dd>{playpage:lang}</dd>
@@ -129,23 +129,13 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   </div>
   <div class="js">
    <p><?php echo $info['intro'];?></p>
-   <p>温馨提示：您正在观看的“<?php echo $info['title'];?>》在线观看”的剧情介绍来自于[<font style="text-transform:uppercase;"><?php echo $siteurl;?></font>-<?php echo $sitename;?>，如果您喜欢本站，请推荐给您的朋友，谢谢您的支持! 最后更新：<font color="red"><?php $info['atime'];?></font></p>
+   <p>温馨提示：您正在观看的“<?php echo $info['title'];?>》在线观看”的剧情介绍来自于[<font style="text-transform:uppercase;"><?php echo $siteurl;?></font>-<?php echo $sitename;?>，如果您喜欢本站，请推荐给您的朋友，谢谢您的支持! 最后更新：<font color="red"><?php echo $info['atime'];?></font></p>
   </div>
   </div>
 </div>
 <div class="maxBox mb10">
 <div class="box BigBox">
-<div class="title">
- <h3>《<?php echo $info['title'];?>》评论：</h3>
-</div>
 <div class="pl">
-	<!-- UY BEGIN -->
- <div id="uyan_frame"></div>
-  <script type="text/javascript">
-  var uyan_config = {'du':'<?php echo $siteurl;?>','su':'<?php $info['vid'];?>'};
-  </script>
-  <script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1723358" async=""></script>
-<!-- UY END -->
   </div>
   </div>
  </div>

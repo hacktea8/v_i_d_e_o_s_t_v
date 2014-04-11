@@ -12,8 +12,8 @@ class Avbase extends Webbase {
     parent::__construct();
     
     $this->load->helper('rewrite');
-/*
     $this->load->model('avmodel');
+/*
     $menuList = $this->mem->get('tv-menuList');
     if( !empty($menuList)){
       $menuListA = $this->avmodel->getMenuListById($idstr);

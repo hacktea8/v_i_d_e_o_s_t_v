@@ -1,12 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require_once 'avbase.php';
+/**
+playmode:
+1:直接链接
+2:外部播放器
+3:下载链接
+4:百度影音
+5:快播影音
+6:
+7:
+*/
 class Maindex extends Avbase {
   public function __construct(){
     parent::__construct();
     //check is spilder
     $spider = check_is_spider();
     if(!isset($_COOKIE['isadult']) || !$spider){
-      header('Location: /warning/index');
+        echo "<script>location.href='/warning/index';</script>";exit;
+//      header('Location: /warning/index');
     }
 //    $this->load->model('indexmodel');
 //var_dump($this->viewData);exit;
@@ -23,11 +34,17 @@ class Maindex extends Avbase {
    $this->view('index_lists');
   }
   public function detail($vid){
-   $this->assign(array());
+   $info = $this->avmodel->getVideoInfoByid($vid,$this->userInfo['isadmin']);
+//var_dump( $info);exit;
+   $this->assign(array('info'=>$info));
    $this->view('index_detail');
   }
+  public function expired(){
+   $this->view('index_expired');
+  }
   public function play($vid){
-   $this->assign(array());
+   $info = $this->avmodel->getVideoInfoByid($vid);
+   $this->assign(array('info'=>$info));
    $this->view('index_play');
   }
   public function loginout(){

@@ -6,7 +6,7 @@
 <meta name="keywords" content="<?php echo $seo_info['keywords'];?>" />
 <meta name="description" content="<?php echo $seo_info['description'];?>" />
 <link href="<?php echo $css_url;?>Common.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo $css_url,$_a;?>.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $css_url,$_c,'_',$_a;?>.css" rel="stylesheet" type="text/css" />
 <?php if(in_array($_a,array('content','play'))){ ?>
 <link href="<?php echo $css_url;?>channel.css" rel="stylesheet" type="text/css" />
 <script src="<?php echo $js_url;?>function.js"></script>

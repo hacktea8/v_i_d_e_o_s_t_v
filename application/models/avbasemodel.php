@@ -3,6 +3,7 @@ class avbaseModel extends CI_Model{
   public $db;
   protected $_dataStruct = '*';
   protected $_dataListStruct = '*';
+  protected $_dramListStruct = '*';
   
   public function __construct(){
     parent::__construct();
@@ -16,7 +17,22 @@ class avbaseModel extends CI_Model{
     }
     $sql = sprintf("SELECT %s FROM `av_video_head` as vh LEFT JOIN `av_video_body` as vb ON(vh.vid=vb.vid) WHERE vh.vid=%d %s LIMIT 1",$this->_dataStruct,$id,$where);
     $info = $this->db->query($sql)->row_array();
+    $info['atime'] = date('Y-m-d',strtotime($info['atime']));
+    $info['pic'] = $this->getCoverUrl($info['cover']);
+    $info['url'] = $this->getUrl('detail',$info['vid']);
+    $info['playurl'] = $this->getUrl('play',$info['vid']);
+    $info['vlist'] = $this->getVideoDramaList($info['vid']);
     return $info;
+  }
+  public function getVideoDramaList($vid){
+    $table = sprintf("`av_video_drama%d`",$vid%6);
+    $sql = sprintf("SELECT %s FROM %s WHERE `vid`=%d",$this->_dramListStruct,$table,$vid);
+    $list = $this->db->query($sql)->result_array();
+    foreach($list as &$v){
+      $v['atime'] = date('Y-m-d',$v['atime']);
+      $v['url'] = $this->getUrl('play',$vid,$v['playnum']);
+    }
+    return $list;
   }
   public function getVideoListByCid($cid='',$order=0,$page=1,$limit=25,$where = array('`flag`=1')){
     $start = ($page-1)*$limit;
@@ -30,7 +46,9 @@ class avbaseModel extends CI_Model{
     $sql = sprintf("SELECT %s FROM `av_video_head` WHERE %s ORDER BY %s LIMIT %d,%d",$this->_dataListStruct,$where,$order,$start,$limit);
     $list = $this->db->query($sql)->result_array();
     foreach($list as &$v){
-  //    $v['cover'] = $this->getCoverUrl($v['cover']);
+      $v['pic'] = $this->getCoverUrl($v['cover']);
+      $v['url'] = $this->getUrl('detail',$v['vid']);
+      $v['playurl'] = $this->getUrl('play',$v['vid']);
       $v['atime'] = date('Y-m-d',strtotime($v['atime']));
     }
     return $list;
@@ -57,8 +75,13 @@ class avbaseModel extends CI_Model{
   }
   public function getUrl($type = '',$p1='',$p2='',$p3='',$p4='',$p5=''){
      $url = '';
-     if('content' == $type){
-       $url = sprintf('/index/%s/%d.shtml',$type,$p1);
+     if('detail' == $type){
+       $url = sprintf('/maindex/%s/%d.shtml',$type,$p1);
+     }elseif('play' == $type){
+       $p2 = $p2 ? $p2 : 1;
+       $url = sprintf('/maindex/%s/%d/%d.shtml',$type,$p1,$p2);
+     }elseif('lists' == $type){
+       $url = sprintf('/maindex/%s/%d/%d/%d.shtml',$type,$p1,$p2,$p3);
      }
      return $url;
   }
