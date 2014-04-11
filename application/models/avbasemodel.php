@@ -28,11 +28,13 @@ class avbaseModel extends CI_Model{
     $table = sprintf("`av_video_drama%d`",$vid%6);
     $sql = sprintf("SELECT %s FROM %s WHERE `vid`=%d",$this->_dramListStruct,$table,$vid);
     $list = $this->db->query($sql)->result_array();
-    foreach($list as &$v){
+    $return = array();
+    foreach($list as $v){
       $v['atime'] = date('Y-m-d',$v['atime']);
       $v['url'] = $this->getUrl('play',$vid,$v['playnum']);
+      $return[$v['playnum']] = $v;
     }
-    return $list;
+    return $return;
   }
   public function getVideoListByCid($cid='',$order=0,$page=1,$limit=25,$where = array('`flag`=1')){
     $start = ($page-1)*$limit;
