@@ -18,9 +18,10 @@ class Avadmin extends Admbase {
 	public function index_top(){
 	    $this->view($this->_c.'_index_top');
 	}
-	public function index_left(){
-	    $this->view($this->_c.'_index_left');
-	}
+ public function index_left($type = 'video'){
+   $this->assign(array('type'=>$type));
+   $this->view($this->_c.'_index_left');
+ }
  public function avlist($page = 1){
    $lists = $this->admavmodel->getVideoListByCid($cid=0,$order=0,$page,$limit=25,$where = array());
    $this->assign(array('lists'=>$lists));
@@ -48,9 +49,22 @@ class Avadmin extends Admbase {
    }
    die(json_encode($return));
  }
-	public function index_album(){
-	    $this->view('index_album');
-	}
+ public function avcate(){
+   $lists = $this->admavmodel->getMenuListById();
+   $this->assign(array('lists'=>$lists));
+   $this->view($this->_c.'_avcate');
+ }
+ public function avcatedetail($cid = 0){
+   $data = $_POST['data'];
+   if($data){
+     $cid = $this->admavmodel->setVideoCateInfoByData($data);
+   }
+   if($cid){
+     $info = $this->admavmodel->getVideoCateInfoByid($cid);
+     $this->assign(array('info'=>$info));
+   }
+   $this->view($this->_c.'_avcatedetail');
+ }
 	public function index_footer(){
 	    $this->view('index_footer');
 	}

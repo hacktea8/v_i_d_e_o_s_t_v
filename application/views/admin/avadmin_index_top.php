@@ -15,7 +15,7 @@
 				</p>
 			</div><div class="">
 				<p>
-					<a href="/<?php echo $_c;?>/index_album"  target="leftFrame">相册</a>
+					<a href="/<?php echo $_c;?>/index_left/cate"  target="leftFrame">分类</a>
 				</p>
 			</div><div class="">
 				<p>

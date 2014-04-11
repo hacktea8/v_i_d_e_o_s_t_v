@@ -2,13 +2,13 @@
  <div class="ad960 mt10 mb10">954*80 顶部广告位</div>
  <div class="maxBox mt10">
   <div class="box">
-   <div class="tips">当前位置：{playpage:textlink}</div>
+   <div class="tips">当前位置：<a href="/">首页</a>&gt;<a href="<?php echo $info['cateurl'];?>"><?php echo $channel[$info['cid']]['title'];?></a></div>
   </div>
  </div>
  <div class="maxBox mb10 mt10">
   <div class="box">
    <div class="introduce" id="introduce">
-    <div class="vod-img"><a href="<?php $info['url'];?>"><img src="<?php echo $info['pic'];?>" alt="<?php echo $info['title'];?>"></a></div>
+    <div class="vod-img"><a><img src="<?php echo $info['pic'];?>" alt="<?php echo $info['title'];?>"></a></div>
    <div class="vod-c">
     <div class="vod_t">
      <h3 class="title"><?php echo $info['title'];?></h3>
@@ -53,6 +53,10 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
      } ?></dd>
      </dl>
      <dl class="Time">
+     <dt style="width:60px">马赛克：</dt>
+     <dd><?php echo $info['mosaic']?'有码':'无码';?></dd>
+     </dl>
+     <dl class="Time">
      <dt>时间：</dt>
      <dd><?php echo $info['atime'];?></dd>
      </dl>
@@ -60,11 +64,11 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
      <dt>人气：</dt>
      <dd><?php echo $info['hits'];?></dd>
      </dl>
+<?php if(0){?>
      <dl class="Intr">
      <dt>剧情：</dt>
      <dd><span><?php echo $info['intro'];?></span></dd>
      </dl>
-<?php if(0){?>
      <dl class="Grade">
      <dt>评分：</dt>
      <dd>
@@ -90,7 +94,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <div class="box Video-list mt10">
  <div class="play-list b mb">
   <div class="title">
-   <h3><span class="{if:"[playlist:from]"="百度影音"}p_baidu{elseif:"[playlist:from]"="优酷"}p_youku{else}p_tudou{end if}"></span>[playlist:from]<span class="tips">( [playlist:intro] )</span></h3>
+   <h3><span class="p_baidu"></span>影片列表<span class="tips">(  )</span></h3>
    <span class="pa order hascoll">排序：<a id="desc_<?php echo $row['id'];?>" class="desc" href="javascript:void(0);" onclick="desc(1,<?php echo $row['id'];?>,this)">降序</a><em>|</em><a id="asc_<?php echo $row['id'];?>" href="javascript:void(0);" class="asc asc_on" onclick="desc(0,<?php echo $row['id'];?>,this)">升序</a></span></div>
 <div id="play_<?php echo $row['id'];?>">
  <ul>

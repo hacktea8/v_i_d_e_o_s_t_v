@@ -17,6 +17,22 @@ class admavModel extends avbaseModel{
     $id = $this->db->insert_id();
     return $id;
   }
+  public function setVideoCateInfoByData($data){
+    $cid = isset($data['cid'])?$data['cid']:0;
+    unset($data['cid']);
+    if($cid){
+      $this->db->update('`av_cate`',$data,array('cid'=>$cid));
+    }else{
+      $this->db->insert('`av_cate`',$data);
+      $cid = $this->db->insert_id();
+    }
+     return $cid;
+  }
+  public function getVideoCateInfoByid($cid){
+    $sql = sprintf('SELECT * FROM `av_cate` WHERE `cid`=%d LIMIT 1',$cid);
+    $row = $this->db->query($sql)->row_array();
+    return $row;
+  }
   public function setVideoInfoByData($data_head,$data_body){
     $vid = isset($data_head['vid'])?$data_head['vid']:0;
     unset($data_head['vid']);

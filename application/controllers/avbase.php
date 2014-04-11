@@ -13,16 +13,13 @@ class Avbase extends Webbase {
     
     $this->load->helper('rewrite');
     $this->load->model('avmodel');
-/*
     $menuList = $this->mem->get('tv-menuList');
-    if( !empty($menuList)){
-      $menuListA = $this->avmodel->getMenuListById($idstr);
-      $this->_rewrite_list_url($menuListA);
-      $menuListB = $this->avmodel->getMenuListById($idstr);
-      $this->_rewrite_list_url($menuListB);
-      $menuList = array('menuListA'=>$menuListA,'menuListB'=>$menuListB);
-      $this->mem->set('emu-rootCate',$menuList,$this->expirettl['1d']);
+    if( empty($menuList)){
+      $menuList = $this->avmodel->getMenuListById();
+      $this->_rewrite_list_url($menuList);
+      $this->mem->set('av-rootCate',$menuList,$this->expirettl['1d']);
     } 
+/*
     $hotTopic = $this->mem->get('emu-hotTopic');
 //var_dump($hotTopic);exit;
     if(empty($hotTopic)){
@@ -30,14 +27,13 @@ class Avbase extends Webbase {
       $this->_rewrite_article_url($hotTopic);
       $this->mem->set('emu-hotTopic',$hotTopic,$this->expirettl['12h']);
     }
+*/
     $this->assign(array(
-    'seo_info'=>$this->seo_info,
-    ,'showimgapi'=>$this->showimgapi,'error_img'=>$this->showimgapi.'3958009_0000671092.jpg','menuList'=>$menuList,
-    'thumhost'=>'http://i.ed2kers.com','cpid'=>0,'cid'=>0
+    'seo_info'=>$this->seo_info
+    ,'showimgapi'=>$this->showimgapi,'error_img'=>$this->showimgapi.'3958009_0000671092.jpg','menuList'=>$menuList
     ,'editeUrl' => '/edite/index/emuleTopicAdd'
     ));
     $this->_get_postion();
-*/
 //var_dump($this->viewData);exit;
     $this->load->_ci_view_path = 'av/';
   }

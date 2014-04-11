@@ -20,6 +20,7 @@ class avbaseModel extends CI_Model{
     $info['atime'] = date('Y-m-d',strtotime($info['atime']));
     $info['pic'] = $this->getCoverUrl($info['cover']);
     $info['url'] = $this->getUrl('detail',$info['vid']);
+    $info['cateurl'] = $this->getUrl('lists',$info['vid']);
     $info['playurl'] = $this->getUrl('play',$info['vid']);
     $info['vlist'] = $this->getVideoDramaList($info['vid']);
     return $info;
@@ -56,12 +57,14 @@ class avbaseModel extends CI_Model{
     return $list;
   }
   
-  public function getMenuListById($idstr = ''){
-     if( !$idstr){
-       return false;
-     }
-     $sql = sprintf('SELECT * FROM `cate` WHERE `id` IN (%s)', $idstr);
-     return $this->db->query($sql)->result_array();
+  public function getMenuListById(){
+    $sql = 'SELECT * FROM `av_cate`';
+    $list = $this->db->query($sql)->result_array();
+    $return = array();
+    foreach($list as $v){
+      $return[$v['cid']] = $v;
+    }
+    return $return;
   }
   public function getChannelListById($idstr = ''){
      if( !$idstr){
@@ -83,7 +86,9 @@ class avbaseModel extends CI_Model{
        $p2 = $p2 ? $p2 : 1;
        $url = sprintf('/maindex/%s/%d/%d.shtml',$type,$p1,$p2);
      }elseif('lists' == $type){
-       $url = sprintf('/maindex/%s/%d/%d/%d.shtml',$type,$p1,$p2,$p3);
+       $p2 = $p2 ? sprintf('/%d',$p2):'';
+       $p3 = $p3 ? sprintf('/%d',$p3):'';
+       $url = sprintf('/maindex/%s/%d/%s%s.shtml',$type,$p1,$p2,$p3);
      }
      return $url;
   }

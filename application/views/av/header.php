@@ -23,7 +23,6 @@
 <script type="text/javascript" src="<?php echo $js_url;?>language.js"></script>
 <script type="text/javascript">var sitePath='';</script>
 <script src="<?php echo $js_url;?>Commons.js"></script>
-<script src="<?php echo $js_url;?>common.js"></script>
 </head>
 <body>
 <div class="header">
@@ -86,6 +85,7 @@
   </div>
 <!-- // Menu End -->
 </div>
+<?php if(0){?>
 <div class="navBar">
   <div class="nav w960 fa-clear" id="showList">
    <div class="index-tags fa-clear" id="index-tagsb">
@@ -128,5 +128,6 @@ $("#showList .index-tags").stop(true,false).hide().eq(index-1).stop(true,false).
 }
 //smenuTab(0);
 </SCRIPT>
+<?php }?>
 </div>
 </div>

@@ -35,7 +35,6 @@ class Maindex extends Avbase {
   }
   public function detail($vid){
    $info = $this->avmodel->getVideoInfoByid($vid,$this->userInfo['isadmin']);
-//var_dump( $info);exit;
    $this->assign(array('info'=>$info));
    $this->view('index_detail');
   }
