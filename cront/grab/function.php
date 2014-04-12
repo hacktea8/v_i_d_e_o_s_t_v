@@ -1,5 +1,17 @@
 <?php
 
+function write_log($html){
+ $log = ROOTPATH.'cache/not_match_url.txt';
+ if(file_exists($log)){
+  file_put_contents($log,"$html\r\n",FILE_APPEND);
+  return true;
+ }
+ file_put_contents($log,"$html\r\n");
+ return true;
+}
+function debug($var){
+var_dump($var);exit;
+}
 
 /*
 获取配对的标签的内容

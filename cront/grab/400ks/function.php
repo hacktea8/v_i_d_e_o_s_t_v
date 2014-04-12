@@ -9,14 +9,14 @@ function getAsianVideoInfo($html){
  foreach($urlPool as $key=>$u){
   $url = $_domain.$u;
   $html = getHtml($url);
-  $html = iconv('GBK','UTF-8',$html);
+  $html = iconv('GBK','UTF-8//IGNORE',$html);
   preg_match('#<DIV class=player><script type="text/javascript" src="(/playdata/[^"]+)"></script>#Uis',$html,$match);
   $url = $_domain.$match[1];
   $html = getHtml($url);
-  $html = iconv('GBK','UTF-8',$html);
+  $html = iconv('GBK','UTF-8//IGNORE',$html);
   preg_match('#\$(qvod:.+)\$qvod#Uis',$html,$match);
   
-  $info['vlist'][] = array('title'=>$titlePool[$key],'playnum'=>$key+1,'playurl'=>$match[1]);
+  $info[] = array('title'=>$titlePool[$key],'playnum'=>$key+1,'playurl'=>$match[1]);
   
  }
  return $info;

@@ -16,15 +16,35 @@ class avmodel{
   $row = $this->db->row_array($sql);
   return isset($row['vid'])?$row['vid']:0;
  }
+ public function addCate($title){
+  if(!$title){
+   return 0;
+  }
+  $fields='`cid`';
+  $where = array('`title`='=>$title);
+  $sql = $this->db->select_string('`av_cate`',$fields,$where,$order='',$limit='1');
+  $row = $this->db->row_array($sql);
+  if(isset($row['cid'])){
+   return $row['cid'];
+  }
+  $data = array('title'=>$title);
+  $sql = $this->db->insert_string('`av_cate`',$data);
+  $this->db->query($sql);
+  $cid = $this->db->insert_id();
+  return $cid;
+ }
  public function addVideoByData($data){
   if(!$data['title']){
    return 0;
   }
-  $data_head = $this->copy_array($data,array('keyname','avkey','title','mosaic','flag','thum'));
+  $cid = $this->addCate($data['cate']);
+  
+  $data_head = $this->copy_array($data,array('keyword','atime','avkey','title','mosaic','flag','thum'));
+  $data_head['cid'] = $cid;
   $sql = $this->db->insert_string('`av_video_head`',$data_head);
   $this->db->query($sql);
   $vid = $this->db->insert_id();
-  $data_body = $this->copy_array($data,array('intro','playmode','ourl','keyword'));
+  $data_body = $this->copy_array($data,array('intro','playmode','ourl'));
   $data_body['vid'] = $vid;
   $sql = $this->db->insert_string('`av_video_body`',$data_body);
   $this->db->query($sql);
