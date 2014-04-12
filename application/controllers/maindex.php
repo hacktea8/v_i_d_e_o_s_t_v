@@ -34,6 +34,7 @@ class Maindex extends Avbase {
    $this->view('index_lists');
   }
   public function detail($vid){
+   $vid = intval($vid);
    $info = $this->avmodel->getVideoInfoByid($vid,$this->userInfo['isadmin']);
    $this->assign(array('info'=>$info));
    $this->view('index_detail');
@@ -42,10 +43,15 @@ class Maindex extends Avbase {
    $this->view('index_expired');
   }
   public function play($vid,$playnum = 1){
+   $vid = intval($vid);
+   $playnum = intval($playnum);
+   //判断是否有权限观看
+   $lastFreeLog = 1;
+   
    $info = $this->avmodel->getVideoPlayInfoByid($vid,$playnum);
    $playerMap = array(1=>'playfile.php',2=>'outplayer.php',3=>'download.php',4=>'baidu.php',5=>'qvod.php');
    $info['player'] = $playerMap[$info['playmode']];
-//var_dump( $info);exit;
+//var_dump($info);exit;
    $this->assign(array('info'=>$info));
    $this->view('index_play');
   }

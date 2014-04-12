@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require_once 'webbase.php';
 class Avbase extends Webbase {
-   
+  public $player_config = array('width'=>960,'height'=>500,'autoplay'=>'true');
   public $seo_info = array('title' => '首页',
                    'keywords' => '',
                    'description' => ''
@@ -11,14 +11,16 @@ class Avbase extends Webbase {
   public function __construct(){
     parent::__construct();
     
-    $this->load->helper('rewrite');
     $this->load->model('avmodel');
-    $menuList = $this->mem->get('tv-menuList');
+    $menuList = $this->mem->get('avtv-menuList');
     if( empty($menuList)){
       $menuList = $this->avmodel->getMenuListById();
-      $this->_rewrite_list_url($menuList);
-      $this->mem->set('av-rootCate',$menuList,$this->expirettl['1d']);
+      $menuListA = array_slice($menuList,0,3);
+      $menuListB = array_slice($menuList,3);
+      $menuList = array('menuListA'=>$menuListA,'menuListB'=>$menuListB);
+      $this->mem->set('avtv-menuList',$menuList,$this->expirettl['1d']);
     } 
+    $channel = array_merge($menuList['menuListA'],$menuList['menuListB']);
 /*
     $hotTopic = $this->mem->get('emu-hotTopic');
 //var_dump($hotTopic);exit;
@@ -30,10 +32,9 @@ class Avbase extends Webbase {
 */
     $this->assign(array(
     'seo_info'=>$this->seo_info
-    ,'showimgapi'=>$this->showimgapi,'error_img'=>$this->showimgapi.'3958009_0000671092.jpg','menuList'=>$menuList
-    ,'editeUrl' => '/edite/index/emuleTopicAdd'
+    ,'showimgapi'=>$this->showimgapi,'error_img'=>$this->showimgapi.'3958009_0000671092.jpg','menuList'=>$menuList,'channel'=>$channel
+    ,'player_config'=>$this->player_config,'editeUrl' => '/edite/index/emuleTopicAdd'
     ));
-    $this->_get_postion();
 //var_dump($this->viewData);exit;
     $this->load->_ci_view_path = 'av/';
   }

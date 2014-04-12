@@ -2,7 +2,7 @@
  <div class="ad960 mt10 mb10">954*80 顶部广告位</div>
  <div class="maxBox mt10">
   <div class="box">
-   <div class="tips">当前位置：<a href="/">首页</a>&gt;<a href="<?php echo $info['cateurl'];?>"><?php echo $channel[$info['cid']]['title'];?></a></div>
+   <div class="tips">当前位置：<a href="/">首页</a>&gt;<a href="<?php echo $channel[$info['cid']]['url'];?>"><?php echo $channel[$info['cid']]['title'];?></a></div>
   </div>
  </div>
  <div class="maxBox mb10 mt10">
@@ -48,9 +48,9 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <?php } ?>
      <dl class="Type">
      <dt>类型：</dt>
-     <dd><?php foreach($info['type'] as $v){
-     echo "<a href=\"$v[url]\">$v[title]</a> | ";
-     } ?></dd>
+     <dd>
+<a href="<?php echo $channel[$info['cid']]['url'];?>"><?php echo $channel[$info['cid']]['title'];?></a>
+     </dd>
      </dl>
      <dl class="Time">
      <dt style="width:60px">马赛克：</dt>

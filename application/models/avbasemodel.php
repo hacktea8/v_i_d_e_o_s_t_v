@@ -62,6 +62,7 @@ class avbaseModel extends CI_Model{
     $list = $this->db->query($sql)->result_array();
     $return = array();
     foreach($list as $v){
+      $v['url'] = $this->getUrl('lists',$v['cid']);
       $return[$v['cid']] = $v;
     }
     return $return;
