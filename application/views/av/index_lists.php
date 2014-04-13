@@ -1,42 +1,10 @@
 <div class="wrap w960">
  <div class="maxBox lb mb10 mt10">
   <div class="filter_select_con">
-   <div class="filter_select_con_th"><a href="/casecade.php" class="resetBtn">重置条件</a><span class="sNum">
-    <h1></h1>
-    </span><span class="sMark">影片索引</span><span class="filter_select_con_hot"><!--a href="#" style="color:red;">X</a--></span>
-   </div>
-   <div class="filter_select_con_tb clearfix">
-   <!--dl class="p2">
-   <dt></dt>
-   <dd></dd>
-   </dl-->
-   <dl class="p3">
-    <dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">按地区</b>|</dt>
-    <dd><?php foreach($arealist as $v){?>
-<a href='<?php echo $v['url'];?>'><?php echo $v['title'];?></a><em>|</em>
-<?php }?>
-</dd>
-  </dl>
-<?php if(0){?>
-  <dl class="p4">
-   <dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">按年份</b>|</dt>
-    <dd>{pipicms:yearcaslist}<a href='[yearcaslist:link]&tid={pipicms:currenttypeid}'>[yearcaslist:value]</a><em>|</em>{/pipicms:yearcaslist}</dd>
-  </dl>
-  <dl>
-  <dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">按语言</b>|</dt>
-   <dd>{pipicms:langcaslist}<a href='[langcaslist:link]&tid={pipicms:currenttypeid}'>[langcaslist:value]</a><em>|</em>{/pipicms:langcaslist}</dd>
-  </dl>
-  <dl>
-  <dt><b style="color:#00ADFF;font-weight:bold;margin: 0 5px;">首字母</b>|</dt>
-   <dd>{pipicms:lettercaslist}<a href='[lettercaslist:link]&tid={pipicms:currenttypeid}'>[lettercaslist:value]</a><em>|</em>{/pipicms:lettercaslist}</dd>
-  </dl>
-<?php }?>
-  </div>
- </div>
 </div>
 <div class="maxBox mt10 mb10">
  <div class="box">
-  <div class="tips">当前位置：{channelpage:typetext}</div>
+  <div class="tips">当前位置：<a href="/">首页</a>&gt;<a href="<?php echo $channel[$cid]['url'];?>"><?php echo $channel[$cid]['title'];?></a></div>
  </div>
 </div>
 <div class="ad960 mt10 mb10">954*80 顶部广告位</div>
@@ -47,7 +15,6 @@
     <div class="caption fa-clear">
      <h3 class="hide-self fa-left"><?php echo $channel[$cid]['title'];?>月排行</h3>
      <span>
-<!--<a href="/film9/">更多</a>-->
      </span>
     </div>
     <div class="content">
@@ -80,8 +47,7 @@
   <div class="box">
    <div class="caption bigCaption channel-title fa-clear">
     <h2 class="hide-self fa-left"><?php echo $channel[$cid]['title'];?></h2>
-   <div class="fenye fa-right" {if:"{channellist:recordcount}"<"10"}style="display:none;"{end if} >
-	{channellist:page} / {channellist:pagecount} {if:"{channellist:page}"="1"}<a href="{channellist:nextlink}" class="xyy">下一页</a>{elseif:{channellist:page}={channellist:pagecount}}<a href="{channellist:backlink}" class="syy">上一页</a>{else}<a href="{channellist:backlink}" class="syy">上一页</a><a href="{channellist:nextlink}" class="xyy">下一页</a>{end if}
+   <div class="fenye fa-right">
   </div>
  </div>
 <div class="channel-content">

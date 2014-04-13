@@ -11,5 +11,26 @@
  <p class="copyrightzh">联系我们：xxx@xxx.com</p>
  <p class="dn">{pipicms:sitevisitjs}</p>
 </div>
+<script type="text/javascript">
+function _Userlogin(){
+  var timer=null;
+  var _hide=function(){
+    $('.iconList').hide();$('.dropMenu').hide();}
+  var init=function(){
+    $('#user_login').mouseout(function(){
+      timer=setTimeout(_hide,500);});
+    $('#user_login').mouseover(function(){
+     clearTimeout(timer);
+     if($('.iconList').is(":visible") || $('.dropMenu').is(":visible")){
+       return false;}
+     $.get('/<?php echo $_c;?>/isUserInfo/',function(data){
+       if(data.status==1){
+         $('.iconList').show();$('.dropMenu').hide();
+       }else{
+         $('.iconList').hide();$('.dropMenu').show();}
+      },"json");});}
+  init();}
+_Userlogin();
+</script>
 </body>
 </html>

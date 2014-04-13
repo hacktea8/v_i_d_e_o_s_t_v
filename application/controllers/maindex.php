@@ -30,7 +30,8 @@ class Maindex extends Avbase {
    $cid = intval($cid);
    $order = intval($order);
    $page = intval($page);
-   $this->assign(array());
+   $channelList = $this->avmodel->getVideoListByCid($cid,$order,$page,$limit=25,$where = array('`flag`=1'));
+   $this->assign(array('channelList'=>$channelList,'cid'=>$cid,'order'=>$order,'page'=>$page));
    $this->view('index_lists');
   }
   public function detail($vid){
@@ -43,19 +44,50 @@ class Maindex extends Avbase {
    $this->view('index_expired');
   }
   public function play($vid,$playnum = 1){
+   if(!$this->userInfo['uid']){
+     $this->detail($vid);return false;
+   }
    $vid = intval($vid);
    $playnum = intval($playnum);
    //判断是否有权限观看
    $lastFreeLog = 1;
+   if(!$this->userInfo['isvip']){
+     $log = $this->avmodel->getUserWatchLog($this->userInfo['uid'],12);
+     if(count($log) <= $this->userInfo['watch'] && !in_array($vid,$log)){
+       $lastFreeLog = 0;
+     }
+   }
    
    $info = $this->avmodel->getVideoPlayInfoByid($vid,$playnum);
    $playerMap = array(1=>'playfile.php',2=>'outplayer.php',3=>'download.php',4=>'baidu.php',5=>'qvod.php');
    $info['player'] = $playerMap[$info['playmode']];
 //var_dump($info);exit;
-   $this->assign(array('info'=>$info));
+   $this->assign(array('info'=>$info,'lastFreeLog'=>$lastFreeLog));
+   if(!$lastFreeLog){
+     $this->avmodel->addUserWatchLog($this->userInfo['uid'],$vid);
+   }
    $this->view('index_play');
+  }
+  public function isUserInfo(){
+    $data = array('status'=>0);
+    if( isset($this->userInfo['uid']) && $this->userInfo['uid']){
+       $data['status'] = 1;
+    }
+    die(json_encode($data));
   }
   public function loginout(){
    $this->logout();
+  }
+  public function login(){
+   $url = $this->viewData['login_url'].urlencode($this->_r);
+   header('Location: ',$url);
+  }
+  public function crondtab(){
+   $fname = APPPATH.'../public/crondtable.txt';
+   if(file_exists($fname) && (time() - fileatime($fname))< 12*3600){
+     return false;
+   }
+echo 111;exit;
+   $this->avmodel->onlinevideo(3);
   }
 }

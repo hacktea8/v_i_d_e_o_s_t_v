@@ -46,7 +46,7 @@ for($page = 1;;$page ++){
   $post_data['keyword'] = $actorPool[$key];
   $post_data['thum'] = $coverPool[$key];
   $post_data['vlist'] = $info;
-  $post_data['atime'] = date('Ymd');
+  $post_data['atime'] = $global_atime;
 //debug($post_data);
   $vid = $m->addVideoByData($post_data);
   echo "\n++ Add video $title Vid:$vid OK! \n";sleep(3);

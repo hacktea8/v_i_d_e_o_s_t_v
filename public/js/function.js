@@ -1,3 +1,11 @@
+function MasklayerDiv(div,left,tops,bottom,right){
+var obj = jQuery(div);var width=height=posL=posT=0;
+height = obj.height()+tops+bottom;width=obj.width()+left+right;
+posL=obj.offset().left;posT=obj.offset().top;
+obj = jQuery("#MasklayerPlayer")
+obj.css({'width':width+'px','height':height+'px','top':posT+'px','left':posL+'px'});
+return true;
+}
 var ajax = new AJAX();ajax.setcharset("utf-8");
 function reportErr(id){openWin("/"+sitePath+"js/err.html?id="+id,400,220,350,250,0)}
 

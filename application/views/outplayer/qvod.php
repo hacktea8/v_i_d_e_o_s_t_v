@@ -1,5 +1,6 @@
+<?php if($uinfo['isvip'] || !$lastFreeLog){?>
 <script language="javascript" type="text/javascript" src="<?php echo $js_url;?>player/jquery.qvod.min.js"></script>
-<div id="player" style="width:<?php echo $player_config['width'];?>px; height:<?php echo $player_config['height'];?>px;"></div>
+<div id="qplayer" style="width:<?php echo $player_config['width'];?>px; height:<?php echo $player_config['height'];?>px;"></div>
 <script type="text/javascript">
 $(function(){
 //页面加载自动打开播放器
@@ -10,7 +11,7 @@ var adUrl = "<?php echo $ads['playbuffer'];?>";
 //下一集播放页面 播放结束自动跳转到该页面
 var nextpage = "<?php echo $info['nexturl'];?>";
 //调用播放器
-$("#player").qvod({PlayerArea:"player", AdUrl:adUrl,width:"<?php echo $player_config['width'];?>", height:"<?php echo $player_config['height'];?>", AutoPlay:"<?php echo $player_config['autoplay'];?>",QvodUrl:url,NextWebPage:nextpage, NextQvod:nextqvod});
+$("#qplayer").qvod({PlayerArea:"qplayer", AdUrl:adUrl,width:"<?php echo $player_config['width'];?>", height:"<?php echo $player_config['height'];?>", AutoPlay:"<?php echo $player_config['autoplay'];?>",QvodUrl:url,NextWebPage:nextpage, NextQvod:nextqvod});
 /*参数说明*/
 //width: "500", /*播放器的宽度*/		
 //height: "400", /*播发器的高度*/
@@ -34,3 +35,6 @@ $("#player").qvod({PlayerArea:"player", AdUrl:adUrl,width:"<?php echo $player_co
 //该插件，能自动根据用户观看影片上一集是否全屏，设置自动跳转之后下一集的全屏状态。
 });
 </script>
+<?php }else{?>
+No VIP
+<?php }?>

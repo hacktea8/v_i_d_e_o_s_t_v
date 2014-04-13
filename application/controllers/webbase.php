@@ -31,6 +31,7 @@ class Webbase extends CI_Controller {
         if($uinfo){
           $this->userInfo = array_merge($this->userInfo,$uinfo);
           $this->userInfo['isadmin'] = $this->checkIsadmin($return = 1);
+          $this->userInfo['isvip'] = $this->userInfo['isadmin'] ? 2 : $this->userInfo['isvip'];
           $this->session->set_userdata(array('user_logindata'=>$this->userInfo));
         }
       }

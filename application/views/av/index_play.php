@@ -1,4 +1,5 @@
 <div class="PlayBody">
+<div id="MasklayerPlayer" style="position: absolute; z-index: 999;"></div>
   <div class="play">
     <div class="pl fa-left">
       <div class="player" id="player">
@@ -32,8 +33,6 @@
   </div>
  </div>
  <?php }?>
-<script>PlayHistoryObj.addPlayHistory('<?php echo $info['title'],$info['playnum'];?>',location.href)</script>
-</div>
  <div class="maxBox mb10">
   <div class="box BigBox">
    <div class="title">
@@ -42,4 +41,7 @@
   </div>
  </div>
 </div>
+</div>
+<script type="text/javascript">
+//PlayHistoryObj.addPlayHistory('<?php echo $info['title'],$info['playnum'];?>',location.href)</script>
 </div>

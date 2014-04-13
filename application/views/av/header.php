@@ -7,11 +7,11 @@
 <meta name="description" content="<?php echo $seo_info['description'];?>" />
 <link href="<?php echo $css_url;?>Common.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $css_url,$_c,'_',$_a;?>.css" rel="stylesheet" type="text/css" />
-<?php if(in_array($_a,array('content','play'))){ ?>
-<link href="<?php echo $css_url;?>channel.css" rel="stylesheet" type="text/css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <script src="<?php echo $js_url;?>common.js"></script>
 <script src="<?php echo $js_url;?>function.js"></script>
+<?php if(in_array($_a,array('content','play'))){ ?>
+<link href="<?php echo $css_url;?>channel.css" rel="stylesheet" type="text/css" />
 <?php } ?>
 <?php if('play' === $_a){ ?>
 <?php }elseif('channel_tv' === $_a){ ?>
@@ -29,14 +29,51 @@
   <div class="topBar">
     <div class="w960">
       <div class="Top-sign fa-left"><?php echo $web_title;?>欢迎您光临！</div>
-	<div class="Top-a fa-right">
+	<div class="Top-a fa-right" style="width:510px;">
 	  <p>
 	   <a href="#" id="a-gbook">网站留言</a><em>&nbsp;</em>
            <a href="/allmovie.html" id="a-all">最新更新</a><em>&nbsp;</em>
 	   <a id="a-home" href="javascript:void(0);" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('<?php echo $siteurl;?>')">设为首页</a><em>&nbsp;</em>
 	   <a id="a-sc" href="javascript:void(0);" onclick="javascript:window.external.AddFavorite('<?php echo $siteurl;?>', '<?php echo $web_title;?>')">加入收藏</a><em>&nbsp;</em>
-	   <a class="color" href="javascript:transformLan();" id="a-lang" title="點擊以繁體中文方式浏覽" name="a-lang">繁體中文切換</a>
-	 </p>
+	   <a class="color" href="javascript:transformLan();" id="a-lang" title="點擊以繁體中文方式浏覽" name="a-lang">繁體中文切換</a><em>&nbsp;</em>
+</p>
+          <div id="header_login">
+<span class="link_box">
+<ul>
+<?php if(0){ ?>
+        <li type="history" name="dropmenu" class="watching" status="hide"
+                original_class="watching"><a
+                onclick=""
+                class="watching_item" href="javascript: void(0);">我正在看
+<span
+                class="top_arrow"></span></a></li>
+<?php }
+?>
+  <li>
+   <div id="user_login">
+   <span class="user">Œ</span>
+   <div class="iconList" style="display: none;">
+   <ul>
+<?php if(0){ ?>
+    <li><a href="/history/" title="我看過的"><em class="watch">图片</em>我
+看過的</a></li>
+    <li><a href="/bookmark/" title="我的書簽"><em class="iconfont">ŷ</em><cite>我的書簽</cite></a></li>
+<?php } ?>
+<li><a href="/<?php echo $_c;?>/fav/" title="我的收藏"><em class="iconfont">ũ</em><cite>我的收藏</cite></a></li>
+    <li><a href="/<?php echo $_c;?>/loginout" title="登出"><em class="iconfont">ơ</em><cite>登出</cite></a></li>
+   </ul>
+   </div>
+   <div class="dropMenu" style="display: none;">
+   <ul>
+    <li><a class="btn" title="登入" href="/<?php echo $_c;?>/login">登入</a></li>
+   </ul>
+   </div>
+  </div>
+   <?php echo '<a href="'.$loginurl.'" title="'.$logintitle.'">'.$logintitle.'</a>';?>
+  </li>
+</ul>
+</span></div>
+</div>
        </div>
      </div>
    </div>
