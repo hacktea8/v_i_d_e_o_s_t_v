@@ -15,15 +15,15 @@
 |
 */
 $config['base_url']	= '';
-$config['admin_email']	= 'emu$hacktea8.com($ => @)';
+$config['admin_email']	= '59iav8faq$gmail.com($ => @)';
 $config['js_url']	= '/public/js/';
 $config['css_url']	= '/public/css/';
 $config['img_url']	= '/public/images/';
 $config['adm_js_url']	= '/public/js/admin/';
 $config['adm_css_url']	= '/public/css/admin/';
 $config['adm_img_url']	= '/public/images/admin/';
-$config['domain']	= 'emu.hacktea8.com';
-$config['web_title']	= '电驴BT资源分享';
+$config['domain']	= 'www.59iav8.com';
+$config['web_title']	= '我就爱AV吧';
 $config['login_url']	= 'http://www.hacktea8.com/member.php?mod=logging&action=login&goto=';
 
 

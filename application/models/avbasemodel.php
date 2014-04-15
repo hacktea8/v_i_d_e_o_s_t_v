@@ -37,16 +37,18 @@ class avbaseModel extends CI_Model{
     }
     return $return;
   }
-  public function getVideoListByCid($cid='',$order=0,$page=1,$limit=25,$where = array('`flag`=1')){
+  public function getVideoListByCid($cid='',$order=0,$page=1,$limit=25,$where = array('`flag`=1'),$isadmin = 0){
     $start = ($page-1)*$limit;
     $orderMap = array('`atime` DESC');
     $order = isset($orderMap[$order])?$orderMap[$order]:array_pop($orderMap);
     if($cid >0){
       $where[] = sprintf("`cid`=%d",$cid);
     }
-    $where[] = sprintf("`atime`<=%d",date('Ymd'));
+    if(!$isadmin)
+      $where[] = sprintf("`atime`<=%d",date('Ymd'));
     $where = implode(' AND ',$where);
-    $sql = sprintf("SELECT %s FROM `av_video_head` WHERE %s ORDER BY %s LIMIT %d,%d",$this->_dataListStruct,$where,$order,$start,$limit);
+    $where = $where ? ' WHERE '.$where : '';
+    $sql = sprintf("SELECT %s FROM `av_video_head` %s ORDER BY %s LIMIT %d,%d",$this->_dataListStruct,$where,$order,$start,$limit);
     $list = $this->db->query($sql)->result_array();
     foreach($list as &$v){
       $v['pic'] = $this->getCoverUrl($v['cover']);

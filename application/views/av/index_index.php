@@ -491,6 +491,6 @@
     	<a href="javascript:window.scrollTo(0, 0);" class="backTop"></a>
     	<div class="fa-clear"></div>
     </div>
-	<script type="text/javascript" src="images/../js/SiteEnd.js"></script>
+	<script type="text/javascript" src="<?php echo $js_url;?>SiteEnd.js"></script>
 </div>
 <!--网站底部-->

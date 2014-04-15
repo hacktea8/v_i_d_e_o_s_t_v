@@ -7,7 +7,7 @@
 <meta name="description" content="<?php echo $seo_info['description'];?>" />
 <link href="<?php echo $css_url;?>Common.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $css_url,$_c,'_',$_a;?>.css" rel="stylesheet" type="text/css" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="<?php echo $js_url;?>common.js"></script>
 <script src="<?php echo $js_url;?>function.js"></script>
 <?php if(in_array($_a,array('content','play'))){ ?>
@@ -31,10 +31,12 @@
       <div class="Top-sign fa-left"><?php echo $web_title;?>欢迎您光临！</div>
 	<div class="Top-a fa-right" style="width:510px;">
 	  <p>
-	   <a href="#" id="a-gbook">网站留言</a><em>&nbsp;</em>
+	   <a href="/support/faq#sendmessage" id="a-gbook">网站留言</a><em>&nbsp;</em>
+<?php if(0){?>
            <a href="/allmovie.html" id="a-all">最新更新</a><em>&nbsp;</em>
-	   <a id="a-home" href="javascript:void(0);" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('<?php echo $siteurl;?>')">设为首页</a><em>&nbsp;</em>
-	   <a id="a-sc" href="javascript:void(0);" onclick="javascript:window.external.AddFavorite('<?php echo $siteurl;?>', '<?php echo $web_title;?>')">加入收藏</a><em>&nbsp;</em>
+<?php }?>
+	   <a id="a-home" href="javascript:void(0);" onclick="">设为首页</a><em>&nbsp;</em>
+	   <a id="a-sc" href="javascript:void(0);" onclick="">加入收藏</a><em>&nbsp;</em>
 	   <a class="color" href="javascript:transformLan();" id="a-lang" title="點擊以繁體中文方式浏覽" name="a-lang">繁體中文切換</a><em>&nbsp;</em>
 </p>
           <div id="header_login">
@@ -79,9 +81,9 @@
    </div>
    <div class="headerContent clearfix">
     <div class="headerLogo fa-left">
-     <a href="<?php echo $siteurl;?>">
+     <a href="/maindex">
       <img src="<?php echo $img_url;?>headerLogoBg.gif" width="250" height="57" title="<?php echo $web_title;?>" alt="<?php echo $web_title;?>"></a>
-      <span><?php echo $web_title;?>(<?php echo $domain_url;?>)</span>
+      <span><?php echo $web_title;?>(<?php echo $domain;?>)</span>
     </div>
     <div class="headerSearch fa-right">
      <div class="SearchTop">
@@ -93,6 +95,7 @@
 	 </div>
 	 </form>
        </div>
+<?php if(0){?>
        <div class="headerHistory" id="headerHistory">
        <span class="spanB">
        <a href="/top.html">最新排行榜</a>
@@ -101,6 +104,7 @@
   <div class="clear">
   </div>
 </div>
+<?php }?>
 </div>
 <div class="searchHotWords" id="searchHotWords">热门搜索：<?php echo $hot_keywords;?></div>
 </div>
@@ -167,4 +171,8 @@ $("#showList .index-tags").stop(true,false).hide().eq(index-1).stop(true,false).
 </SCRIPT>
 <?php }?>
 </div>
+</div>
+<div id="notetips"><?php if($uinfo['isvip'] < 1){?>温馨提示:<?php if(!$uinfo['uid']){?>您未登录,不能免费观看影片！<a href="/<?php echo $_c;?>/login">请登录</a><?php }?>
+<?php if($uinfo['uid']){?>您的账户不是VIP,24小时之内免费观看1部影片<a href="/payment/">立即升级VIP</a><?php }?>
+<?php }?>
 </div>

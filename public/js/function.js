@@ -6,7 +6,6 @@ obj = jQuery("#MasklayerPlayer")
 obj.css({'width':width+'px','height':height+'px','top':posT+'px','left':posL+'px'});
 return true;
 }
-var ajax = new AJAX();ajax.setcharset("utf-8");
 function reportErr(id){openWin("/"+sitePath+"js/err.html?id="+id,400,220,350,250,0)}
 
 function AddFav(vid,uid)

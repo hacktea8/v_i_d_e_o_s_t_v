@@ -4,9 +4,17 @@
     <div class="pl fa-left">
       <div class="player" id="player">
 <?php
- $playerFile = APPPATH.'views/outplayer/'.$info['player'];
- if(file_exists($playerFile)){
-   require_once $playerFile;
+ if($uinfo['isvip'] > 0 || !$lastFreeLog){
+   $playerFile = APPPATH.'views/outplayer/'.$info['player'];
+   if(file_exists($playerFile)){
+     require_once $playerFile;
+   }
+ }else{
+?>
+ <div class="noplaytips">
+ <div>温馨提示:您未登录 或者 您不是VIP会员并且免费的福利已经使用完了？！建议<a href="/payment">立即升级VIP</a> 或 <a href="/<?php echo $_c;?>/login">立即登录</a></div> 
+ </div>
+<?php
  }
  ?>
   </div>

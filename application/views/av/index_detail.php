@@ -133,7 +133,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   </div>
   <div class="js">
    <p><?php echo $info['intro'];?></p>
-   <p>温馨提示：您正在观看的“<?php echo $info['title'];?>》在线观看”的剧情介绍来自于[<font style="text-transform:uppercase;"><?php echo $siteurl;?></font>-<?php echo $sitename;?>，如果您喜欢本站，请推荐给您的朋友，谢谢您的支持! 最后更新：<font color="red"><?php echo $info['atime'];?></font></p>
+   <p>温馨提示：您正在观看的“<?php echo $info['title'];?>》在线观看”的剧情介绍来自于[<font style="text-transform:uppercase;"><?php echo $web_title;?></font>-<?php echo $domain;?>，如果您喜欢本站，请推荐给您的朋友，谢谢您的支持! 最后更新：<font color="red"><?php echo $info['atime'];?></font></p>
   </div>
   </div>
 </div>

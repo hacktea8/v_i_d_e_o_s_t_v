@@ -22,6 +22,11 @@ class Avadmin extends Admbase {
    $this->assign(array('type'=>$type));
    $this->view($this->_c.'_index_left');
  }
+ public function avchecklist($page = 1){
+   $lists = $this->admavmodel->getVideoListByCid($cid=0,$order=0,$page,$limit=25,$where = array(),1);
+   $this->assign(array('lists'=>$lists));
+   $this->view($this->_c.'_avlist');
+ }
  public function avlist($page = 1){
    $lists = $this->admavmodel->getVideoListByCid($cid=0,$order=0,$page,$limit=25,$where = array());
    $this->assign(array('lists'=>$lists));

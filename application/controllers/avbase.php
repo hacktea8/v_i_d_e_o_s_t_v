@@ -34,6 +34,7 @@ class Avbase extends Webbase {
     'seo_info'=>$this->seo_info
     ,'showimgapi'=>$this->showimgapi,'error_img'=>$this->showimgapi.'3958009_0000671092.jpg','menuList'=>$menuList,'channel'=>$channel
     ,'player_config'=>$this->player_config,'editeUrl' => '/edite/index/emuleTopicAdd'
+    ,'siteurl'=>$this->config->item('base_url')
     ));
 //var_dump($this->viewData);exit;
     $this->load->_ci_view_path = 'av/';

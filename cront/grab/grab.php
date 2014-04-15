@@ -18,6 +18,9 @@ exit;
 }
 //var_dump($list);exit;
 foreach($list as $val){
+if('http://' != substr($val['thum'],0,7)){
+  $val['thum'] = 'http://www.400ks.com/'.$val['thum'];
+}
 echo "== $val[thum] ==\n";
 $data['imgurl'] = $val['thum'];
 $cover = getHtml($data);

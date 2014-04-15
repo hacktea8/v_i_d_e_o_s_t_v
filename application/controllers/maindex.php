@@ -80,7 +80,7 @@ class Maindex extends Avbase {
   }
   public function login(){
    $url = $this->viewData['login_url'].urlencode($this->_r);
-   header('Location: ',$url);
+   redirect($url);
   }
   public function crondtab(){
    $fname = APPPATH.'../public/crondtable.txt';
