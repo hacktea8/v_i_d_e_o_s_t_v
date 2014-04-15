@@ -84,10 +84,16 @@ class Maindex extends Avbase {
   }
   public function crondtab(){
    $fname = APPPATH.'../public/crondtable.txt';
+   if(file_exists($fname) && (time() - fileatime($fname))> 600){
+     //升级 失败的VIP
+     
+   }
    if(file_exists($fname) && (time() - fileatime($fname))< 12*3600){
      return false;
    }
 echo 111;exit;
+   //影片自动上架
    $this->avmodel->onlinevideo(3);
+   
   }
 }

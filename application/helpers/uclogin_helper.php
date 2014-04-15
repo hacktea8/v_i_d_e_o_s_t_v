@@ -21,6 +21,21 @@ if( !function_exists('check_is_spider')){
  }
 }
 
+if( !function_exists('add_user_vip_group')){
+  function add_user_vip_group($post_data){
+    $key = '';
+    $param = strtrip($post_data,$key);
+    $context['http'] = array(
+      'method' => 'get',
+      'timeout' => 120,
+    );
+    $ct = stream_context_create($context);
+    $url = sprintf('http://www.hacktea8.com/51pay/payvip.php?%s',$param);
+    $html = file_get_contents($url,false,$ct);
+    return $html;
+  }
+}
+
 if ( ! function_exists('strcode'))
 {
  function strcode($string, $encode = true, $apikey = '') {
