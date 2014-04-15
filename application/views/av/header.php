@@ -61,13 +61,13 @@
 看過的</a></li>
     <li><a href="/bookmark/" title="我的書簽"><em class="iconfont">ŷ</em><cite>我的書簽</cite></a></li>
 <?php } ?>
-<li><a href="/<?php echo $_c;?>/fav/" title="我的收藏"><em class="iconfont">ũ</em><cite>我的收藏</cite></a></li>
-    <li><a href="/<?php echo $_c;?>/loginout" title="登出"><em class="iconfont">ơ</em><cite>登出</cite></a></li>
+<li><a href="/maindex/fav/" title="我的收藏"><em class="iconfont">ũ</em><cite>我的收藏</cite></a></li>
+    <li><a href="/maindex/loginout" title="登出"><em class="iconfont">ơ</em><cite>登出</cite></a></li>
    </ul>
    </div>
    <div class="dropMenu" style="display: none;">
    <ul>
-    <li><a class="btn" title="登入" href="/<?php echo $_c;?>/login">登入</a></li>
+    <li><a class="btn" title="登入" href="/maindex/login">登入</a></li>
    </ul>
    </div>
   </div>

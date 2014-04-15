@@ -1,0 +1,6 @@
+.center{width:70%;height:600px;margin:0 auto;border:5px dotted blue;}
+.fload_left{float:left;margin-left:30px;margin-top:30px;}
+.fload_right{float:left;margin-left:30px;margin-top:30px;}
+div h3 strong{color:red;}
+.tips ul li{font-size:28px;color:blue;clear:both;margin-left:20px;}
+.uinfo{border:5px dotted red;margin-left:30px;margin-top:30px;font-size:28px;color:blue;}

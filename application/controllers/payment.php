@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require_once 'webbase.php';
-class Payment extends Webbase{
+require_once 'avbase.php';
+class Payment extends Avbase{
   public function __construct(){
     parent::__construct();
 //    $this->load->model('indexmodel');

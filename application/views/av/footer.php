@@ -30,7 +30,7 @@ function _Userlogin(){
      clearTimeout(timer);
      if($('.iconList').is(":visible") || $('.dropMenu').is(":visible")){
        return false;}
-     $.get('/<?php echo $_c;?>/isUserInfo/',function(data){
+     $.get('/maindex/isUserInfo/',function(data){
        if(data.status==1){
          $('.iconList').show();$('.dropMenu').hide();
        }else{
