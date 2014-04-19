@@ -30,8 +30,17 @@ class Maindex extends Avbase {
    $cid = intval($cid);
    $order = intval($order);
    $page = intval($page);
-   $channelList = $this->avmodel->getVideoListByCid($cid,$order,$page,$limit=25,$where = array('`flag`=1'));
-   $this->assign(array('channelList'=>$channelList,'cid'=>$cid,'order'=>$order,'page'=>$page));
+   $limit=25;
+   $channelList = $this->avmodel->getVideoListByCid($cid,$order,$page,$limit,$where = array('`flag`=1'));
+   $count = intval($this->viewData['channel'][$cid]['total']);
+   $this->load->library('pagination');
+   $config['base_url'] = sprintf('/%s/%s/%d/%d/',$this->_c,$this->_a,$cid,$order);
+   $config['total_rows'] = $count;
+   $config['per_page'] = $limit;
+   $config['cur_page'] = $page;
+   $this->pagination->initialize($config);
+   $page_string = $this->pagination->create_links();
+   $this->assign(array('page_string'=>$page_string,'channelList'=>$channelList,'cid'=>$cid,'order'=>$order,'page'=>$page));
    $this->view('index_lists');
   }
   public function detail($vid){
@@ -63,7 +72,7 @@ class Maindex extends Avbase {
    $info['player'] = $playerMap[$info['playmode']];
 //var_dump($info);exit;
    $this->assign(array('info'=>$info,'lastFreeLog'=>$lastFreeLog));
-   if(!$lastFreeLog){
+   if(!$lastFreeLog && !in_array($vid,$log)){
      $this->avmodel->addUserWatchLog($this->userInfo['uid'],$vid);
    }
    $this->view('index_play');
@@ -91,9 +100,14 @@ class Maindex extends Avbase {
    if(file_exists($fname) && (time() - fileatime($fname))< 12*3600){
      return false;
    }
-echo 111;exit;
+//echo 111;exit;
    //影片自动上架
    $this->avmodel->onlinevideo(3);
-   
+   //更新影片分类数量
+   foreach($this->viewData['channel'] as $v){
+     $this->avmodel->setVideoCateTotal($v['cid']);
+   }
+   file_put_contents($fname,'');
+   chmod(0777,$fname);
   }
 }

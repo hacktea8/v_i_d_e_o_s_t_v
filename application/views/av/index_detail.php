@@ -2,26 +2,20 @@
  <div class="ad960 mt10 mb10">954*80 顶部广告位</div>
  <div class="maxBox mt10">
   <div class="box">
-   <div class="tips">当前位置：<a href="/">首页</a>&gt;<a href="<?php echo $channel[$info['cid']]['url'];?>"><?php echo $channel[$info['cid']]['title'];?></a></div>
+   <div class="tips">当前位置：<a href="/">首页</a>&gt;<a href="<?php echo $channel[$info['cid']]['url'];?>"><?php echo $channel[$info['cid']]['title'];?></a>
+   &gt;<?php echo $info['title'];?>
+   </div>
   </div>
  </div>
  <div class="maxBox mb10 mt10">
   <div class="box">
-   <div class="introduce" id="introduce">
-    <div class="vod-img"><a><img src="<?php echo $info['pic'];?>" alt="<?php echo $info['title'];?>"></a></div>
-   <div class="vod-c">
     <div class="vod_t">
      <h3 class="title"><?php echo $info['title'];?></h3>
-     <div class="more">
-      <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more">分享到：</span> <a class="bds_tsina"></a> <a class="bds_tqq"></a> <a class="bds_qzone"></a> <a class="bds_baidu"></a> <a class="bds_renren"></a> <a class="bds_kaixin001"></a> <a class="bds_tqf"></a> <a class="bds_hi"></a> <a class="bds_qq"></a> <a class="bds_taobao"></a> </div>
-<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=5004441" ></script>
-<script type="text/javascript" id="bdshell_js"></script>
-<script type="text/javascript">
-document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
-</script>
-<!-- Baidu Button END -->
-    </span> </div>
+     <div class="more"></div>
    </div>
+   <div class="introduce" id="introduce">
+    <div class="vod-img"><a><img src="<?php echo $info['pic'];?>" title="<?php echo $info['title'];?>" alt="<?php echo $info['title'];?>"></a></div>
+   <div class="vod-c">
    <div class="vod_bigc">
     <div class="vod_l">
      <div class="info">

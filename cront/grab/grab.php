@@ -8,7 +8,7 @@ require_once $APPPATH.'singleProcess.php';
 
 $db=new DB_MYSQL();
 
-$data = array('url' => 'http://img.hacktea8.com/imgapi/uploadurl?seq=', 'imgurl'=>'');
+$data = array('url' => 'http://img.hacktea8.com/avimgapi/uploadurl?seq=', 'imgurl'=>'');
 $task = 600;
 while($task){
 $list = getnocoverlist();

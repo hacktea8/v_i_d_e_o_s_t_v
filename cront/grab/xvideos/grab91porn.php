@@ -6,7 +6,8 @@ define('ROOTPATH',dirname(__FILE__));
 
 require_once ROOTPATH.'/config.php';
 require_once ROOTPATH.'/phpCurl.php';
-require_once ROOTPATH.'/model.php';
+require_once ROOTPATH.'/../db.class.php';
+require_once ROOTPATH.'/../model.php';
 require_once ROOTPATH.'/function.php';
 
 $tvckCurl = new curlModel();
@@ -24,7 +25,6 @@ $dwCurl->config['cookie'] = 'cookie91bestchic';
 
 $model = new Model();
 
-$videoData = array('tags'=>'卡提諾影音,偷拍,影片,成人短片,自拍,成人,adult,線上看,免費', 'pcid'=>48, 'cid'=>58);
 
 for($page = 1;$page <= 1;$page ++){
   $url = sprintf($pndomain.$pnlistUrl,$page);
@@ -41,21 +41,24 @@ for($page = 1;$page <= 1;$page ++){
        echo "\n===$url===\nViewkey is NULL\n";break;
     }
     $viewkey = $match[1];
-    $status = $model->checkVideoViewkey($viewkey);
+  //  $status = $model->checkVideoViewkey($viewkey);
     if($status){
-        echo "Viewkey:$viewkey already exists!\n";continue;
+    //    echo "Viewkey:$viewkey already exists!\n";continue;
     }
     echo "Viewkey:$viewkey grab ···!\n";
     $videoData['title'] = trim($matchlist[2][$key]);
-    $videoData['intro'] = $videoData['title'];
+    $videoData['intro'] = '';//$videoData['title'];
     $pornCurl->config['url'] = $url;
     $html = $pornCurl->getHtml();
-    $html = file_get_contents('91porn.html');
+    //$html = file_get_contents('91porn.html');
     preg_match("#&video_id=([^&]+)&mp4=(\d+)\' quality=#", $html, $match); 
-//    file_put_contents('91porn.html', $html);
+ //   file_put_contents('91porn.html', $html);
 //    var_dump($match);exit;
     $vid = $match[1];
     $mp4 = $match[2];
+    $param = array('vid'=>$vid,'mp4'=>$mp4);
+    $videoData['playurl'] = json_encode($param);
+/*
     $flvUrl = get91pornVideofile($vid, $mp4);
     if( !$flvUrl){
        echo "== $url Get Video File Url Failed! ==\n";
@@ -64,11 +67,13 @@ for($page = 1;$page <= 1;$page ++){
     $path = parse_url($flvUrl);
     $ext = getExt($path['path']);
 //       $videoData['flvUrl'] = $flvUrl;
-    $videoData['flvUrl'] = downFlvfile($flvUrl,$viewkey.$ext);
+    #$videoData['flvUrl'] = downFlvfile($flvUrl,$viewkey.$ext);
+    $videoData['flvUrl'] = $flvUrl;
     if(!$videoData['flvUrl']){
        echo $pornCurl->config['url']." Video FLV File Download Failed!\n";continue;
     }
-//var_dump($videoData);exit;
+*/
+var_dump($videoData);exit;
     $status = postNewVideo($videoData);
     if($status){
        $model->addVideoViewkey($viewkey);

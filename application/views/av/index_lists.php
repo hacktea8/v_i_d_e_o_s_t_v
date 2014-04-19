@@ -53,19 +53,23 @@
 <div class="channel-content">
  <ul>
 <?php foreach($channelList as &$row){?>
-  <li onmousemove="this.className='cbg'" onmouseout="this.className=''" class=""> <a href="<?php echo $row['url'];?>" title="<?php echo $row['title'];?>" class="ah"><img src="<?php echo $row['pic'];?>" alt="<?php echo $row['title'];?>"></a>
-   <h2><a href="<?php echo $row['url'];?>"><?php echo $row['title'];?></a></h2>
-   <p><b>主演：</b><?php echo $row['linkactor'];?></p>
+  <li onmousemove="this.className='cbg'" onmouseout="this.className=''" class="">
+<p> <a href="<?php echo $row['url'];?>" title="<?php echo $row['title'];?>" class="ah"><img src="<?php echo $row['pic'];?>" alt="<?php echo $row['title'];?>"></a>
+</p>
+   <h2><a href="<?php echo $row['url'];?>" title="<?php echo $row['title'];?>"><?php echo $row['title'];?></a></h2>
+   <p><b>上传者：</b><?php echo mb_substr($row['uname'],3);?></p>
+<?php if(0){?>
    <p><b>地区：</b><?php echo $row['linkarea'];?><em>年份：未知</em></p>
   <p><b>语言：</b>未知<em>备注：<?php echo $row['note'];?></em></p>
-  <p><b>时间：</b><?php echo $row['rtime'];?></p>
+<?php } ?>
+  <p><b>时间：</b><?php echo $row['atime'];?></p>
   <p class="xb"><a href="<?php echo $row['url'];?>" class="xq bg"></a><a href="<?php echo $row['playurl'];?>" class="bf bg"></a></p>
  </li>
 <?php } ?>
  </ul>
 </div>
 <div class="page">
- [channellist:pagenumber len=5]
+ <?php echo $page_string;?>
 </div>
 </div>
 </div>

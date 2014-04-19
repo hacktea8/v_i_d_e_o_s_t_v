@@ -41,6 +41,9 @@ class Avadmin extends Admbase {
    }
    if($vid){
      $info = $this->admavmodel->getVideoInfoByid($vid,1);
+     if(strlen($info['atime'])>8){
+       $info['atime'] = date('Ymd',strtotime($info['atime']));
+     }
      $this->assign(array('info'=>$info));
    }
    $this->view($this->_c.'_avdetail');

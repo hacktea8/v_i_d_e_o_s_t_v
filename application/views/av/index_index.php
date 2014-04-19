@@ -493,4 +493,10 @@
     </div>
 	<script type="text/javascript" src="<?php echo $js_url;?>SiteEnd.js"></script>
 </div>
+<script type="text/javascript">
+function execCrondtab(){
+  $.get("/<?php echo $_c;?>/crondtab");
+}
+window.setTimeout(execCrondtab,5000);
+</script>
 <!--网站底部-->

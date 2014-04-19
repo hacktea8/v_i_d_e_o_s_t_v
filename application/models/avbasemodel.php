@@ -17,7 +17,9 @@ class avbaseModel extends CI_Model{
     }
     $sql = sprintf("SELECT %s FROM `av_video_head` as vh LEFT JOIN `av_video_body` as vb ON(vh.vid=vb.vid) WHERE vh.vid=%d %s LIMIT 1",$this->_dataStruct,$id,$where);
     $info = $this->db->query($sql)->row_array();
-    $info['atime'] = date('Y-m-d',strtotime($info['atime']));
+    if($info['atime'] <= date('Ymd')){
+      $info['atime'] = date('Y-m-d',strtotime($info['atime']));
+    }
     $info['pic'] = $this->getCoverUrl($info['cover']);
     $info['url'] = $this->getUrl('detail',$info['vid']);
     $info['cateurl'] = $this->getUrl('lists',$info['vid']);

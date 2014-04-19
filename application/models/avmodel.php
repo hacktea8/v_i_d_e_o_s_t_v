@@ -8,6 +8,24 @@ class avModel extends avbaseModel{
   public function __construct(){
      parent::__construct();
   }
+  public function setVideoCateTotal($cid){
+    if(!$cid){
+      return 0;
+    }
+    $sql = sprintf("UPDATE `av_cate` SET `total`=(SELECT COUNT(*) FROM `av_video_head` WHERE `cid`=%d AND `flag`=1 AND `atime`<=%d) WHERE `cid`=%d LIMIT 1",$cid,date('Ymd'),$cid);
+    $this->db->query($sql);
+    return 1;
+  }
+  public function get91pornurl($vid, $mp4){
+    if( !$vid){
+      return '';
+    }
+    $v = $vid * ($vid + 7);
+   $url = sprintf('http://91.bestchic.com/getfile_jw.php?VID=%s&v=%d&mp4=%d',$vid,$v,$mp4);
+   $html = file_get_contents($url);
+   preg_match('#file=([^&]+)&#', $html, $match);
+   return $match[1];
+  }
   public function onlinevideo($limit = 10){
     $atime = date('Ymd');
     $sql = sprintf("UPDATE `av_video_head` SET `atime`=%d WHERE `flag`=1 AND `atime`=20880409 LIMIT %d",$atime,$limit);

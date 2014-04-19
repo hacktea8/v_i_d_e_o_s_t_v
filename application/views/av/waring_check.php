@@ -80,7 +80,7 @@ function gocheck(){
         </table></td>
       </tr>
       <tr>
-        <td height="90" align="center" valign="middle" bgcolor="#FE6E6D"><span class="fontmain-white">&copy;<?php echo date('Y');?><img src="<?php echo $img_url;?>logo-copy.png" width="120" height="12" />ALL RIGHTS RESERVED.</span></td>
+        <td height="90" align="center" valign="middle" bgcolor="#FE6E6D"><span class="fontmain-white">&copy;<?php echo date('Y');?><img src="<?php echo $img_url;?>logo-copy.png" width="120" height="24" />ALL RIGHTS RESERVED.</span></td>
       </tr>
     </table>
     </td>

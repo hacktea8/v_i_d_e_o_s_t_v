@@ -40,6 +40,7 @@ class admavModel extends avbaseModel{
       $sql = $this->db->update('`av_video_head`',$data_head,array('vid'=>$vid));
       $sql = $this->db->update('`av_video_body`',$data_body,array('vid'=>$vid));
     }else{
+      $data_head['atime'] = 20880409;
       $sql = $this->db->insert('`av_video_head`',$data_head);
       $vid = $this->db->insert_id();
       $data_body['vid'] = $vid;

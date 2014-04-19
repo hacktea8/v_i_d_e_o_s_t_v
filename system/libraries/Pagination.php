@@ -27,18 +27,18 @@
 class CI_Pagination {
 
 	var $base_url			= ''; // The page we are linking to
-	var $prefix				= ''; // A custom prefix added to the path.
-	var $suffix				= ''; // A custom suffix added to the path.
+	var $prefix			= ''; // A custom prefix added to the path.
+	var $suffix			= ''; // A custom suffix added to the path.
 
 	var $total_rows			=  0; // Total number of items (database results)
 	var $per_page			= 10; // Max number of items you want shown per page
-	var $num_links			=  2; // Number of "digit" links to show before/after the currently viewed page
+	var $num_links			=  5; // Number of "digit" links to show before/after the currently viewed page
 	var $cur_page			=  0; // The current page being viewed
-	var $use_page_numbers	= FALSE; // Use page number for segment instead of offset
-	var $first_link			= '&lsaquo; First';
-	var $next_link			= '&gt;';
-	var $prev_link			= '&lt;';
-	var $last_link			= 'Last &rsaquo;';
+	var $use_page_numbers	= TRUE; // Use page number for segment instead of offset
+	var $first_link			= '第一页';
+	var $next_link			= '下一页';
+	var $prev_link			= '上一页';
+	var $last_link			= '最后页';
 	var $uri_segment		= 3;
 	var $full_tag_open		= '';
 	var $full_tag_close		= '';

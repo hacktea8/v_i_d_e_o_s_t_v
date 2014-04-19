@@ -10,6 +10,10 @@ $grabVideoLimit = 20;
 $currGrabVideo = 0;
 //根域名
 $domain = 'http://www.xvideos.com';
+//http://www.xvideos.com/best/day/2
+//http://www.xvideos.com/best/week/3
+//http://www.xvideos.com/best/month/4
+
 // 91porn
 $pndomain = 'http://91porn.com';
 $pnlistUrl = '/video.php?category=rf&page=%d';
