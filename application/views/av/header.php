@@ -5,7 +5,7 @@
 <title><?php echo $seo_info['title'],$web_title;?></title>
 <meta name="keywords" content="<?php echo $seo_info['keywords'];?>" />
 <meta name="description" content="<?php echo $seo_info['description'];?>" />
-<link href="<?php echo $css_url;?>Common.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $css_url;?>avcommon.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $css_url,$_c,'_',$_a;?>.css" rel="stylesheet" type="text/css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="<?php echo $js_url;?>common.js"></script>

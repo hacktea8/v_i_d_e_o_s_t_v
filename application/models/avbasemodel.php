@@ -88,12 +88,12 @@ class avbaseModel extends CI_Model{
      if('detail' == $type){
        $url = sprintf('/maindex/%s/%d.shtml',$type,$p1);
      }elseif('play' == $type){
-       $p2 = $p2 ? $p2 : 1;
-       $url = sprintf('/maindex/%s/%d/%d.shtml',$type,$p1,$p2);
+       $p2 = $p2 ? '/'.$p2 : 1;
+       $url = sprintf('/maindex/%s/%d%s.shtml',$type,$p1,$p2);
      }elseif('lists' == $type){
        $p2 = $p2 ? sprintf('/%d',$p2):'';
        $p3 = $p3 ? sprintf('/%d',$p3):'';
-       $url = sprintf('/maindex/%s/%d/%s%s.shtml',$type,$p1,$p2,$p3);
+       $url = sprintf('/maindex/%s/%d%s%s.shtml',$type,$p1,$p2,$p3);
      }
      return $url;
   }

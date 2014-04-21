@@ -40,6 +40,10 @@ class Maindex extends Avbase {
    $config['cur_page'] = $page;
    $this->pagination->initialize($config);
    $page_string = $this->pagination->create_links();
+   //月排行
+   
+   //推荐
+   
    $this->assign(array('page_string'=>$page_string,'channelList'=>$channelList,'cid'=>$cid,'order'=>$order,'page'=>$page));
    $this->view('index_lists');
   }

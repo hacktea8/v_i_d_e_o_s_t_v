@@ -67,6 +67,22 @@ if ( ! function_exists('getcode'))
   }
 }
 
+if ( ! function_exists('send_email'))
+{
+  function send_email($data){
+    ;
+    ;
+  }
+}
+
+if ( ! function_exists('activation_email'))
+{
+  function activation_email($data){
+    ;
+    ;
+  }
+}
+
 if ( ! function_exists('get_client_ip'))
 {
   function get_client_ip(){
