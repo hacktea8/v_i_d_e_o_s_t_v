@@ -1,0 +1,75 @@
+.main {
+    background: none repeat scroll 0 0 #F8F8F8;
+    border-bottom: 1px solid #E9E9E9;
+    border-top: 1px solid #E9E9E9;
+    color: #333333;
+    font-size: 12px;
+    padding: 60px 0 66px;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.container-custom {
+    width: 930px;
+}
+.container:before, .container:after {
+    content: " ";
+    display: table;
+}
+.container:after {
+    clear: both;
+}
+.register-progress .pross-ok {
+    background: none repeat scroll 0 0 #FF9966;
+    color: #FFFFFF;
+}
+.register-progress .pross {
+    background: none repeat scroll 0 0 #DDDDDD;
+    color: #666666;
+    float: left;
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+    overflow: hidden;
+    padding-left: 10px;
+    position: relative;
+    width: 300px;
+}
+.register-progress .pross-ok .index {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #FF9966;
+}
+.register-progress .pross .index {
+    background: none repeat scroll 0 0 #999999;
+    border-radius: 18px 18px 18px 18px;
+    color: #FFFFFF;
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    margin-right: 10px;
+    text-align: center;
+    width: 18px;
+}
+.register-progress .pross .pross-dir {
+    background: none repeat scroll 0 0 #DDDDDD;
+    position: absolute;
+    right: -19px;
+    top: -17px;
+}
+.register-progress .pross-ok .pross-dir .outside {
+    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #F8F8F8;
+}
+.register-progress .pross .pross-dir .outside, .register-progress .pross .pross-dir .inside {
+    border-style: solid;
+    border-width: 35px 19px;
+    display: inline-block;
+    height: 0;
+    width: 0;
+}
+

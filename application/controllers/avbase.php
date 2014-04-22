@@ -7,6 +7,7 @@ class Avbase extends Webbase {
                    'description' => ''
   );
   public $imguploadapiurl = 'http://img.hacktea8.com/imgapi/upload/?seq=';
+  public $editVideoUrl = '/avadmin/avdetail/';
 
   public function __construct(){
     parent::__construct();
@@ -35,6 +36,7 @@ class Avbase extends Webbase {
     ,'showimgapi'=>$this->showimgapi,'error_img'=>$this->showimgapi.'3958009_0000671092.jpg','menuList'=>$menuList,'channel'=>$channel
     ,'player_config'=>$this->player_config,'editeUrl' => '/edite/index/emuleTopicAdd'
     ,'siteurl'=>$this->config->item('base_url')
+    ,'editVideoUrl'=>$this->editVideoUrl
     ));
 //var_dump($this->viewData);exit;
     $this->load->_ci_view_path = 'av/';

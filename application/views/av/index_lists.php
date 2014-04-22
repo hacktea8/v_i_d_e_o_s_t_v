@@ -63,6 +63,9 @@
   <p><b>语言：</b>未知<em>备注：<?php echo $row['note'];?></em></p>
 <?php } ?>
   <p><b>时间：</b><?php echo $row['atime'];?></p>
+<?php if($uinfo['isadmin']){?>
+  <p><b>编辑：</b><a href="<?php echo $editVideoUrl,$row['vid'];?>" target="_blank">编辑</a></p>
+<?php }?>
   <p class="xb"><a href="<?php echo $row['url'];?>" class="xq bg"></a><a href="<?php echo $row['playurl'];?>" class="bf bg"></a></p>
  </li>
 <?php } ?>

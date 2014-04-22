@@ -4,6 +4,9 @@
   <div class="box">
    <div class="tips">当前位置：<a href="/">首页</a>&gt;<a href="<?php echo $channel[$info['cid']]['url'];?>"><?php echo $channel[$info['cid']]['title'];?></a>
    &gt;<?php echo $info['title'];?>
+<?php if($uinfo['isadmin']){?>
+<a href="<?php echo $editVideoUrl,$info['vid'];?>" target="_blank">编辑</a>
+<?php }?>
    </div>
   </div>
  </div>

@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-require_once 'webbase.php';
-class Member extends Webbase {
+require_once 'avbase.php';
+class Member extends Avbase {
 
 
   public function __construct(){
@@ -30,6 +30,6 @@ class Member extends Webbase {
     redirect($url);
   }
   public function register(){
-
+    $this->view($this->_c.'_'.$this->_a);
   }
 }

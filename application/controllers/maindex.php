@@ -30,7 +30,7 @@ class Maindex extends Avbase {
    $cid = intval($cid);
    $order = intval($order);
    $page = intval($page);
-   $limit=25;
+   $limit=12;
    $channelList = $this->avmodel->getVideoListByCid($cid,$order,$page,$limit,$where = array('`flag`=1'));
    $count = intval($this->viewData['channel'][$cid]['total']);
    $this->load->library('pagination');
@@ -41,10 +41,20 @@ class Maindex extends Avbase {
    $this->pagination->initialize($config);
    $page_string = $this->pagination->create_links();
    //月排行
-   
+   $key = 'list_month_rank'.$cid;
+   $month_rank = $this->mem->get($key);
+   if(!$month_rank){
+      $month_rank = $this->avmodel->getRankVideoList($cid,15,$type = 'hot');
+      $this->mem->set($key,$month_rank,$this->expirettl['1d']);
+   }
    //推荐
-   
-   $this->assign(array('page_string'=>$page_string,'channelList'=>$channelList,'cid'=>$cid,'order'=>$order,'page'=>$page));
+   $key = 'list_recommend_rank'.$cid;
+   $recommend_rank = $this->mem->get($key);
+   if(!$recommend_rank){
+      $recommend_rank = $this->avmodel->getRankVideoList($cid,15,$type = 'recom');
+      $this->mem->set($key,$recommend_rank,$this->expirettl['1d']);
+   }
+   $this->assign(array('month_rank'=>$month_rank,'recommend_rank'=>$recommend_rank,'page_string'=>$page_string,'channelList'=>$channelList,'cid'=>$cid,'order'=>$order,'page'=>$page));
    $this->view('index_lists');
   }
   public function detail($vid){

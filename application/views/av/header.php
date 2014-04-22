@@ -172,7 +172,8 @@ $("#showList .index-tags").stop(true,false).hide().eq(index-1).stop(true,false).
 <?php }?>
 </div>
 </div>
-<div id="notetips"><?php if($uinfo['isvip'] < 1){?>温馨提示:<?php if(!$uinfo['uid']){?>您未登录,不能免费观看影片！<a href="/<?php echo $_c;?>/login">请登录</a><?php }?>
+<?php if($uinfo['isvip'] < 1){?>
+<div id="notetips">温馨提示:<?php if(!$uinfo['uid']){?>您未登录,不能免费观看影片！<a href="/<?php echo $_c;?>/login">请登录</a><?php }?>
 <?php if($uinfo['uid']){?>您的账户不是VIP,24小时之内免费观看1部影片<a href="/payment/">立即升级VIP</a><?php }?>
-<?php }?>
 </div>
+<?php }?>

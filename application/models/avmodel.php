@@ -2,7 +2,7 @@
 require_once 'avbasemodel.php';
 class avModel extends avbaseModel{
   protected $_dataStruct = '*';
-  protected $_datatopicStruct = '*';
+  protected $_dataListStruct = '*';
   protected $_dramListStruct = '*';
 
   public function __construct(){
@@ -15,6 +15,26 @@ class avModel extends avbaseModel{
     $sql = sprintf("UPDATE `av_cate` SET `total`=(SELECT COUNT(*) FROM `av_video_head` WHERE `cid`=%d AND `flag`=1 AND `atime`<=%d) WHERE `cid`=%d LIMIT 1",$cid,date('Ymd'),$cid);
     $this->db->query($sql);
     return 1;
+  }
+  public function getRankVideoList($cid,$limit = 15,$type = 'hot'){
+    $typeMap = array('hot'=>' ORDER BY `hits` DESC','recom'=>' ORDER BY `hits` ASC');
+    $order = '';
+    if(isset($typeMap[$type])){
+      $order = $typeMap[$type];
+    }elseif('rand' === $type){
+      
+    }
+    $where = array('`flag`=1','`atime`<='.date('Ymd'));
+    if($cid){
+      $where[] = '`cid`='.$cid;
+    }
+    $where = implode(' AND ',$where);
+    $sql = sprintf("SELECT %s FROM `av_video_head` WHERE %s %s LIMIT %d",$this->_dataListStruct,$where,$order,$limit);
+    $list = $this->db->query($sql)->result_array();
+    foreach($list as &$v){
+      $v['atime'] = date('Y/m/d',$v['atime']);
+    }
+    return $list;
   }
   public function get91pornurl($vid, $mp4){
     if( !$vid){
