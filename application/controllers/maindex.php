@@ -23,7 +23,9 @@ class Maindex extends Avbase {
 //var_dump($this->viewData);exit;
   }
   public function index(){
-    $this->assign(array());
+    $key = array('hotvideo'=>array('cid'=>0,'order'=>0,'limit'=>19),'newasiavideo'=>array('cid'=>1,'order'=>0,'limit'=>19),'newusavideo'=>array('cid'=>12,'order'=>0,'limit'=>19),'newchinacolor'=>array('cid'=>6,'order'=>0,'limit'=>19),'newclassicthree'=>array('cid'=>10,'order'=>0,'limit'=>19));
+    $videolist = $this->avmodel->getIndexVideoList($key);
+    $this->assign(array('videolist' => $videolist));
     $this->view('index_index');
   }
   public function lists($cid,$order=0,$page=1){
@@ -115,10 +117,10 @@ class Maindex extends Avbase {
      return false;
    }
 //echo 111;exit;
-   //影片自动上架
-   $this->avmodel->onlinevideo(3);
    //更新影片分类数量
    foreach($this->viewData['channel'] as $v){
+     //影片自动上架
+     $this->avmodel->onlinevideo($v['cid'],12);
      $this->avmodel->setVideoCateTotal($v['cid']);
    }
    file_put_contents($fname,'');

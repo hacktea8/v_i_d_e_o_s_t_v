@@ -14,14 +14,15 @@ class Avbase extends Webbase {
     
     $this->load->model('avmodel');
     $menuList = $this->mem->get('avtv-menuList');
-    if( empty($menuList)){
+    if( !empty($menuList)){
       $menuList = $this->avmodel->getMenuListById();
-      $menuListA = array_slice($menuList,0,3);
-      $menuListB = array_slice($menuList,3);
+      $menuListA = slice_array($menuList,0,3);
+      $menuListB = slice_array($menuList,3);
       $menuList = array('menuListA'=>$menuListA,'menuListB'=>$menuListB);
       $this->mem->set('avtv-menuList',$menuList,$this->expirettl['1d']);
     } 
-    $channel = array_merge($menuList['menuListA'],$menuList['menuListB']);
+    $channel = $menuList['menuListA']+$menuList['menuListB'];
+//var_dump($menuList['menuListA']);exit;
 /*
     $hotTopic = $this->mem->get('emu-hotTopic');
 //var_dump($hotTopic);exit;

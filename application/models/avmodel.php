@@ -8,6 +8,13 @@ class avModel extends avbaseModel{
   public function __construct(){
      parent::__construct();
   }
+  public function getIndexVideoList($key){
+    $return = array();
+    foreach($key as $k => $v){
+      $return[$k] = $this->getVideoListByCid($v['cid'],$v['order'],1,$v['limit']);
+    }
+    return $return;
+  }
   public function setVideoCateTotal($cid){
     if(!$cid){
       return 0;
@@ -46,9 +53,9 @@ class avModel extends avbaseModel{
    preg_match('#file=([^&]+)&#', $html, $match);
    return $match[1];
   }
-  public function onlinevideo($limit = 10){
+  public function onlinevideo($cid,$limit = 10){
     $atime = date('Ymd');
-    $sql = sprintf("UPDATE `av_video_head` SET `atime`=%d WHERE `flag`=1 AND `atime`=20880409 LIMIT %d",$atime,$limit);
+    $sql = sprintf("UPDATE `av_video_head` SET `atime`=%d WHERE `flag`=1 AND `atime`=20880409 AND `cid`=%d LIMIT %d",$atime,$cid,$limit);
     $this->db->query($sql);
   }
   public function getUserWatchLog($uid,$life = 12){

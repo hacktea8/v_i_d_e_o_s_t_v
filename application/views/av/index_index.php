@@ -3,51 +3,67 @@
 	<div class="maxBox mb10 mt5" id="latest-focus">
 		<div class="latest-tab">
 			<ul>
-				<li id="latest1" onmouseover="setTab(1);" class="active">热门影片推荐</li>
-				<li id="latest2" onmouseover="setTab(2);" class="">最新电视剧</li>
-				<li id="latest3" onmouseover="setTab(3);" class="">最新电影</li>
-				<li id="latest4" onmouseover="setTab(4);" class="">最新动漫</li>
-				<li id="latest5" onmouseover="setTab(5);" class="">最新综艺</li>
-			</ul>
+	<li id="latest1" onmouseover="setTab(1);" class="active">热门影片推荐</li>
+	<li id="latest2" onmouseover="setTab(2);" class="">最新亚洲BT视频</li>
+	<li id="latest3" onmouseover="setTab(3);" class="">最新欧美BT视频</li>
+	<li id="latest4" onmouseover="setTab(4);" class="">最新国产色片</li>
+	<li id="latest5" onmouseover="setTab(5);" class="">最新经典三级</li>
+	</ul>
 		</div>
 		<SCRIPT language="javascript" type="text/javascript">function setTab(index) {for (var i=1;i<=5;i++){document.getElementById("latest"+i).className ="";document.getElementById("latest"+index).className ="active";document.getElementById("con_latest_"+i).style.display="none";}document.getElementById ("con_latest_"+index).style.display  ="block";}</SCRIPT>
 		<div class="box box-blue-bold">
 			<div id="con_latest_1" class="hot-latest active" style="display: block; ">
 				<ol class="pic-list">
-					{pipicms:videolist type=1 num=7 order=hit}
-					<li><a class="play-pic" href="[videolist:link]" title="[videolist:name]"><img src="[videolist:pic]" alt="[videolist:name]">
+<?php foreach($videolist['hotvideo'] as $k => $v){
+if($k>6){
+break;
+}
+?>
+					<li><a class="play-pic" href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><img src="<?php echo $v['pic'];?>" title="<?php echo $v['title'];?>" alt="<?php echo $v['title'];?>">
 						<label class="bg">&nbsp;</label>
-						<label class="time">[videolist:note]</label>
+						<label class="time"><?php echo $v['atime'];?></label>
 						</a>
-						<p><a href="[videolist:link]" title="[videolist:name]">[videolist:name len=8]</a></p>
+						<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
 					</li>
-					{/pipicms:videolist}
+<?php }?>
 				</ol>
 				<!-- // pic-list End -->
 				<ul class="txt-list">
-					{pipicms:videolist type=1 num=12 order=hit start=9}
-					<li><span>[videolist:time]</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
-					{/pipicms:videolist}
+<?php foreach($videolist['hotvideo'] as $k => $v){
+if($k<7){
+continue;
+}
+?>
+				<li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="[videolist:link]"><?php echo $v['atime'];?></a></li>
+<?php }?>
 				</ul>
 				<!-- // txt-list End -->
 			</div>
 			<div id="con_latest_2" class="fa-hide" style="display: none; ">
 				<ol class="pic-list">
-					{pipicms:videolist type=2 num=7 order=time}
-					<li><a class="play-pic" href="[videolist:link]" title="[videolist:name]"> <img src="[videolist:pic]" alt="[videolist:name]">
-						<label class="bg">&nbsp;</label>
-						<label class="time">[videolist:note]</label>
-						</a>
-						<p><a href="[videolist:link]" title="[videolist:name]">[videolist:name len=8]</a></p>
-					</li>
-					{/pipicms:videolist}
-				</ol>
+<?php foreach($videolist['newasiavideo'] as $k => $v){
+if($k>6){
+break;
+}
+?>
+	<li><a class="play-pic" href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"> <img src="<?php echo $v['pic'];?>" alt="<?php echo $v['title'];?>" title="<?php echo $v['title'];?>">
+	<label class="bg">&nbsp;</label>
+	<label class="time"><?php echo $v['atime'];?></label>
+	</a>
+	<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
+	</li>
+<?php }?>
+	</ol>
 				<!-- // pic-list End -->
-				<ul class="txt-list">
-					{pipicms:videolist type=2 num=12 order=time start=9}
-					<li><span>[videolist:time]</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
-					{/pipicms:videolist}
-				</ul>
+	<ul class="txt-list">
+<?php foreach($videolist['newasiavideo'] as $k => $v){
+if($k<7){
+continue;
+}
+?>
+	<li><span>[videolist:time]</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+<?php }?>
+	</ul>
 				<!-- // txt-list End -->
 			</div>
 			<div id="con_latest_3" class="fa-hide" style="display: none; ">

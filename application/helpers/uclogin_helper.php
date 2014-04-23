@@ -67,6 +67,21 @@ if ( ! function_exists('getcode'))
   }
 }
 
+if ( ! function_exists('slice_array'))
+{
+  function slice_array($array,$start = 0,$len = 0){
+    $i = 0;
+    $return = array();
+    foreach($array as $k => &$v){
+      if($i>=$start && (($i<=$len-1) || !$len)){
+        $return[$k] = $v;
+      }
+      $i++;
+    }
+    return $return;
+  }
+}
+
 if ( ! function_exists('send_email'))
 {
   function send_email($data){
