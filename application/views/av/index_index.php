@@ -23,7 +23,7 @@ break;
 						<label class="bg">&nbsp;</label>
 						<label class="time"><?php echo $v['atime'];?></label>
 						</a>
-						<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
+						<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a></p>
 					</li>
 <?php }?>
 				</ol>
@@ -34,7 +34,7 @@ if($k<7){
 continue;
 }
 ?>
-				<li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="[videolist:link]"><?php echo $v['atime'];?></a></li>
+				<li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a> / <a class="gray" href="[videolist:link]"><?php echo $v['atime'];?></a></li>
 <?php }?>
 				</ul>
 				<!-- // txt-list End -->
@@ -50,7 +50,7 @@ break;
 	<label class="bg">&nbsp;</label>
 	<label class="time"><?php echo $v['atime'];?></label>
 	</a>
-	<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
+	<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a></p>
 	</li>
 <?php }?>
 	</ol>
@@ -61,7 +61,7 @@ if($k<7){
 continue;
 }
 ?>
-	<li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
+	<li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
 <?php }?>
 	</ul>
 				<!-- // txt-list End -->
@@ -77,7 +77,7 @@ break;
 	<label class="bg">&nbsp;</label>
 	<label class="time"><?php echo $v['atime'];?></label>
 	</a>
-	<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
+	<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a></p>
 	</li>
 <?php }?>
 	</ol>
@@ -88,7 +88,7 @@ if($k<7){
 continue;
 }
 ?>
-	<li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
+	<li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
 <?php }?>
 	</ul>
 				<!-- // txt-list End -->
@@ -104,7 +104,7 @@ break;
         <label class="bg">&nbsp;</label>
         <label class="time"><?php echo $v['atime'];?></label>
         </a>
-        <p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
+        <p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a></p>
         </li>
 <?php }?>
 	</ol>
@@ -115,7 +115,7 @@ if($k<7){
 continue;
 }
 ?>
-        <li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
+        <li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
 <?php }?>
 	</ul>
 	<!-- // txt-list End -->
@@ -131,7 +131,7 @@ break;
         <label class="bg">&nbsp;</label>
         <label class="time"><?php echo $v['atime'];?></label>
         </a>
-        <p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
+        <p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a></p>
         </li>
 <?php }?>
 	</ol>
@@ -142,7 +142,7 @@ if($k<7){
 continue;
 }
 ?>
-        <li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
+        <li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
 <?php }?>
 	</ul>
 	<!-- // txt-list End -->
@@ -163,66 +163,81 @@ continue;
 				<div class="content">
 					<div class="ui-tab-item  fa-clear">
 						<div class="sideRow fa-left">
-							{pipicms:videolist type=2 num=1 order=time}
-							<div class="ui-focus"><a class="play-pic" href="[videolist:link]"><img src="[videolist:pic]" alt="" style="display: block;">
-								<label class="bg">&nbsp;</label>
-								<label class="time">[videolist:name]</label>
-								</a>
-								<ul class="ui-focus-text">
+<?php foreach($videolist['asiavideo'] as $k => $v){
+if($k>0)break;
+?>
+	<div class="ui-focus"><a class="play-pic" href="<?php echo $v['url'];?>"><img src="<?php echo $v['pic'];?>" alt="<?php echo $v['title'];?>" style="display: block;">
+	<label class="bg">&nbsp;</label>
+	<label class="time"><?php echo $v['title'];?></label>
+	</a>
+<?php if(0){?>
+	<ul class="ui-focus-text">
 									<li><strong>导演：</strong>{if:"[videolist:director]"=""}未知{else}[videolist:director]{end if}</li>
 									<li><strong>主演：</strong>[videolist:nolinkactor]</li>
 									<li class="desc"><strong>简介：</strong>[videolist:des len=70]</li>
-								</ul>
-							</div>
-							{/pipicms:videolist}
-							<!-- // ui-focus End -->
-							<div class="ui-will">
-								<h4>本站推荐</h4>
-								<ul class="ui-will-cnt">
-									{pipicms:videolist type=2 num=5 order=commend}
-									<li><strong class="c_txt2"><a href="[videolist:link]" title="[videolist:name]">[videolist:name len=10]</a></strong> [videolist:note] <a href="[videolist:typelink]" title="[videolist:typename]">[videolist:typename]</a></li>
-									{/pipicms:videolist}
-								</ul>
-							</div>
-							<!-- // ui-synch End -->
-						</div>
-						<div class="pic-list pic-list-focus">
-							<ul>
-								{pipicms:videolist type=2 num=6 order=time start=2}
-								<li><a class="play-pic" href="[videolist:link]"><img src="[videolist:pic]" style="display: block; "><span class="play-icon">&nbsp;</span>
+	</ul>
+<?php }?>
+	</div>
+<?php }?>
+	<!-- // ui-focus End -->
+	<div class="ui-will">
+	<h4>本站推荐</h4>
+	<ul class="ui-will-cnt">
+<?php foreach($videolist['asiavideo'] as $k => $v){
+if($k<1)continue;
+if($k>5)break;
+?>
+	<li><strong class="c_txt2"><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,10);?></a></strong> <?php echo $v['atime'];?> <a href="<?php echo $channel[$v['cid']]['url']?>" title="<?php echo $channel[$v['cid']]['title']?>"><?php echo $channel[$v['cid']]['title']?></a></li>
+<?php }?>
+	</ul>
+	</div>
+<!-- // ui-synch End -->
+	</div>
+	<div class="pic-list pic-list-focus">
+	<ul>
+<?php foreach($videolist['asiavideo'] as $k => $v){
+if($k<6)continue;
+if($k>11)break;
+?>
+	<li><a class="play-pic" href="<?php echo $v['url'];?>"><img src="<?php echo $v['pic'];?>" style="display: block; "><span class="play-icon">&nbsp;</span>
 									<label class="bg">&nbsp;</label>
-									<label class="time">[videolist:note]</label>
+									<label class="time"><?php echo $v['atime'];?></label>
 									</a>
-									<p> <a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> </p>
-									<p class="txt">{if:"[videolist:nolinkactor]"=""}未录入{else}[videolist:nolinkactor]{end if}</p>
-									<p class="txt"><span class="ratbar"> <span class="ratbar-item" style="width:[videolist:score]%;">&nbsp;</span> </span> <strong class="ratbar-num">[videolist:score]</strong> </p>
-								</li>
-								{/pipicms:videolist}
-							</ul>
-						</div>
-						<!-- // pic-list End -->
-					</div>
-					<!-- // ui-tab-item End -->
-				</div>
-			</div>
-			<!-- // conBox End -->
-			<div class="sideBar fa-right">
-				<div class="ui-top-tab">
-					<div class="caption fa-clear">
-						<h3>{pipicms:menulist type=2}<a href="[menulist:link]">[menulist:typename]最新更新排行</a>{/pipicms:menulist}</h3>
-					</div>
-					<div class="content">
-						<ul class="ul-top">
-							{pipicms:videolist type=2 num=10 order=time}
-							<li><span><strong>[videolist:time]</strong></span> <a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a></li>
-							{/pipicms:videolist}
-						</ul>
-					</div>
-				</div>
-				<!-- // topBox End -->
-				<div class="ui-sort">
-					<div class="caption">
-						<h3>{pipicms:menulist type=2}<a href="[menulist:link]">[menulist:typename]类型</a>{/pipicms:menulist}</h3>
+	<p> <a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo $v['title'];?></a> </p>
+<?php if(0){?>
+	<p class="txt"></p>
+	<p class="txt"><span class="ratbar"> <span class="ratbar-item" style="width:[videolist:score]%;">&nbsp;</span> </span> <strong class="ratbar-num">[videolist:score]</strong> </p>
+<?php }?>
+	</li>
+<?php }?>
+	</ul>
+	</div>
+	<!-- // pic-list End -->
+	</div>
+	<!-- // ui-tab-item End -->
+	</div>
+	</div>
+	<!-- // conBox End -->
+	<div class="sideBar fa-right">
+	<div class="ui-top-tab">
+	<div class="caption fa-clear">
+	<h3><a href="<?php echo $channel[2]['url'];?>"><?php echo $channel[2]['title'];?>最新更新排行</a></h3>
+	</div>
+	<div class="content">
+	<ul class="ul-top">
+<?php foreach($videolist['asiavideo'] as $k => $v){
+if($k<12)continue;
+?>
+	<li><span><strong><?php $v['atime'];?></strong></span> <a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo $v['title'];?></a></li>
+<?php }?>
+	</ul>
+	</div>
+	</div>
+	<!-- // topBox End -->
+<?php if(0){?>
+	<div class="ui-sort">
+	<div class="caption">
+	<h3>{pipicms:menulist type=2}<a href="[menulist:link]">[menulist:typename]类型</a>{/pipicms:menulist}</h3>
 					</div>
 					<div class="tb_c">
 						<dl class="videoSortList clearfix">
@@ -236,86 +251,102 @@ continue;
 					</div>
 				</div>
 				<!-- // ui-sort End -->
-			</div>
-		</div>
+<?php }?>
+	</div>
+	</div>
 	</div>
 	<!-- 电影 -->
 	<div class="ad960 mb10">954*80 中部广告位</div>
 	<a name="Movie"></a>
 	<div class="maxBox mb10" id="Movie">
 		<div class="box ui-yiyi fa-clear">
-			<label class="videoIco"></label>
-			<div class="conBox ui-tab fa-left">
-				<div class="caption fa-clear">
-					<h2></h2>
-					<p class="tv-link">{pipicms:menulist type=5,6,7,8,9,10,11,12}<a href="[menulist:link]">[menulist:typename]</a>{/pipicms:menulist}</p>
-				</div>
-				<div class="content">
-					<div class="ui-tab-item fa-clear">
-						<div class="sideRow fa-left">
-							{pipicms:videolist type=1 num=1 order=commend}
-							<div class="ui-focus"><a class="play-pic" href="[videolist:link]"><img src="[videolist:pic]" alt="" style="display: block;">
-								<label class="bg">&nbsp;</label>
-								<label class="time">[videolist:name]</label>
-								</a>
-								<ul class="ui-focus-text">
-									<li><strong>导演：</strong>{if:"[videolist:director]"=""}未知{else}[videolist:director]{end if}</li>
+	<label class="videoIco"></label>
+	<div class="conBox ui-tab fa-left">
+	<div class="caption fa-clear">
+	<h2></h2>
+	<p class="tv-link">{pipicms:menulist type=5,6,7,8,9,10,11,12}<a href="[menulist:link]">[menulist:typename]</a>{/pipicms:menulist}</p>
+	</div>
+	<div class="content">
+	<div class="ui-tab-item fa-clear">
+	<div class="sideRow fa-left">
+<?php foreach($videolist['usavideo'] as $k => $v){
+if($k>0)break;
+?>
+	<div class="ui-focus"><a class="play-pic" href="<?php echo $v['url'];?>"><img src="<?php echo $v['pic'];?>" alt="" style="display: block;">
+	<label class="bg">&nbsp;</label>
+	<label class="time"><?php echo $v['title'];?></label>
+	</a>
+<?php if(0){?>
+	<ul class="ui-focus-text">
+<li><strong>导演：</strong>{if:"[videolist:director]"=""}未知{else}[videolist:director]{end if}</li>
 									<li><strong>主演：</strong>[videolist:nolinkactor]</li>
 									<li class="desc"><strong>简介：</strong>[videolist:des len=70]</li>
 								</ul>
-							</div>
-							{/pipicms:videolist}
-							<div class="ui-will">
-								<h4>本站推荐</h4>
-								<ul class="ui-will-cnt">
-									{pipicms:videolist type=1 num=5 order=commend start=2}
-									<li><strong class="c_txt2"><a href="[videolist:link]" title="[videolist:name]">[videolist:name len=10]</a></strong> [videolist:note] <a href="[videolist:typelink]" title="[videolist:typename]">[videolist:typename]</a></li>
-									{/pipicms:videolist}
-								</ul>
-							</div>
-							<!-- // ui-synch End -->
-						</div>
-						<div class="pic-list pic-list-focus">
-							<ul>
-								{pipicms:videolist type=1 num=6 order=time}
-								<li><a class="play-pic" href="[videolist:link]"><img src="[videolist:pic]" style="display: block; "><span class="play-icon">&nbsp;</span>
-									<label class="bg">&nbsp;</label>
-									<label class="time">[videolist:note]</label>
-									</a>
-									<p> <a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> </p>
-									<p class="txt">{if:"[videolist:nolinkactor]"=""}未录入{else}[videolist:nolinkactor]{end if}</p>
+<?php }?>
+	</div>
+<?php }?>
+	<div class="ui-will">
+	<h4>本站推荐</h4>
+	<ul class="ui-will-cnt">
+<?php foreach($videolist['usavideo'] as $k => $v){
+if($k<1)continue;
+if($k>6)break;
+?>
+	<li><strong class="c_txt2"><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],0,10);?></a></strong> <?php echo $v['atime'];?> <a href="<?php echo $channel[$v['cid']]['url'];?>" title="<?php echo $channel[$v['cid']]['title'];?>"><?php echo $channel[$v['cid']]['title'];?></a></li>
+<?php }?>
+	</ul>
+	</div>
+	<!-- // ui-synch End -->
+	</div>
+<div class="pic-list pic-list-focus">
+	<ul>
+<?php foreach($videolist['usavideo'] as $k => $v){
+if($k<7)continue;
+if($k>12)break;
+?>
+	<li><a class="play-pic" href="<?php echo $v['url'];?>"><img src="<?php echo $v['pic'];?>" style="display: block; "><span class="play-icon">&nbsp;</span>
+	<label class="bg">&nbsp;</label>
+	<label class="time"><?php echo $v['atime'];?></label>
+	</a>
+	<p> <a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo $v['title'];?></a> </p>
+<?php if(0){?>
+<p class="txt">{if:"[videolist:nolinkactor]"=""}未录入{else}[videolist:nolinkactor]{end if}</p>
 									<p class="txt"><span class="ratbar"><span class="ratbar-item" style="width:[videolist:score]%;">&nbsp;</span></span><strong class="ratbar-num">[videolist:score]</strong> </p>
-								</li>
-								{/pipicms:videolist}
-							</ul>
-						</div>
-						<!-- // pic-list End -->
-					</div>
-					<!-- // ui-tab-item End -->
-				</div>
-			</div>
-			<!-- // conBox End -->
-			<div class="sideBar fa-right">
-				<div class="ui-top-tab">
-					<div class="caption fa-clear">
-						<h3>{pipicms:menulist type=1}<a href="[menulist:link]">[menulist:typename]最新更新排行</a>{/pipicms:menulist}</h3>
-					</div>
-					<div class="content">
-						<ul class="ul-top">
-							{pipicms:videolist type=1 num=10 order=hot}
-							<li><span><strong>[videolist:score] 分</strong></span> <a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a></li>
-							{/pipicms:videolist}
-						</ul>
-					</div>
-				</div>
-				<!-- // topBox End -->
-				<div class="ui-sort">
-					<div class="caption">
-						<h3>{pipicms:menulist type=1}<a href="[menulist:link]">[menulist:typename]类型</a>{/pipicms:menulist}</h3>
-					</div>
-					<div class="tb_c">
-						<dl class="videoSortList clearfix">
-							<dt>按分类</dt>
+<?php }?>
+	</li>
+<?php }?>
+	</ul>
+	</div>
+	<!-- // pic-list End -->
+	</div>
+<!-- // ui-tab-item End -->
+	</div>
+	</div>
+	<!-- // conBox End -->
+	<div class="sideBar fa-right">
+	<div class="ui-top-tab">
+	<div class="caption fa-clear">
+	<h3><a href="<?php echo $channel[3]['url'];?>"><?php echo $channel[3]['title'];?>最新更新排行</a></h3>
+	</div>
+	<div class="content">
+	<ul class="ul-top">
+<?php foreach($videolist['usavideo'] as $k => $v){
+if($k<13)continue;
+?>
+	<li><span><strong>0 分</strong></span> <a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo $v['title'];?></a></li>
+<?php }?>
+	</ul>
+	</div>
+	</div>
+	<!-- // topBox End -->
+<?php if(0){?>
+	<div class="ui-sort">
+	<div class="caption">
+	<h3>{pipicms:menulist type=1}<a href="[menulist:link]">[menulist:typename]类型</a>{/pipicms:menulist}</h3>
+	</div>
+	<div class="tb_c">
+	<dl class="videoSortList clearfix">
+	<dt>按分类</dt>
 							<dd>{pipicms:menulist type=5,6,7,8,9,10,11,12}<span><a href="[menulist:link]">[menulist:typename]</a></span>{/pipicms:menulist}</dd>
 							<dt>按地区</dt>
 							<dd>{pipicms:areacaslist}<span><a href="[areacaslist:link]&tid=1">[areacaslist:value]</a></span>{/pipicms:areacaslist}</dd>
@@ -324,9 +355,10 @@ continue;
 						</dl>
 					</div>
 				</div>
-				<!-- // ui-sort End -->
-			</div>
-		</div>
+	<!-- // ui-sort End -->
+<?php }?>
+	</div>
+	</div>
 	</div>
 	<!-- 动漫 -->
 	<div class="ad960 mb10">954*80 中部广告位</div>
@@ -338,43 +370,50 @@ continue;
 				<div class="caption fa-clear">
 					<h2></h2>
 					<p class="tv-link">
-						<!--A链接-->
-					</p>
-				</div>
-				<div class="content">
-					<div class="ui-tab-item fa-clear">
-						<ol class="pic-list pic-list-focus">
-							{pipicms:videolist type=4 num=15 order=time}
-							<li><a class="play-pic" href="/film7/huoyingluokeliwaichuan/"><img src="[videolist:pic]" style="display: block;"><span class="play-icon">&nbsp;</span>
-								<label class="bg">&nbsp;</label>
-								<label class="time">[videolist:note]</label>
-								</a>
-								<p><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a></p>
-								<p class="txt">[videolist:nolinkactor]</p>
-								<p class="txt"><span class="ratbar"><span class="ratbar-item" style="width:[videolist:score]%;">&nbsp;</span></span><strong class="ratbar-num">[videolist:score]</strong></p>
-							</li>
-							{/pipicms:videolist}
-						</ol>
-						<!-- // pic-list End -->
-					</div>
-					<!-- // ui-tab-item End -->
-				</div>
-			</div>
-			<!-- // conBox End -->
-			<div class="sideBar fa-right">
-				<div class="ui-top-tab">
-					<div class="caption fa-clear">
-						<h3>{pipicms:menulist type=4}[menulist:typename]最新排行{/pipicms:menulist}</h3>
-					</div>
-					<div class="content">
-						<ul class="ul-top">
-							{pipicms:videolist type=4 num=14 order=hit}
-							<li><span><strong>[videolist:time]</strong></span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a></li>
-							{/pipicms:videolist}
-						</ul>
-					</div>
-				</div>
-				<!-- // topBox End -->
+	<!--A链接-->
+	</p>
+	</div>
+	<div class="content">
+	<div class="ui-tab-item fa-clear">
+	<ol class="pic-list pic-list-focus">
+<?php foreach($videolist['usavideo'] as $k => $v){
+if($k>15)break;
+?>
+	<li><a class="play-pic" href="<?php echo $v['url'];?>"><img src="<?php echo $v['pic'];?>" style="display: block;"><span class="play-icon">&nbsp;</span>
+	<label class="bg">&nbsp;</label>
+	<label class="time"><?php echo $v['atime'];?></label>
+	</a>
+	<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo $v['title'];?></a></p>
+<?php if(0){?>
+	<p class="txt">[videolist:nolinkactor]</p>
+	<p class="txt"><span class="ratbar"><span class="ratbar-item" style="width:[videolist:score]%;">&nbsp;</span></span><strong class="ratbar-num">[videolist:score]</strong></p>
+<?php }?>
+	</li>
+<?php }?>
+	</ol>
+	<!-- // pic-list End -->
+	</div>
+	<!-- // ui-tab-item End -->
+	</div>
+	</div>
+	<!-- // conBox End -->
+	<div class="sideBar fa-right">
+	<div class="ui-top-tab">
+	<div class="caption fa-clear">
+	<h3><?php echo $channel[7]['title'];?>最新排行</h3>
+	</div>
+	<div class="content">
+	<ul class="ul-top">
+<?php foreach($videolist['usavideo'] as $k => $v){
+if($k<16)continue;
+?>
+	<li><span><strong><?php echo $v['atime'];?></strong></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo $v['title'];?></a></li>
+<?php }?>
+	</ul>
+	</div>
+	</div>
+	<!-- // topBox End -->
+<?php if(0){?>
 				<div class="ui-sort">
 					<div class="caption">
 						<h3>{pipicms:menulist type=4}[menulist:typename]类型{/pipicms:menulist}</h3>
@@ -388,11 +427,12 @@ continue;
 							<dt>按年代</dt>
 							<dd>{pipicms:yearcaslist}<span><a href="[yearcaslist:link]&tid=4">[yearcaslist:value]</a></span>{/pipicms:yearcaslist}</dd>
 						</dl>
-					</div>
-				</div>
-				<!-- // ui-sort End -->
-			</div>
-		</div>
+	</div>
+	</div>
+	<!-- // ui-sort End -->
+<?php }?>
+	</div>
+	</div>
 	</div>
 	<!-- 综艺节目 -->
 	<div class="ad960 mb10">954*80 中部广告位</div>
@@ -405,39 +445,46 @@ continue;
 					<h2></h2>
 					<p class="tv-link"> </p>
 				</div>
-				<div class="content">
-					<div class="ui-tab-item  fa-clear">
-						<ol class="pic-list pic-list-focus">
-							{pipicms:videolist type=3 num=15 order=time}
-							<li><a class="play-pic" href="[videolist:link]"><img src="[videolist:pic]" style="display: block;"><span class="play-icon">&nbsp;</span>
-								<label class="bg">&nbsp;</label>
-								<label class="time">[videolist:note]</label>
-								</a>
-								<p><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a></p>
-								<p class="txt">[videolist:nolinkactor]</p>
+	<div class="content">
+	<div class="ui-tab-item  fa-clear">
+	<ol class="pic-list pic-list-focus">
+<?php foreach($videolist['adultanimevideo'] as $k => $v){
+if($k>14)break;
+?>
+	<li><a class="play-pic" href="<?php echo $v['url'];?>"><img src="<?php echo $v['pic'];?>" style="display: block;"><span class="play-icon">&nbsp;</span>
+	<label class="bg">&nbsp;</label>
+	<label class="time"><?php echo $v['atime'];?></label>
+	</a>
+	<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo $v['title'];?></a></p>
+<?php if(0){?>
+	<p class="txt">[videolist:nolinkactor]</p>
 								<p class="txt"><span class="ratbar"><span class="ratbar-item" style="width:[videolist:score]%;">&nbsp;</span></span><strong class="ratbar-num">[videolist:score]</strong></p>
-							</li>
-							{/pipicms:videolist}
-						</ol>
-						<!-- // pic-list End -->
-					</div>
-					<!-- // ui-tab-item End -->
-				</div>
-			</div>
-			<!-- // conBox End -->
-			<div class="sideBar fa-right">
-				<div class="ui-top-tab">
-					<div class="caption fa-clear">
-						<h3>{pipicms:menulist type=3}[menulist:typename]最新排行{/pipicms:menulist}</h3>
-					</div>
-					<div class="content">
-						<ul class="ul-top">
-							{pipicms:videolist type=3 num=14 order=hit}
-							<li><span><strong>[videolist:time]</strong></span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a></li>
-							{/pipicms:videolist}
-						</ul>
-					</div>
-				</div>
+<?php }?>
+	</li>
+<?php }?>
+	</ol>
+	<!-- // pic-list End -->
+	</div>
+	<!-- // ui-tab-item End -->
+	</div>
+	</div>
+	<!-- // conBox End -->
+	<div class="sideBar fa-right">
+	<div class="ui-top-tab">
+	<div class="caption fa-clear">
+	<h3><?php echo $channel[11]['title'];?>最新排行</h3>
+	</div>
+	<div class="content">
+	<ul class="ul-top">
+<?php foreach($videolist['adultanimevideo'] as $k => $v){
+if($k<15)continue;
+?>
+	<li><span><strong><?php echo $v['atime'];?></strong></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo $v['title'];?></a></li>
+<?php }?>
+	</ul>
+	</div>
+	</div>
+<?php if(0){?>
 				<div class="ui-sort">
 					<div class="caption">
 						<h3>{pipicms:menulist type=3}[menulist:typename]类型{/pipicms:menulist}</h3>
@@ -453,11 +500,13 @@ continue;
 						</dl>
 					</div>
 				</div>
-				<!-- // ui-sort End -->
-			</div>
-		</div>
+	<!-- // ui-sort End -->
+<?php }?>
+	</div>
+	</div>
 	</div>
 	<div class="maxBox listc">
+<?php if(0){?>
 		<div class="box">
 			<div class="silder-box" id="index-silder">
 				<ol class="index-list">
@@ -508,16 +557,16 @@ continue;
 			</div>
 		</div>
 	</div>
+<?php }?>
 	<div class="ad960 mt10 mb10">954*80 底部广告位</div>
 	<div class="IndexLink">
 		<div class="mod_cooperation">
 			<h2 class="mod_tit">友情链接</h2>
 			<div class="mod_cont">
 				<ul>
-					{pipicms:linklist style=font}
-					<li><a href="[linklist:link]">[linklist:name]</a></li>
-					{/pipicms:linklist}
-					<li><a href="http://www.dyzplay.com">大眼仔高清</a></li>
+<?php foreach($friendLink as $v){?>
+<li><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a></li>
+<?php }?>
 				</ul>
 			</div>
 		</div>

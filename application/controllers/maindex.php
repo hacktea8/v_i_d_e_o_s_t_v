@@ -23,7 +23,7 @@ class Maindex extends Avbase {
 //var_dump($this->viewData);exit;
   }
   public function index(){
-    $key = array('hotvideo'=>array('cid'=>0,'order'=>0,'limit'=>19),'newasiavideo'=>array('cid'=>1,'order'=>0,'limit'=>19),'newusavideo'=>array('cid'=>12,'order'=>0,'limit'=>19),'newchinacolor'=>array('cid'=>6,'order'=>0,'limit'=>19),'newclassicthree'=>array('cid'=>10,'order'=>0,'limit'=>19));
+    $key = array('asiavideo'=>array('cid'=>2,'order'=>0,'limit'=>27),'adultanimevideo'=>array('cid'=>11,'order'=>0,'limit'=>27),'uniformsvideo'=>array('cid'=>7,'order'=>0,'limit'=>27),'usavideo'=>array('cid'=>3,'order'=>0,'limit'=>27),'hotvideo'=>array('cid'=>0,'order'=>0,'limit'=>19),'newasiavideo'=>array('cid'=>1,'order'=>0,'limit'=>19),'newusavideo'=>array('cid'=>12,'order'=>0,'limit'=>19),'newchinacolor'=>array('cid'=>6,'order'=>0,'limit'=>19),'newclassicthree'=>array('cid'=>10,'order'=>0,'limit'=>19));
     $videolist = $this->avmodel->getIndexVideoList($key);
     $this->assign(array('videolist' => $videolist));
     $this->view('index_index');
