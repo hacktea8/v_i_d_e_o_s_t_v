@@ -61,68 +61,92 @@ if($k<7){
 continue;
 }
 ?>
-	<li><span>[videolist:time]</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
+	<li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
 <?php }?>
 	</ul>
 				<!-- // txt-list End -->
 			</div>
 			<div id="con_latest_3" class="fa-hide" style="display: none; ">
 				<ol class="pic-list">
-					{pipicms:videolist type=1 num=7 order=time}
-					<li><a class="play-pic" href="[videolist:link]" title="[videolist:name]"><img src="[videolist:pic]" alt="[videolist:name]">
-						<label class="bg">&nbsp;</label>
-						<label class="time">电影</label>
-						</a>
-						<p><a href="[videolist:link]" title="[videolist:name]">[videolist:name len=8]</a></p>
-					</li>
-					{/pipicms:videolist}
-				</ol>
-				<!-- // pic-list End -->
-				<ul class="txt-list">
-					{pipicms:videolist type=1 num=12 order=time start=9}
-					<li><span>[videolist:time]</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
-					{/pipicms:videolist}
-				</ul>
+<?php foreach($videolist['newusavideo'] as $k => $v){
+if($k>6){
+break;
+}
+?>
+	<li><a class="play-pic" href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><img src="<?php echo $v['pic'];?>" alt="<?php echo $v['title'];?>">
+	<label class="bg">&nbsp;</label>
+	<label class="time"><?php echo $v['atime'];?></label>
+	</a>
+	<p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
+	</li>
+<?php }?>
+	</ol>
+	<!-- // pic-list End -->
+	<ul class="txt-list">
+<?php foreach($videolist['newusavideo'] as $k => $v){
+if($k<7){
+continue;
+}
+?>
+	<li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
+<?php }?>
+	</ul>
 				<!-- // txt-list End -->
-			</div>
-			<div id="con_latest_4" class="fa-hide" style="display: none; ">
-				<ol class="pic-list">
-					{pipicms:videolist type=4 num=7 order=time}
-					<li><a class="play-pic" href="[videolist:link]" title="[videolist:name]"> <img src="[videolist:pic]" alt="[videolist:name]">
-						<label class="bg">&nbsp;</label>
-						<label class="time">[videolist:note]</label>
-						</a>
-						<p><a href="[videolist:link]" title="[videolist:name]">[videolist:name len=8]</a></p>
-					</li>
-					{/pipicms:videolist}
-				</ol>
-				<!-- // pic-list End -->
-				<ul class="txt-list">
-					{pipicms:videolist type=4 num=12 order=time start=9}
-					<li><span>[videolist:time]</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
-					{/pipicms:videolist}
-				</ul>
-				<!-- // txt-list End -->
-			</div>
-			<div id="con_latest_5" class="fa-hide" style="display: none; ">
-				<ol class="pic-list">
-					{pipicms:videolist type=3 num=7 order=time}
-					<li><a class="play-pic" href="[videolist:link]" title="[videolist:name]"> <img src="[videolist:pic]" alt="[videolist:name]">
-						<label class="bg">&nbsp;</label>
-						<label class="time">[videolist:note]</label>
-						</a>
-						<p><a href="[videolist:link]" title="[videolist:name]">[videolist:name len=8]</a></p>
-					</li>
-					{/pipicms:videolist}
-				</ol>
-				<!-- // pic-list End -->
-				<ul class="txt-list">
-					{pipicms:videolist type=3 num=12 order=time start=9}
-					<li><span>[videolist:time]</span><a href="[videolist:link]" title="[videolist:name]">[videolist:name]</a> / <a class="gray" href="[videolist:link]">[videolist:note]</a></li>
-					{/pipicms:videolist}
-				</ul>
-				<!-- // txt-list End -->
-			</div>
+	</div>
+	<div id="con_latest_4" class="fa-hide" style="display: none; ">
+	<ol class="pic-list">
+<?php foreach($videolist['newchinacolor'] as $k => $v){
+if($k>6){
+break;
+}
+?>
+<li><a class="play-pic" href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><img src="<?php echo $v['pic'];?>" alt="<?php echo $v['title'];?>">
+        <label class="bg">&nbsp;</label>
+        <label class="time"><?php echo $v['atime'];?></label>
+        </a>
+        <p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
+        </li>
+<?php }?>
+	</ol>
+	<!-- // pic-list End -->
+	<ul class="txt-list">
+<?php foreach($videolist['newchinacolor'] as $k => $v){
+if($k<7){
+continue;
+}
+?>
+        <li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
+<?php }?>
+	</ul>
+	<!-- // txt-list End -->
+	</div>
+	<div id="con_latest_5" class="fa-hide" style="display: none; ">
+	<ol class="pic-list">
+<?php foreach($videolist['newclassicthree'] as $k => $v){
+if($k>6){
+break;
+}
+?>
+<li><a class="play-pic" href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><img src="<?php echo $v['pic'];?>" alt="<?php echo $v['title'];?>">
+        <label class="bg">&nbsp;</label>
+        <label class="time"><?php echo $v['atime'];?></label>
+        </a>
+        <p><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a></p>
+        </li>
+<?php }?>
+	</ol>
+	<!-- // pic-list End -->
+	<ul class="txt-list">
+<?php foreach($videolist['newclassicthree'] as $k => $v){
+if($k<7){
+continue;
+}
+?>
+        <li><span><?php echo $v['atime'];?></span><a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"><?php echo mb_substr($v['title'],8);?></a> / <a class="gray" href="<?php echo $v['url'];?>"><?php echo $v['atime'];?></a></li>
+<?php }?>
+	</ul>
+	<!-- // txt-list End -->
+	</div>
 		</div>
 	</div>
 	<!-- 电视 -->

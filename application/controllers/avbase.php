@@ -14,7 +14,7 @@ class Avbase extends Webbase {
     
     $this->load->model('avmodel');
     $menuList = $this->mem->get('avtv-menuList');
-    if( !empty($menuList)){
+    if( empty($menuList)){
       $menuList = $this->avmodel->getMenuListById();
       $menuListA = slice_array($menuList,0,3);
       $menuListB = slice_array($menuList,3);
@@ -22,7 +22,7 @@ class Avbase extends Webbase {
       $this->mem->set('avtv-menuList',$menuList,$this->expirettl['1d']);
     } 
     $channel = $menuList['menuListA']+$menuList['menuListB'];
-//var_dump($menuList['menuListA']);exit;
+//var_dump($menuList['menuListB']);exit;
 /*
     $hotTopic = $this->mem->get('emu-hotTopic');
 //var_dump($hotTopic);exit;
