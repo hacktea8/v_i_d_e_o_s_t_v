@@ -41,7 +41,7 @@ class avbaseModel extends CI_Model{
   }
   public function getVideoListByCid($cid='',$order=0,$page=1,$limit=25,$where = array('`flag`=1'),$isadmin = 0){
     $start = ($page-1)*$limit;
-    $orderMap = array('`atime` DESC');
+    $orderMap = array('`atime` DESC','`hits` DESC','`vid` DESC');
     $order = isset($orderMap[$order])?$orderMap[$order]:array_pop($orderMap);
     if($cid >0){
       $where[] = sprintf("`cid`=%d",$cid);

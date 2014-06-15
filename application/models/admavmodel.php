@@ -5,6 +5,12 @@ class admavModel extends avbaseModel{
   public function __construct(){
     parent::__construct();
   }
+  public function getVideoCountByCid($cid){
+    $where = $cid ? sprintf("WHERE `cid`=%d",$cid) : '';
+    $sql = sprintf("SELECT COUNT(*) as total FROM `av_video_head` %s",$where);
+    $row = $this->db->query($sql)->row_array();
+    return $row ? $row['total'] : 0;
+  }
   public function addVideoDramByData($data_dram){
     $table = sprintf("`av_video_drama%d`",$data_dram['vid']%6);
     $sql = sprintf("SELECT `id` FROM %s WHERE `playnum`=%d AND `vid`=%d LIMIT 1",$table,$data_dram['playnum'],$data_dram['vid']);

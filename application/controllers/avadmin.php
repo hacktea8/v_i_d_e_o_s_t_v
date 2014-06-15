@@ -6,6 +6,9 @@ class Avadmin extends Admbase {
  public function __construct(){
    parent::__construct();		
    $this->load->model('admavmodel');
+   $menuList = $this->mem->get('avtv-menuList');
+   $channel = $menuList['menuListA']+$menuList['menuListB'];
+   $this->assign(array('channel'=>$channel));
  }
 	/**
 	 * 
@@ -22,14 +25,32 @@ class Avadmin extends Admbase {
    $this->assign(array('type'=>$type));
    $this->view($this->_c.'_index_left');
  }
- public function avchecklist($page = 1){
-   $lists = $this->admavmodel->getVideoListByCid($cid=0,$order=0,$page,$limit=25,$where = array(),1);
-   $this->assign(array('lists'=>$lists));
+ public function avchecklist($cid = 0,$page = 1){
+   $limit=25;
+   $lists = $this->admavmodel->getVideoListByCid($cid,$order=2,$page,$limit,$where = array(),1);
+   $count = $this->admavmodel->getVideoCountByCid($cid);
+   $this->load->library('pagination');
+   $config['base_url'] = sprintf('/%s/%s/%d/',$this->_c,$this->_a,$cid);
+   $config['total_rows'] = $count;
+   $config['per_page'] = $limit;
+   $config['cur_page'] = $page;
+   $this->pagination->initialize($config);
+   $page_string = $this->pagination->create_links();
+   $this->assign(array('lists'=>$lists,'page_string'=>$page_string));
    $this->view($this->_c.'_avlist');
  }
- public function avlist($page = 1){
-   $lists = $this->admavmodel->getVideoListByCid($cid=0,$order=0,$page,$limit=25,$where = array());
-   $this->assign(array('lists'=>$lists));
+ public function avlist($cid = 0,$page = 1){
+   $limit=25;
+   $lists = $this->admavmodel->getVideoListByCid($cid,$order=2,$page,$limit,$where = array());
+   $count = $this->admavmodel->getVideoCountByCid($cid);
+   $this->load->library('pagination');
+   $config['base_url'] = sprintf('/%s/%s/%d/',$this->_c,$this->_a,$cid);
+   $config['total_rows'] = $count;
+   $config['per_page'] = $limit;
+   $config['cur_page'] = $page;
+   $this->pagination->initialize($config);
+   $page_string = $this->pagination->create_links();
+   $this->assign(array('lists'=>$lists,'page_string'=>$page_string));
    $this->view($this->_c.'_avlist');
  }
  public function avdetail($vid = 0){

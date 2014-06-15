@@ -57,9 +57,9 @@
 </table>
 <!-- Think 系统列表组件结束 -->
 
-<div class="pager"></div>
-						</div>
-					</td>
+<div class="pager"><?php echo $page_string;?></div>
+</div>
+</td>
 				</tr>
 			</table>
 		</div>
